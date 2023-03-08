@@ -2,10 +2,8 @@ import React from "react";
 
 function Card() {
     return (
-        <div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                Button
-            </button>
+        <div className="bg-blue-lighter h-96 w-80">
+            <p>hei</p>
         </div>
     )
 }
