@@ -10,11 +10,11 @@ const express = require('express');
 const app = express();
 
 //read json
-app.use(express.json(process.env.MONGO_URI));
+app.use(express.json());
 
 //mongoose + connect
 const mongoose = require('mongoose');
-mongoose.connect()
+mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB...'))
     .catch(() => console.log('Could not connect to MongoDB...'));
 
