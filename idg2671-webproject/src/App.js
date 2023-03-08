@@ -1,7 +1,9 @@
 // Husk å importere componente ditt her
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
+// Importere pages
 import Tools from './pages/Tools';
+
 
 function App() {
   return (
