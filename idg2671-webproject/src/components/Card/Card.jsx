@@ -1,6 +1,5 @@
-import React from "react";
 
-function Card() {
+export default function Card() {
     return (
         <div className="bg-blue-lighter h-96 w-80 rounded-xl shadow-md">
             <h3 className="font-bold">Tool</h3>
@@ -9,4 +8,3 @@ function Card() {
         </div>
     )
 }
-export default Card;
