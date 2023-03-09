@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
     return (
-        <div className="bg-blue-darker w-screen	h-1/4">
-            
+        <div className="bg-blue-darker text-white w-screen	h-40">
+            <p>yoooo</p>
         </div>
     )
 }
