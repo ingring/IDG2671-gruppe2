@@ -1,14 +1,33 @@
 // Husk å importere componente ditt her
 import './App.css';
-import Footer from './components/Footer/Footer';
-import Card from './components/Card/Card';
+import { Link, Route, Routes } from 'react-router-dom';
+// Importere pages
+import Tools from './pages/Tools';
+import Home from './pages/Home';
 
+// Vi bruker bare 'App.js' til å legge inn routes. 'Home.js' vil være hjemmesiden.
 function App() {
   return (
-    // Her legger du til componentene du har laget
     <div className="App">
-      <Card />
-      <Footer />
+
+      {/* Should be changed to the navbar component, with links, instead of this ul list. */}
+      <nav>
+        <ul>
+        <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/tools">Tools</Link>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tools" element={<Tools />} />
+      </Routes>
+
     </div>
   );
 }
