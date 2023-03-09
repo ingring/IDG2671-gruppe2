@@ -1,4 +1,5 @@
 import React from "react";
+import Button from '../Button/Button';
 
 function Card() {
     return (
@@ -6,6 +7,7 @@ function Card() {
             <h3 className="font-bold">Tool</h3>
             <img className="rounded-xl" src="#" alt="#" />
             <p>Course</p>
+            <Button title="Book"/>
         </div>
     )
 }
