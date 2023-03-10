@@ -4,6 +4,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 // Importere pages
 import Tools from './pages/Tools';
 import Home from './pages/Home';
+import DisplayTool from './pages/DisplayTool';
 
 // Vi bruker bare 'App.js' til å legge inn routes. 'Home.js' vil være hjemmesiden.
 function App() {
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tools" element={<Tools />} />
+        <Route path="/displaytool" element={<DisplayTool />} />
       </Routes>
 
     </div>
