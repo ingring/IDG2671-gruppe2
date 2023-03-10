@@ -18,7 +18,7 @@ function App() {
       {/* Should be changed to the navbar component, with links, instead of this ul list. */}
       {/* Temporary styling, it must be changed to how it looks in Figma */}
       <nav className="bg-blue-primary text-white flex flex-row h-14">
-        <ul className="flex flex-row justify-evenly w-screen items-center">
+        <ul className="flex flex-row justify-evenly w-screen items-center font-bold">
           <li>
             <Link to="/">Home</Link>
           </li>
