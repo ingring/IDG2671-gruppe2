@@ -20,19 +20,24 @@ const User = mongoose.model('User', new mongoose.Schema({
         minlength: 5,
         unique: true,
         required: true
-        
+    },
+    password: {
+        type:String,
+        maxlength: 100,
+        minlength: 8,
+        required: true
     },
     email: {
         type: String,
         minlength: 6,
         maxlength: 255,
+        unique: true,
         required: true
     },
-    role: { //make an enum
+    role: {
         type: String,
-        minlength: 6,
-        maxlength: 40,
-        required: true
+        enum: ['Student', 'Employee'],
+        default: 'Student'
     },
     field_of_study: { //make an enum
         type: String,
@@ -52,18 +57,20 @@ const User = mongoose.model('User', new mongoose.Schema({
 }));
 
 function validateUser(user){
-    const schema = {
+    const schema = Joi.object({
         first_name: Joi.string().min(2).max(50).required(),
         last_name: Joi.string().min(2).max(50).required(),
         username: Joi.string().min(5).max(50).required(),
+        password: Joi.string().min(8).required(),
         email: Joi.string().min(6).max(255).required().email(),
-        role: Joi.string().min(6).max(40).required(),
+        role: Joi.string().valid('Student', 'Employee'),
         field_of_study: Joi.string().min(6).max(40),
         start_year: Joi.number().min(2010).max(2040),
         admin:Joi.boolean()
-    }
+    });
 
-    return Joi.validate(user, schema);
+    const validation = schema.validate(user);
+    return validation;
 }
 
 module.exports.User = User;
