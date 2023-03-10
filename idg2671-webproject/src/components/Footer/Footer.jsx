@@ -1,12 +1,9 @@
 import React from "react";
 
-//Om du velger denne komponenten, fjern dette, dette var bare for å teste tailwind
 function Footer() {
     return (
-        <div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                Button
-            </button>
+        <div className="bg-blue-darker text-white w-screen	h-40">
+            <p>yoooo</p>
         </div>
     )
 }
