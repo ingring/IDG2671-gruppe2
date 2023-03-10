@@ -1,14 +1,14 @@
 import Footer from '../components/Footer/Footer';
 
-function MyAccountPage() {
+function ToolPage() {
     return (
         <>
             <div className="bg-grey-lighter min-h-screen">
-                <h1 className="mt-4">Dette er min side pagen!</h1>
+                <h1 className="mt-4">Dette er tool id pagen!</h1>
             </div>
             <Footer />
         </>
     );
 }
 
-export default MyAccountPage;
+export default ToolPage;
