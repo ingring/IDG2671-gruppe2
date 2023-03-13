@@ -1,10 +1,14 @@
 import Card from '../components/Card/Card';
+import Footer from '../components/Footer/Footer';
 
 function ToolPage() {
     return (
-      <div className="App">
-        <Card />
-      </div>
+      <>
+        <div className="bg-grey-lighter min-h-screen">
+          <Card />
+        </div>
+        <Footer />
+      </>
     );
   }
   

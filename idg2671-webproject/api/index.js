@@ -9,6 +9,9 @@ const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 
+//require routes
+const users = require('./routes/users');
+
 //read json
 app.use(express.json());
 
@@ -18,7 +21,9 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('Connected to MongoDB...'))
     .catch(() => console.log('Could not connect to MongoDB...'));
 
+
 //setting routes
+app.use('/api/users', users);
 
 //running server
 const port = process.env.PORT || 3000;

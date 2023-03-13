@@ -14,7 +14,7 @@ let jsonData = {
     "description":"Laserkutteren er et verkøty som kan gjøre mange ulike ting. Du kan for eksempel kutte ut ulike ting i ulike meterialer. Lorem ipsum, lorem lorem ipsum."
 }
 
-function DisplayToolPage() {
+function ToolPage() {
     return (
       <div className="App">
         <DisplayTool 
@@ -29,4 +29,4 @@ function DisplayToolPage() {
     );
   }
   
- export default DisplayToolPage;
+ export default ToolPage;
