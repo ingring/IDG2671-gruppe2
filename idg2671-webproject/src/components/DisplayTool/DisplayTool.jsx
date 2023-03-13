@@ -3,9 +3,9 @@ import Button from '../Button/Button';
 
 function DisplayTool(props) {
     return (
-        <div className="text-left content-center max-w-prose m-auto text-xl">
+        <div className="text-left content-center max-w-prose m-auto text-xl my-10">
             <h1 className="my-5 text-3xl">{props.title}</h1>
-            <img className="my-5" src={props.imgSrc} alt={props.imgAlt} />
+            <img className="my-10" src={props.imgSrc} alt={props.imgAlt} />
             <div className="flex">
                 <p>Status: {props.status}</p>
                 {/* Jeg har ikke helt funnet best måte å legge til ikonet med tanke på om statusen er ok eller ødelagt,
