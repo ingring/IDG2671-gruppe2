@@ -1,3 +1,5 @@
+
+
 :root {
     --blueLighter: #DEE8F7;
     --bluePrimary: #204F99;
@@ -63,10 +65,13 @@ color: #d10000;
     background: #D0ECCD;
 }
 .react-calendar__tile--now {
-    background: #D0ECCD;
+    background: var(--greyLighter);
     border-radius: 6px;
     font-weight: bold;
     color: var(--greenDarker);
+}
+.react-calendar__tile--now > abbr {
+    color: var(--greyMedium);
 }
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
