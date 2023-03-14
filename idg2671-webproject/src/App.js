@@ -42,7 +42,7 @@ function App() {
 
       {/* Routes */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/id" element={<ToolPage />} />
         <Route path="/booking" element={<BookingPage />} />
