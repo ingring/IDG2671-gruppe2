@@ -9,7 +9,6 @@ function CalendarComponent() {
 
     return (
         <div className='Calendar'>
-          <h1 className='text-center'>React Calendar with Range</h1>
           <div className='calendar-container'>
             <Calendar
               onChange={setDate}
