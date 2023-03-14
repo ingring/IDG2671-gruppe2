@@ -85,7 +85,7 @@ color: #d10000;
     background: #f8f8fa;
 }
 .react-calendar__tile--active {
-    background: #6f48eb;
+    background: var(--green);
     border-radius: 6px;
     font-weight: bold;
     color: white;
