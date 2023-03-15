@@ -1,6 +1,7 @@
 // Husk å importere componente ditt her
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
 // Importere pages
 import ToolsPage from './pages/Tools';
 import ToolPage from './pages/Tool';
@@ -51,7 +52,10 @@ function App() {
         <Route path="/account" element={<MyAccountPage />} />
       </Routes>
 
+      <Footer />
+
     </div>
+    
   );
 }
 

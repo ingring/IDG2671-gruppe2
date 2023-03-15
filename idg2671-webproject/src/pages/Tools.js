@@ -1,5 +1,4 @@
 import Card from '../components/Card/Card';
-import Footer from '../components/Footer/Footer';
 import Searchbar from '../components/Searchbar/Searchbar';
 
 function ToolPage() {
@@ -10,7 +9,6 @@ function ToolPage() {
 
           <Searchbar />
         </div>
-        <Footer />
       </>
     );
   }
