@@ -1,36 +1,39 @@
-import { useState } from 'react';
-import Calendar from 'react-calendar';
-import './Calendar.css';
+import React from "react";
 
-// https://blog.logrocket.com/react-calendar-tutorial-build-customize-calendar/
-function CalendarComponent() {
-    //Created a state to store a date and passed the current date as its initial value using JavaScript’s Date object.
-    const [date, setDate] = useState(new Date());
+function Calendar() {
+  return (
+    <div className="calendar-container">
 
-    return (
-        <div className='Calendar'>
-          <div className='calendar-container'>
-            <Calendar
-              onChange={setDate}
-              value={date}
-              selectRange={true}
-            />
-          </div>
-          {date.length > 0 ? (
-            <p className='text-center'>
-              <span className='bold'>Start:</span>{' '}
-              {date[0].toDateString()}
-              &nbsp;|&nbsp;
-              <span className='bold'>End:</span> {date[1].toDateString()}
-            </p>
-          ) : (
-            <p className='text-center'>
-              <span className='bold'>Default selected date:</span>{' '}
-              {date.toDateString()}
-            </p>
-          )}
-        </div>
-      );
-    }
+      <div className="calendar-header">
+        <button className="leftBtn"></button>
+        <h2 className="monthText">Februar 2023</h2>
+        <button className="rightBtn"></button>
+      </div>
 
-export default CalendarComponent;
+      <div className="calendarTable">
+        <ul className="calendarHeader">
+          <li>Mon</li>
+          <li>Thues</li>
+          <li>Wed</li>
+          <li>Thurs</li>
+          <li>Fri</li>
+          <li>Sat</li>
+          <li>Sun</li>
+        </ul>
+
+        <ol className="calendarCells">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+      </div>
+      
+    </div>
+  )
+}
+
+export default Calendar;
