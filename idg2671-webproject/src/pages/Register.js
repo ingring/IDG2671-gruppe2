@@ -1,15 +1,15 @@
-import Login from "../components/Form/Login";
+import Register from "../components/Form/Register";
 import Footer from "../components/Footer/Footer";
 
-function LoginPage() {
+function RegisterPage() {
   return (
     <>
       <div className="bg-grey-lighter min-h-screen">
-        <Login />
+        <Register />
       </div>
       <Footer />
     </>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
