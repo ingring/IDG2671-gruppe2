@@ -9,7 +9,6 @@ import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
 import AdminPage from "./pages/Admin";
 import MyAccount from "./pages/MyAccount";
-import RegisterPage from "./pages/Register";
 
 // Vi bruker bare 'App.js' til å legge inn routes. 'Home.js' vil være hjemmesiden.
 function App() {
@@ -49,7 +48,6 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/myaccount" element={<MyAccount />} />
-        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </div>
   );
