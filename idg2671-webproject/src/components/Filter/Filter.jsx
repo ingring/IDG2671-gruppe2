@@ -20,13 +20,13 @@ function Filter() {
         <div className="relative">
             <div className="bg-blue-darker text-white flex justify-between p-4 rounded-lg max-w-prose text-left">
                 <div className="w-1/4">
-                    <button id="dropdownBtn" data-dropdown-toggle="dropdownId" className="hover:opacity-75 text-white rounded-lg px-4 text-center inline-flex items-center" type="button">
+                    <button id="dropdownToolBtn" data-dropdown-toggle="dropdownTool" className="text-white rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
                         Tools
                         <DropdownArrow />
                     </button>
                 </div>
                 <div className="w-1/4">
-                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdownId" className="text-white rounded-lg px-4 text-center inline-flex items-center" type="button">
+                    <button id="dropdownDateBtn" data-dropdown-toggle="dropdownDate" className="text-white rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
                         Date
                         <DropdownArrow />
                     </button>
@@ -35,10 +35,17 @@ function Filter() {
                 <div className="w-1/4 px-4">User</div>
             </div>
 
-            <div id="dropdownId" className="hidden bg-blue-darker z-10 rounded-lg shadow w-44 rounded-t-none absolute top-12 text-left">
-                <ul className="py-2" aria-labelledby="dropdownBtn">
+            <div id="dropdownTool" className="hidden bg-blue-darker z-10 rounded-lg shadow w-44 rounded-t-none absolute top-12 text-left">
+                <ul className="py-2" aria-labelledby="dropdownToolBtn">
                     {tools.map((tool) => <ListElement tool={tool} />)}
                 </ul>
+            </div>
+
+            {/* Her kunne jeg tenkt meg en kalender tihi */}
+            <div id="dropdownDate" className="hidden bg-blue-darker z-10 rounded-lg shadow w-44 rounded-t-none absolute top-12 text-left">
+                <div className="py-20" aria-labelledby="dropdownDateBtn">
+                    
+                </div>
             </div>
         </div>
     )
