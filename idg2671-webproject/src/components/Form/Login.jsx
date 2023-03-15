@@ -14,7 +14,7 @@ export default function Login() {
                     <form className="md:space-y-6 flex justify-start flex-col" action="#">
                         <div>
                             <label for="email" className="block mb-2 text-left">Email</label>
-                            <input type="email" name="email" id="email" className="text-left border border-blue-darker sm:text-sm rounded-lg w-full p-2.5 dark:bg-grey-lighter" placeholder="name@ntnu.no" required=""></input>
+                            <input type="email" name="email" id="email" className="text-left border border-blue-darker sm:text-sm rounded-lg w-full p-2.5 dark:bg-grey-lighter" placeholder="name@stud.ntnu.no" required=""></input>
                         </div>
                         <div>
                             <label for="password" className="block mb-2 text-left">Password</label>
