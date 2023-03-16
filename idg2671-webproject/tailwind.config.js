@@ -27,6 +27,7 @@ module.exports = {
     'inter': ['Inter', 'sans-serif']
   },
   plugins: [
-    require('flowbite/plugin')
-]
+    require('flowbite/plugin'),
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ]
 }
