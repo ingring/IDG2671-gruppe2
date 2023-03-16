@@ -44,7 +44,7 @@ function List() {
     ]
     return (
         <>
-        <ul className="mb-5 overflow-y-scroll scrollbar-rounded max-h-20">
+        <ul className="mb-5 max-w-prose h-32 scrollbar-thin scrollbar-thumb-grey-darker scrollbar-track-grey-medium overflow-y-scroll scrollbar-thumb-rounded-full scrollbar-track-rounded-full">
             {tools.map((tool) => <ListElement tool={tool.tool} date={tool.date} time={tool.time} user={tool.user} />)}
         </ul>
         </>
