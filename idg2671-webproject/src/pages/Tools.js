@@ -1,5 +1,7 @@
 import Card from '../components/Card/Card';
 import Searchbar from '../components/Searchbar/Searchbar';
+import Filter from '../components/Filter/Filter';
+import List from '../components/List/List'
 
 function ToolPage() {
     return (
@@ -8,6 +10,10 @@ function ToolPage() {
           <Card />
 
           <Searchbar />
+          <List />
+          <br /><br />
+          <Filter />
+          <List />
         </div>
       </>
     );
