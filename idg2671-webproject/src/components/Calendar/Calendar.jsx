@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { set } from "lodash";
+import moment from "moment";
 
 import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
@@ -8,10 +8,10 @@ import CalendarHeader from "./CalendarHeader";
 import "./Calendar.css";
 
 // Kilde: https://www.youtube.com/watch?v=5jRrVqRWqsM
-export default function Calendar2({ value, onChange }) {
+export default function Calendar({ value, onChange, onSelect }) {
     // State
     const [calendar, setCalendar] = useState([]);
-
+    
     useEffect(() => {
         setCalendar(buildCalendar(value));
     }, [value]);
@@ -35,6 +35,7 @@ export default function Calendar2({ value, onChange }) {
                     </div>
                 ))}
             </div>
+            {/* Klarer ikke å finne ut hvordan jeg skal få hentet datoen vi klikker på */}
             <p>Date chosen: </p>
         </div>
     )

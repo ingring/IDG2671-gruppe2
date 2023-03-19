@@ -4,7 +4,7 @@ export default function MyAccount() {
     return (
         <section className="flex items-center justify-center min-h-screen">
             <dl>
-                <h1 className="font-bold md:text-2xl text-left mb-6">
+                <h1 className="md:text-3xl text-left mb-6">
                     My Account
                 </h1>
                 <div className="flex-col pt-3 mb-6">
