@@ -1,10 +1,11 @@
-
+import MyAccount from "../components/Form/MyAccount";
 
 function MyAccountPage() {
     return (
         <>
-            <div className="bg-grey-lighter min-h-screen">
+            <div className="">
                 <h1 className="pt-4">Dette er min side pagen!</h1>
+                <MyAccount />
             </div>
         </>
     );

@@ -14,7 +14,7 @@ import MyAccount from "./pages/MyAccount";
 // Vi bruker bare 'App.js' til å legge inn routes. 'Home.js' vil være hjemmesiden.
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-grey-lighter min-h-screen">
       {/* Should be changed to the navbar component, with links, instead of this ul list. */}
       {/* Temporary styling, it must be changed to how it looks in Figma */}
       <nav className="bg-blue-darker text-white flex flex-row h-14">
