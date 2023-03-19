@@ -12,7 +12,7 @@
     box-sizing: border-box;
     padding: 2rem;
     font-size: 1rem;
-    max-width: 50%;
+    max-width: 30%;
     background-color: var(--light-grey);
     border-radius: 10px;
   }
