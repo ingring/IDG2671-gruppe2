@@ -1,5 +1,6 @@
 import React from "react";
 
+// Creating the calendar header
 export default function CalendarHeader({ value, setValue }) {
 
     function currMonthDate() {

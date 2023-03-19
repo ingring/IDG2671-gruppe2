@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
 
 import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
@@ -9,9 +8,24 @@ import "./Calendar.css";
 
 // Kilde: https://www.youtube.com/watch?v=5jRrVqRWqsM
 export default function Calendar({ value, onChange, onSelect }) {
+
+    // Return current day 
+    function currDay() {
+        return value.format("DD")
+    }
+    // Return current month
+    function currMonth() {
+        return value.format("MMMM")
+    }
+    // Return current year
+    function currYear() {
+        return value.format("YYYY")
+    }
+
     // State
     const [calendar, setCalendar] = useState([]);
     
+    //Mounting the component
     useEffect(() => {
         setCalendar(buildCalendar(value));
     }, [value]);
@@ -35,8 +49,7 @@ export default function Calendar({ value, onChange, onSelect }) {
                     </div>
                 ))}
             </div>
-            {/* Klarer ikke å finne ut hvordan jeg skal få hentet datoen vi klikker på */}
-            <p>Date chosen: </p>
+            <p className="mt-8">Date chosen: {currDay()} {currMonth()} {currYear()}</p>
         </div>
     )
 }   
