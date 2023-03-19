@@ -53,6 +53,6 @@ router.post('/', async(req, res) => {
 
 router.get('/', async(req, res) => {
     res.send('test')
-})
+});
 
 module.exports = router;
