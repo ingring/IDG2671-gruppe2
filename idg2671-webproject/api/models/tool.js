@@ -6,6 +6,7 @@ const Tool = mongoose.model('Tool', new mongoose.Schema({
         type: String,
         maxlength: 100,
         minlength: 2,
+        unique: true,
         required: true
     },
     description: {

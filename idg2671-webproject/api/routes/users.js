@@ -42,7 +42,7 @@ router.post('/', async(req, res) => {
 
     try {
         user.save();
-        res.send(`User created: ${user.username}`);
+        res.send(`User created: "${user.username}"`);
     }
 
     catch {
