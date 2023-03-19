@@ -35,6 +35,7 @@ export default function Calendar2({ value, onChange }) {
                     </div>
                 ))}
             </div>
+            <p>Date chosen: </p>
         </div>
     )
 }   
