@@ -3,9 +3,10 @@ import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 // Importere pages
+import HomePage from "./pages/Home";
 import ToolsPage from "./pages/Tools";
 import ToolPage from "./pages/Tool";
-import HomePage from "./pages/Home";
+import BookingCalendarPage from "./pages/BookingCalendar"
 import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
 import AdminPage from "./pages/Admin";
@@ -26,9 +27,6 @@ function App() {
             <Link to="/tools">Tools</Link>
           </li>
           <li>
-            <Link to="/booking">Booking</Link>
-          </li>
-          <li>
             <Link to="/login">Login</Link>
           </li>
           <li>
@@ -45,7 +43,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/id" element={<ToolPage />} />
-        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
+        <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/myaccount" element={<MyAccount />} />

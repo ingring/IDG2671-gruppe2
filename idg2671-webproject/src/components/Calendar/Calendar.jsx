@@ -4,6 +4,7 @@ import moment from "moment";
 import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
 import CalendarHeader from "./CalendarHeader";
+import Button from "../Button/Button";
 
 import "./Calendar.css";
 
@@ -81,6 +82,7 @@ export default function Calendar({ value, onChange }) {
             <p className="mt-8">Date chosen: {currDay()} {currMonth()} {currYear()}</p>
             <p>{moment().format('L')}</p>
             <p>{date}</p>
+            <Button title="Continue" />
         </div>
         // https://momentjscom.readthedocs.io/en/latest/moment/04-displaying/13-as-json/
     )

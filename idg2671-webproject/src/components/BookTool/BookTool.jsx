@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import moment from "moment";
-import Calendar from "../Calendar/Calendar";
+import React from "react";
 import Button from "../Button/Button";
 
 export default function BookTool(props) {
-    const [value, setValue] = useState(moment());
     return (  
         
         <div className="BookTool w-9/12 flex justify-center flex-col">
@@ -12,8 +9,6 @@ export default function BookTool(props) {
         
             <h3 className="font-semibold mb-1">Tool</h3>
             <p className="mb-6">{props.tool}</p>
-
-            <Calendar value={value} onChange={setValue} />
 
             <h3 className="font-semibold mb-1">Date</h3>
             <p className="mb-6">{props.date}</p>
