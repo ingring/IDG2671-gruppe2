@@ -2,12 +2,7 @@ import Card from '../components/Card/Card';
 import Image from '../assets/img/3d-printer.jpeg';
 
 import Searchbar from '../components/Searchbar/Searchbar';
-import Filter from '../components/Filter/Filter';
-import ListBookedBy from '../components/List/ListBookedBy';
 import ListTools from '../components/List/ListTools';
-import ListMyBookings from '../components/List/ListMyBookings';
-import ListToolsAdmin from '../components/List/ListToolsAdmin';
-import ListUsers from '../components/List/ListUsers';
 
 let jsonDataTools = {
   "title":"3D Printer",
@@ -28,16 +23,8 @@ function ToolPage() {
           />
 
           <Searchbar />
-          <ListTools />
+          <ListTools />   
 
-          <Filter />
-          <ListBookedBy />
-
-          <ListMyBookings />
-
-          <ListToolsAdmin />
-
-          <ListUsers />
         </div>
       </>
     );
