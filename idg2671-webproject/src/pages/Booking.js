@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import BookTool from '../components/BookTool/BookTool';
 
 let jsonData = {
