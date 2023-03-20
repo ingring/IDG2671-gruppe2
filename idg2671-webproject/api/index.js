@@ -11,6 +11,7 @@ const app = express();
 
 //require routes
 const users = require('./routes/users');
+const tools = require('./routes/tools');
 
 //read json
 app.use(express.json());
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 //setting routes
 app.use('/api/users', users);
+app.use('/api/tools', tools);
 
 //running server
 const port = process.env.PORT || 3000;
