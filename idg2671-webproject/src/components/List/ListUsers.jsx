@@ -2,13 +2,15 @@ import React from "react";
 import List from "./List";
 import ListElement from "./ListElement";
 
-function ListElementToolsAdmin({tool, id}) {
-    const url = `./admin/tools/${id}`
+function ListElementUsers({user, id, study, year}) {
+    const url = `./admin/users/${id}`
     return (
         <div className="flex justify-between">
-            <a href={url}>{tool}</a>
+            <a href={url} className="flex w-3/4">
+                <span className="w-2/4 min-w-fit">{user}</span>
+                <span className="w-1/4 min-w-fit">{study} {year}</span>
+            </a>
             <div className="flex">
-
                 {/* change the booking - PUT? */}
                 <a href={url} className="px-4">
                     <svg width="30" height="35" viewBox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,42 +29,38 @@ function ListElementToolsAdmin({tool, id}) {
     )
 }
 
-function ListToolsAdmin() {
-    const tools = [
+function ListUsers() {
+    const users = [
         {
             _id:'id',
-            tool:'Laserkutter',
-            date:'28.02.2023',
-            time:'14:00-19:00',
-            user:'Kari Nordmann'
+            user:'Kari Nordmann',
+            study:'BWU',
+            year:'2021',
         }, 
         {
             _id:'id',
-            tool:'3D printer',
-            date:'16.03.2023',
-            time:'16:00-19:30',
-            user:'Ola Nordmann'
+            user:'Ola Nordmann',
+            study:'BMED',
+            year:'2020',
         },
         {
             _id:'id',
-            tool:'Laserkutter',
-            date:'28.02.2023',
-            time:'14:00-19:00',
-            user:'Kari Nordmann'
+            user:'Hans Hansen',
+            study:'BWU',
+            year:'2022',
         }, 
         {
             _id:'id',
-            tool:'3D printer',
-            date:'16.03.2023',
-            time:'16:00-19:30',
-            user:'Ola Nordmann'
+            user:'Navn Navnesen',
+            study:'BIXD',
+            year:'2018',
         }
     ]
     return (
         <List>
-            {tools.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.tool} id={tool._id} /> </ListElement>)}
+            {users.map((user) => <ListElement> <ListElementUsers user={user.user} id={user._id} study={user.study} year={user.year} /> </ListElement>)}
         </List> 
     )
 }
 
-export default ListToolsAdmin;
+export default ListUsers;

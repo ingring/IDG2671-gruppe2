@@ -7,6 +7,7 @@ import ListBookedBy from '../components/List/ListBookedBy';
 import ListTools from '../components/List/ListTools';
 import ListMyBookings from '../components/List/ListMyBookings';
 import ListToolsAdmin from '../components/List/ListToolsAdmin';
+import ListUsers from '../components/List/ListUsers';
 
 let jsonDataTools = {
   "title":"3D Printer",
@@ -35,6 +36,8 @@ function ToolPage() {
           <ListMyBookings />
 
           <ListToolsAdmin />
+
+          <ListUsers />
         </div>
       </>
     );
