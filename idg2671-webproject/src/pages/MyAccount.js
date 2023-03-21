@@ -1,27 +1,20 @@
 import MyAccount from "../components/Form/MyAccount";
-import Footer from "../components/Footer/Footer";
-
-let jsonData = {
-  name: "anosh",
-  email: "anoshc@stud.ntnu.no",
-  study: "web development",
-  department: "ntnu",
-};
+import ListMyBookings from '../components/List/ListMyBookings';
 
 function MyAccountPage() {
-  return (
-    <>
-      <div className="bg-grey-lighter min-h-screen">
-        <MyAccount
-          name={jsonData["name"]}
-          email={jsonData["email"]}
-          study={jsonData["study"]}
-          department={jsonData["department"]}
-        />
-      </div>
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <div className="">
+                <h1 className="pt-4">Dette er min side pagen!</h1>
+                <MyAccount />
+
+                {/* Her er liste komponentet med dummy data som skal innunder my account, 
+                dette må struktureres og styles mtp layoutet vi ønsker => subheader med to 
+                'sider': personal information og my bookings */}
+                <ListMyBookings />
+            </div>
+        </>
+    );
 }
 
 export default MyAccountPage;

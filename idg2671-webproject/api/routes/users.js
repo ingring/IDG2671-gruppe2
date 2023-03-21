@@ -42,7 +42,7 @@ router.post('/', async(req, res) => {
 
     try {
         user.save();
-        res.send(`User created: ${user.username}`);
+        res.send(`User created: "${user.username}"`);
     }
 
     catch {
@@ -51,8 +51,10 @@ router.post('/', async(req, res) => {
 
 });
 
+//getting all users;
 router.get('/', async(req, res) => {
-    res.send('test')
-})
+    const users = await User.find().sort('last_name');
+    res.send(users);
+});
 
 module.exports = router;
