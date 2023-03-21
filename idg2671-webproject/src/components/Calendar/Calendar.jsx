@@ -8,12 +8,6 @@ import Button from "../Button/Button";
 
 import "./Calendar.css";
 
-let jsonData  = {
-    "_id": "123456",
-    "start_time":"2023-04-13T09:04:45.904Z",
-    "end_time":"2023-04-14T09:04:45.904Z"
-}
-
 // Kilde: https://www.youtube.com/watch?v=5jRrVqRWqsM
 export default function Calendar({ value, onChange }) {
 
