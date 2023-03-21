@@ -1,8 +1,8 @@
 import Card from '../components/Card/Card';
-import Searchbar from '../components/Searchbar/Searchbar';
-import Filter from '../components/Filter/Filter';
-import List from '../components/List/List'
 import Image from '../assets/img/3d-printer.jpeg';
+
+import Searchbar from '../components/Searchbar/Searchbar';
+import ListTools from '../components/List/ListTools';
 
 let jsonDataTools = {
   "title":"3D Printer",
@@ -23,10 +23,8 @@ function ToolPage() {
           />
 
           <Searchbar />
-          <List />
-          <br /><br />
-          <Filter />
-          <List />
+          <ListTools />   
+
         </div>
       </>
     );
