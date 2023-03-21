@@ -51,8 +51,10 @@ router.post('/', async(req, res) => {
 
 });
 
+//getting all users;
 router.get('/', async(req, res) => {
-    res.send('test')
+    const users = await User.find().sort('last_name');
+    res.send(users);
 });
 
 module.exports = router;

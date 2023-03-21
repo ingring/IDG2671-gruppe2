@@ -46,3 +46,19 @@ function validateTool(tool){
     const validation = schema.validate(tool);
     return validation;
 }
+
+function validateChange(tool){
+    const schema = Joi.object({
+        description: Joi.string().min(10).max(200),
+        image: Joi.string().min(10).max(50),
+        status: Joi.string().valid('broken', 'ok'),
+        quantity: Joi.number().min(0).max(100)
+    });
+
+    const validation = schema.validate(tool);
+    return validation;
+}
+
+module.exports.Tool = Tool;
+module.exports.validate = validateTool;
+module.exports.validateChange = validateChange;

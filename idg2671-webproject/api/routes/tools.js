@@ -1,5 +1,5 @@
 //user-model and validation
-const {Tool, validate} = require('../models/tool');
+const {Tool, validate, validateChange} = require('../models/tool');
 
 //modules
 const _ = require('lodash');
@@ -11,22 +11,39 @@ const mongoose = require('mongoose');
 
 //getting all tools;
 router.get('/', async(req, res) => {
-    const tools = await Movie.find().sort('name');
+    const tools = await Tool.find().sort('name');
     res.send(tools);
 });
+
+router.get('/:id', async(req, res) => {
+    try {
+        const tool = await Tool.findOne({name: req.params.id});
+        res.send(tool);
+    }
+
+    catch {
+        res.status(400).send('Could not find the tool');
+    }
+})
 
 //updating a tool
 router.put('/:id', async(req, res) => {
 
     //validating the input
-    const { error } = validate(req.body);
+    const { error } = validateChange(req.body);
+    if(error)
+        return res.status(400).send(error.details[0].message);
+
 
     try {
-        const tool = await Tool.findByIdAndUpdate(req.params.id, _.pick(req.body, ['name', 'description', 'image', 'status', 'quantity']))
+        const tool = await Tool.findOneAndUpdate({name: req.params.id}, {description: req.body.description, image: req.body.image, status: req.body.status, quantity: req.body.quantity}, {new: true});
+        if(!tool) 
+            return res.status(400).send(`Could not find selected tool ${req.params.id}`);
+        res.send(tool);
     }
 
     catch {
-        res.status(400).send('Could not find selected tool');
+        res.status(400).send(`Could not connect to the database`);
     }
 });
 
@@ -59,5 +76,16 @@ router.post('/', async(req, res) => {
         return res.status(400).send('An error occured during the creation of the user');
     }
 });
+
+//deleting a tool
+router.delete('/:id', async(req, res) => {
+    try {
+        const tool = await Tool.findOneAndDelete({name: req.params.id});
+        res.send(tool);
+    }
+    catch {
+        res.status(400).send('Could not find the tool');
+    }
+})
 
 module.exports = router;
