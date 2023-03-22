@@ -1,5 +1,5 @@
 //user-model and validation
-const {BookableTool, validate, validateBooking} = require('../models/bookabletool');
+const {BookableTool, validate, validateBooking, validateDates} = require('../models/bookabletool');
 
 //modules
 const _ = require('lodash');
@@ -50,13 +50,26 @@ router.post('/:id', async(req, res) => {
 
     //validate the booking
     const { error } = validateBooking(req.body);
-    console.log(req.params.id);
+    console.log('hi');
     if(error)
         return res.status(400).send(error.details[0].message);
+    
+    //checking if the dates are valid
+    const dateError = validateDates(req.body);
+    if(dateError) 
+        return res.send(dateError);
+    
+
+    //USERNAME AND ADD USER TO BOOKING---------------
+
 
     //finding the tool
     try {
-        const tool = BookableTool.findOne({name: req.params.id});
+        console.log(req.params.id);
+        const tool = await BookableTool.findById(req.params.id);
+        tool.bookings.push(_.pick(req.body, ['date', 'start_time', 'end_time', 'username']));
+        tool.save();
+        res.send(tool);
     }
 
     catch {
@@ -67,6 +80,5 @@ router.post('/:id', async(req, res) => {
 
 });
 
-//3D-printer_Bamse
 
 module.exports = router;
