@@ -12,8 +12,7 @@ const Tool = mongoose.model('Tool', new mongoose.Schema({
     description: {
         type: String,
         maxlength: 200,
-        minlength: 10,
-        required: true
+        minlength: 10
     },
     image: {
         type: String,
@@ -37,7 +36,7 @@ const Tool = mongoose.model('Tool', new mongoose.Schema({
 function validateTool(tool){
     const schema = Joi.object({
         name: Joi.string().min(2).max(100).required(),
-        description: Joi.string().min(10).max(200).required(),
+        description: Joi.string().min(10).max(200),
         image: Joi.string().min(10).max(50).required(),
         staus: Joi.string().valid('broken', 'ok'),
         quantity: Joi.number().min(0).max(100).required()

@@ -35,6 +35,9 @@ const BookableTool = mongoose.model('Bookable_tool', new mongoose.Schema({
         unique: true,
         required: true
     },
+    model:{
+        type:String
+    }
     description: {
         type: String,
         maxlength: 200,
@@ -49,24 +52,30 @@ const BookableTool = mongoose.model('Bookable_tool', new mongoose.Schema({
     },
     status: { //If theres many items(quantity) how to display 1 is broken
         type: String,
-        enum: ['broken', 'ok'],
+        enum: ['broken', 'ok'],//fikses (repair)
         default: 'ok'
     },
-    quantity: {
-        type: Number,
-        min: 0,
-        max: 100,
-        required: true
-    },
-    course: {
+    course: { //
         type: String,
         minlength: 10,
-        maxlength: 100,
-        required: true
-    },
-    bookings: bookingSchema
+        maxlength: 100
+        },
+    bookings: [bookingSchema]
 }));
 
+function validateBookableTool(tool){
+    const schema = Joi.object({
+        name: Joi.string().min(2).max(100).required(),
+        description: Joi.string().min(10).max(200).required(),
+        image: Joi.string().min(10).max(50).required(),
+        staus: Joi.string().valid('broken', 'ok'),
+        quantity: Joi.number().min(0).max(100).required(),
+        course: Joi.string().min(10).max(100)
+    });
+
+    const validation = schema.validate(tool);
+    return validation;
+}
 
 function bookings(booking){
     //current date in 'YYYY-MM-DD'
@@ -101,5 +110,5 @@ function getCurrentTime(){
 }
 
 module.exports.BookableTool = BookableTool;
-module.exports.validate = validateTool;
+module.exports.validate = validateBookableTool;
 module.exports.validateBooking = bookings;
