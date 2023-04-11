@@ -1,5 +1,5 @@
 // Husk å importere componente ditt her
-import "./App.css";
+//import "./App.css";
 import Nav from "./components/Navbar/Nav";
 import { Route, Routes } from "react-router-dom";
 // Importere pages
