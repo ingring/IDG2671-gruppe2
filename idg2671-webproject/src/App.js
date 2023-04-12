@@ -10,7 +10,7 @@ import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
 import AdminPage from "./pages/Admin";
 import MyAccount from "./pages/MyAccount";
-import AdminAllBookings from "./pages/AdminAllBooking";
+import AdminAllBookings from "./pages/AdminAllBookings";
 import AdminUsersOverview from "./pages/AdminUsersOverview";
 import AdminToolsOverview from "./pages/AdminToolsOverview";
 
@@ -25,9 +25,9 @@ function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/all-bookings" element={<AdminAllBookings />} />
-        <Route path="/admin/users-overview" element={<AdminUsersOverview />} />
-        <Route path="/admin/tools-overview" element={<AdminToolsOverview />} />
+        <Route path="/admin/allbookings" element={<AdminAllBookings />} />
+        <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
+        <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} />
         <Route path="/myaccount" element={<MyAccount />} />
       </Routes>
     </>
