@@ -1,9 +1,10 @@
 //validator
 const Joi = require('joi');
-Joi.objectId = require('joi-objectid')(Joi);
+    //Joi.objectId = require('joi-objectid')(Joi);
 
-//dotenv
+//modules
 const dotenv = require('dotenv').config();
+const Fawn = require('fawn');
 
 //express + app
 const express = require('express');
@@ -12,6 +13,7 @@ const app = express();
 //require routes
 const users = require('./routes/users');
 const tools = require('./routes/tools');
+const bookableTool = require('./routes/bookabletools');
 
 //read json
 app.use(express.json());
@@ -26,11 +28,11 @@ mongoose.connect(process.env.MONGO_URI)
 //setting routes
 app.use('/api/users', users);
 app.use('/api/tools', tools);
+app.use('/api/bookable_tools', bookableTool);
 
 //running server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
-
 
 //modules I want in the backend:
     //lodash

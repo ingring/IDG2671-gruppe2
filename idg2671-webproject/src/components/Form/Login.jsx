@@ -8,7 +8,7 @@ export default function Login() {
         <div className="flex items-center justify-center md:h-screen">
             <div className="w-full sm:max-w-md">
                 <div className="p-6 md:space-y-6 sm:p-8">
-                    <h1 className="font-bold md:text-2xl text-left">
+                    <h1 className="md:text-3xl text-left">
                         Sign in to book tools
                     </h1>
                     <form className="md:space-y-6 flex justify-start flex-col" action="#">
