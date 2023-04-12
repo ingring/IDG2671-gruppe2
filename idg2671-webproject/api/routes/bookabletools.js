@@ -17,9 +17,9 @@ router.get('/', async(req, res) => {
     res.send(tools);
 });
 
-router.get('/id', async(req, res) => {
+router.get('/:id', async(req, res) => {
     const tool = await BookableTool.findById(req.params.id);
-    res.send(tool);
+    res.send(tool.bookings);
 
 })
 

@@ -55,8 +55,15 @@ router.post('/', async(req, res) => {
 
 //getting all users;
 router.get('/', async(req, res) => {
-    const users = await User.find().sort('last_name');
+    const users = await User.find().select({_id: 0, password:0}).sort('last_name');
     res.send(users);
 });
+
+//getting one user
+router.get('/:id', async(req, res) => {
+    const user = await User.findOne({username: req.params.id}).select({_id: 0, password:0});
+    res.send(user);
+});
+
 
 module.exports = router;
