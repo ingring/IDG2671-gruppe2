@@ -1,6 +1,6 @@
 import Subnav from "../components/Navbar/Subnav";
 
-function AdminUsersOverview() {
+function AdminAllBookings() {
   return (
     <>
       <Subnav />
@@ -8,4 +8,4 @@ function AdminUsersOverview() {
   );
 }
 
-export default AdminUsersOverview;
+export default AdminAllBookings;
