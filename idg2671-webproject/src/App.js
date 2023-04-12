@@ -3,6 +3,7 @@
 import Nav from "./components/Navbar/Nav";
 import { Route, Routes } from "react-router-dom";
 // Importere pages
+import Footer from "./components/Footer/Footer"
 import HomePage from "./pages/Home";
 import ToolsPage from "./pages/Tools";
 import ToolPage from "./pages/Tool";
