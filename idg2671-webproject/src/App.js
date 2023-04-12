@@ -1,5 +1,5 @@
 // Husk å importere componente ditt her
-import "./App.css";
+//import "./App.css";
 import Nav from "./components/Navbar/Nav";
 import { Route, Routes } from "react-router-dom";
 // Importere pages
@@ -10,6 +10,9 @@ import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
 import AdminPage from "./pages/Admin";
 import MyAccount from "./pages/MyAccount";
+import AdminAllBookings from "./pages/AdminAllBooking";
+import AdminUsersOverview from "./pages/AdminUsersOverview";
+import AdminToolsOverview from "./pages/AdminToolsOverview";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route path="/booking" element={<BookingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/all-bookings" element={<AdminAllBookings />} />
+        <Route path="/admin/users-overview" element={<AdminUsersOverview />} />
+        <Route path="/admin/tools-overview" element={<AdminToolsOverview />} />
         <Route path="/myaccount" element={<MyAccount />} />
       </Routes>
     </>
