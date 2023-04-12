@@ -49,6 +49,7 @@ const User = mongoose.model('User', new mongoose.Schema({
         min: 2010,
         max: 2040, //set max to current year
     },
+    bookings: [],
     admin: {
         type: Boolean,
         default: false

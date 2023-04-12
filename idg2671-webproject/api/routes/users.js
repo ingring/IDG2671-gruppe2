@@ -35,16 +35,18 @@ router.post('/', async(req, res) => {
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(user.password, salt);
     }
-
+    //if salting and hashing fails
     catch{
         res.status(400).send('An error has occured');
     }
 
+    //create the user
     try {
         user.save();
         res.send(`User created: "${user.username}"`);
     }
 
+    //if the creation of the user failed
     catch {
         return res.status(400).send('An error occured during the creation of the user');
     }
