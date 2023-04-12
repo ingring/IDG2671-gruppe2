@@ -1,3 +1,5 @@
+// Adding classes
+
 function isSelected(day, value) {
     return value.isSame(day, "day");
 }

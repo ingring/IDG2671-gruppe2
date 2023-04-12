@@ -1,3 +1,4 @@
+// Building the calendar functionality
 export default function buildCalendar(value) {
     
     const startDay = value.clone().startOf("month").startOf("isoweek");

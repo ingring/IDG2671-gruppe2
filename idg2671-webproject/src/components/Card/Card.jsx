@@ -1,7 +1,5 @@
-
 import React from "react";
 import Button from '../Button/Button';
-import Image from '../../assets/img/3d-printer.jpeg'
 
 export default function Card(props) {
     return (
