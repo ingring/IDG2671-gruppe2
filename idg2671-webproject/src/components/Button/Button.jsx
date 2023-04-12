@@ -1,10 +1,9 @@
 import React from "react";
 
-const Button = (type="", title) => {
-
+const Button = (props) => {
     return (
-        <button type={type} className="w-24 h-9 bg-blue-darker text-white hover:bg-blue-primary rounded-2xl shadow-md">
-            {title}
+        <button type={props.type} className="w-24 h-9 bg-blue-darker text-white hover:bg-blue-primary rounded-2xl shadow-md">
+            {props.title}
         </button>
     )
 }
