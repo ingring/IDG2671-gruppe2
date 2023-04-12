@@ -4,7 +4,7 @@ import ListToolsAdmin from "../components/List/ListToolsAdmin";
 import ListUsers from "../components/List/ListUsers";
 import ListBrokenTools from "../components/List/ListBrokenTools";
 import Subnav from "../components/Navbar/Subnav";
-
+import CreateTool from "../components/Form/CreateTool";
 
 function AdminPage() {
   return (
