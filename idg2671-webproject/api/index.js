@@ -2,8 +2,9 @@
 const Joi = require('joi');
     //Joi.objectId = require('joi-objectid')(Joi);
 
-//dotenv
+//modules
 const dotenv = require('dotenv').config();
+const Fawn = require('fawn');
 
 //express + app
 const express = require('express');
