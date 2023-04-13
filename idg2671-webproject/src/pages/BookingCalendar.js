@@ -6,8 +6,8 @@ import { divide } from 'lodash';
 function BookingCalendarPage() {
     const [value, setValue] = useState(moment());
     return ( 
-        <div className="bg-grey-lighter min-h-screen"> 
-            <Calendar value={value} onChange={setValue}/>
+        <div className="bg-grey-lighter min-h-screen w-full"> 
+            <Calendar value={value} onChange={setValue} />
         </div>
     );
 }

@@ -7,16 +7,25 @@
   --dark-green: #61765f;
   --lightblue: #DEE8F7;
 }
-
+.component {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: 5rem;
+}
+.calendar-time-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 .calendar {
     box-sizing: border-box;
     padding: 2rem;
     font-size: 1rem;
-    max-width: 30%;
+    width: 40%;
     background-color: var(--light-grey);
     border-radius: 10px;
   }
-  
   .calendar .calendarHeader {
     text-align: center;
     align-items: center;
@@ -47,7 +56,6 @@
     margin-right: 1rem;
     transform: rotate(180deg);
   }
-
   
   .calendar .week {
     background-color: var(--light-grey);
@@ -103,4 +111,40 @@
     background-color: #61765f;
     color:white;
     font-weight: bold;
+  }
+
+  .timeslots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 2rem;
+    font-size: 1rem;
+    width: 40%;
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    height: 500px;
+    overflow: scroll;
+  }
+
+  .timeslots button {
+    width: calc(100% / 6);
+    width: 4.5em;
+    height: 2.5em;
+    background-color: var(--light-green);
+    margin: 4px;
+    border-radius: 2px;
+  }
+
+  .timeslots button.selected {
+    background-color: var(--lightblue);
+  }
+  .timeslots button.booked {
+    background-color: #eee;
+    color: rgb(129, 129, 129);
+    cursor: not-allowed;
+  }
+
+  .continueBtn {
+    margin-top: 100px;
   }
