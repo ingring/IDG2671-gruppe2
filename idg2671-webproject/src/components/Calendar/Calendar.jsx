@@ -50,10 +50,13 @@ function CalendarTime({ selectedDate }) {
 
   // Function to handle the select change event
   const handleTimeClick = (time) => {
-    if (!isBookedTime(time)) {
+    if (!isBookedTime(time, datesFromDatabase, selectedDate)) {
       setSelectedTime(time);
     }
   };
+  // const handleTimeClick = (time) => {
+  //   setSelectedTime(time);
+  // };
 
   const datesFromDatabase = [
     {
@@ -88,6 +91,7 @@ function CalendarTime({ selectedDate }) {
       {times.map((time) => (
         <button
           key={time}
+          //! Trur man må 
           className={`${selectedTime === time ? "selected" : ""} ${isBookedTime(time, datesFromDatabase, selectedDate) ? "booked" : ""}`}
         >
           <span
@@ -99,7 +103,10 @@ function CalendarTime({ selectedDate }) {
         </button>
       ))}
       <p className="mt-8">
-        Time selected: {selectedTime}
+        Start time selected: {selectedTime}
+      </p>
+      <p className="mt-8">
+        End time selected: {selectedTime}
       </p>
     </div>
   );

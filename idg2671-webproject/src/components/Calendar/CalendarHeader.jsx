@@ -1,6 +1,7 @@
 import React from "react";
 
 // Creating the calendar header
+//! Calendar wont change when switching between months
 export default function CalendarHeader({ value, setValue }) {
 
     function currMonthDate() {
