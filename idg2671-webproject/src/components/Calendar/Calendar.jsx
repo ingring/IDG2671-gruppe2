@@ -20,7 +20,6 @@ export const useSelectedDate = () => {
 
 // * Hjelpefunksjon for å finne booked tid
 function isBookedTime(time, dbArray, selectedDate) {
-  //! Den klarer ikke å finne dbArray og filtre det, det er et array, men vi passer det som et parameter, så den finner ikke arrayet.
   const bookings = dbArray.filter((booking) => booking.date === selectedDate.format("DD-MM-YYYY"));
   for (const booking of bookings) {
     const start = moment(booking.start_time, "HH:mm");
@@ -46,12 +45,21 @@ function CalendarTime({ selectedDate }) {
   }
 
   // State to keep track of the selected time
-  const [selectedTime, setSelectedTime] = useState("");
+  //const [selectedTime, setSelectedTime] = useState("");
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
 
   // Function to handle the select change event
   const handleTimeClick = (time) => {
     if (!isBookedTime(time, datesFromDatabase, selectedDate)) {
-      setSelectedTime(time);
+      if (start === "") {
+        setStart(time);
+      } else if (end === "" && moment(time, "HH:mm").isAfter(moment(start, "HH:mm"))) {
+        setEnd(time);
+      } else {
+        setStart(time);
+        setEnd("");
+      }
     }
   };
   // const handleTimeClick = (time) => {
@@ -86,13 +94,29 @@ function CalendarTime({ selectedDate }) {
     }
   ]
 
+  const selectedTimes = [];
+  if (start !== "" && end !== "") {
+    const startTime = moment(start, "HH:mm");
+    const endTime = moment(end, "HH:mm");
+    times.forEach((time) => {
+      const currentTime = moment(time, "HH:mm");
+      if (currentTime.isBetween(startTime, endTime, null, "[]")) {
+        selectedTimes.push(time);
+      }
+    });
+  }
+
   return (
     <div className="timeslots">
       {times.map((time) => (
         <button
           key={time}
-          //! Trur man må 
-          className={`${selectedTime === time ? "selected" : ""} ${isBookedTime(time, datesFromDatabase, selectedDate) ? "booked" : ""}`}
+          className={`
+            ${start === time ? "selected-start" : ""} 
+            ${end === time ? "selected-end" : ""} 
+            ${selectedTimes.includes(time) ? "selected-between" : ""}
+            ${isBookedTime(time, datesFromDatabase, selectedDate) ? "booked" : ""}
+          `}
         >
           <span
             onClick={() => handleTimeClick(time)}
@@ -102,12 +126,21 @@ function CalendarTime({ selectedDate }) {
           </span>
         </button>
       ))}
-      <p className="mt-8">
-        Start time selected: {selectedTime}
-      </p>
-      <p className="mt-8">
-        End time selected: {selectedTime}
-      </p>
+      {start !== "" && end === "" && (
+        <p className="mt-8">
+          Start time selected: {start}
+        </p>
+      )}
+      {start !== "" && end !== "" && (
+        <>
+          <p className="mt-8">
+            Start time selected: {start}
+          </p>
+          <p className="mt-8">
+            End time selected: {end}
+          </p>
+        </>
+      )}
     </div>
   );
 }
@@ -166,10 +199,9 @@ export default function Calendar({ value, onChange }) {
             Date selected: {selectedDate.format("D MMMM YYYY")}
           </p>
         </div>
-
         <CalendarTime selectedDate={selectedDate} />
+        
       </div>
-
       <Button className="continueBtn" type="submit" title="Continue" />
 
     </div>
