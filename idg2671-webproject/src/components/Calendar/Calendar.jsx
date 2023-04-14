@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 
 import "./Calendar.css";
 
-// Function to get values in booking
+// * Function to get values in booking
 export const useSelectedDate = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const handleDateSelect = (date) => {
@@ -33,7 +33,6 @@ function isBookedTime(time, dbArray, selectedDate) {
 
 // * Timeslot component
 function CalendarTime({ selectedDate }) {
-
   // Create all the timeslots with 15 minutes intervals
   const times = [];
   for (let i = 0; i < 24; i++) {
@@ -44,17 +43,18 @@ function CalendarTime({ selectedDate }) {
     }
   }
 
-  // State to keep track of the selected time
+  // * State to keep track of the selected time
   //const [selectedTime, setSelectedTime] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
 
-  // Function to handle the select change event
+  // * Function to handle the select change event
   const handleTimeClick = (time) => {
     if (!isBookedTime(time, datesFromDatabase, selectedDate)) {
       if (start === "") {
         setStart(time);
-      } else if (end === "" && moment(time, "HH:mm").isAfter(moment(start, "HH:mm"))) {
+        //! Kanskje ta vekk '&& !isTimeRangeBooked(start, end, datesFromDatabase)'
+      } else if (end === "" && moment(time, "HH:mm").isAfter(moment(start, "HH:mm")) && !isTimeRangeBooked(start, end, datesFromDatabase)) {
         setEnd(time);
       } else {
         setStart(time);
@@ -62,10 +62,8 @@ function CalendarTime({ selectedDate }) {
       }
     }
   };
-  // const handleTimeClick = (time) => {
-  //   setSelectedTime(time);
-  // };
 
+  // * Array
   const datesFromDatabase = [
     {
       date: '20-04-2023',
@@ -94,6 +92,7 @@ function CalendarTime({ selectedDate }) {
     }
   ]
 
+  // * Functionality for timeslots between start-time and end-time
   const selectedTimes = [];
   if (start !== "" && end !== "") {
     const startTime = moment(start, "HH:mm");
@@ -104,6 +103,26 @@ function CalendarTime({ selectedDate }) {
         selectedTimes.push(time);
       }
     });
+  }
+
+  // * Fuction to check if timeslots between start-time and end-time is booked
+    //! Kanskje ta vekk denne funksjonen
+  function isTimeRangeBooked(startTime, endTime, dbArray) {
+    // Convert start and endtime to moment objects
+    const start = moment(startTime);
+    const end = moment(endTime);
+
+    for (let i = 0; i < dbArray.length; i++) {
+      const bookingStart = moment(dbArray[i].start)
+      const bookingEnd = moment(dbArray[i].end)
+
+      if ((start.isSameOrBefore(bookingEnd) && end.isSameOrAfter(bookingStart))
+        || (start.isSameOrAfter(bookingStart) && end.isSameOrBefore(bookingEnd))
+        || (start.isSameOrBefore(bookingStart) && end.isSameOrAfter(bookingEnd))) {
+        return true;
+      }
+    }
+    return false;
   }
 
   return (
@@ -126,10 +145,9 @@ function CalendarTime({ selectedDate }) {
           </span>
         </button>
       ))}
-      {start !== "" && end === "" && (
-        <p className="mt-8">
-          Start time selected: {start}
-        </p>
+      {start !== "" && end === "" && (<p className="mt-8">
+        Start time selected: {start}
+      </p>
       )}
       {start !== "" && end !== "" && (
         <>
@@ -157,6 +175,7 @@ export default function Calendar({ value, onChange }) {
     setCalendar(buildCalendar(value));
     setSelectedDate(value);
   }, [value]);
+
 
   function handleDateClick(day) {
     if (!beforeToday(day)) {
@@ -200,7 +219,7 @@ export default function Calendar({ value, onChange }) {
           </p>
         </div>
         <CalendarTime selectedDate={selectedDate} />
-        
+
       </div>
       <Button className="continueBtn" type="submit" title="Continue" />
 
