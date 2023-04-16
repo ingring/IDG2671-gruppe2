@@ -2,11 +2,8 @@ import React from "react"
 
 export default function MyAccount() {
     return (
-        <section className="flex items-center justify-center min-h-screen">
+        <section className="flex items-center justify-center">
             <dl>
-                <h1 className="md:text-3xl text-left mb-6">
-                    My Account
-                </h1>
                 <div className="flex-col pt-3 mb-6">
                     <dt className="mb-1 md:text-lg font-semibold text-left">Name</dt>
                     <dd className="text-lg text-left">Anosh</dd>

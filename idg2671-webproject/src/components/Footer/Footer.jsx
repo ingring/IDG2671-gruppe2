@@ -3,11 +3,9 @@ import NtnuLogoSmallWhite from '../../assets/img/ntnu-logo-small-white.png'
 
 function Footer() {
     return (
-        <footer className="bg-blue-darker text-white w-screen h-auto w-screen p-12 flex">
-            
+        <footer className="bg-blue-darker text-white  h-auto py-12 flex">
+            <div className="flex justify-between w-screen items-center px-24">
             <img className="w-20 flex inline" src={ NtnuLogoSmallWhite } alt="NTNU logo small" />
-
-            <div className="flex justify-evenly w-screen items-center">
                 <div>
                     <h2 className="font-bold pb-6">Contact</h2>
                     <p>email@something.no</p>

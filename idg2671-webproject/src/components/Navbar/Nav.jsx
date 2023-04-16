@@ -6,17 +6,16 @@ export default function Nav() {
   const location = useLocation();
 
   let Links = [
-    { name: "HOME", link: "/" },
-    { name: "TOOLS", link: "/Tools" },
-    { name: "BOOKING", link: "/Booking" },
-    { name: "ADMIN", link: "/Admin" },
-    { name: "MY ACCOUNT", link: "/MyAccount" },
-    { name: "LOGIN", link: "/Login" },
+    { name: "Home", link: "/" },
+    { name: "Tools", link: "/Tools" },
+    { name: "My account", link: "/MyAccount" },
+    { name: "Admin", link: "/Admin" },
+    { name: "Login", link: "/Login" }
   ];
 
   return (
     <div className="shadow-md w-full top-0 left-0">
-      <div className="md:flex flex flex-wrap items-center justify-between text-sm bg-blue-darker md:px-10 h-14">
+      <div className="md:flex flex flex-wrap items-center justify-between text-base bg-blue-darker md:px-10 h-16">
         <img
           className="h-6 mr-3"
           src={NtnuLogoSmallWhite}

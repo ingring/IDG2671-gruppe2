@@ -2,13 +2,12 @@ import Login from '../components/Form/Login'
 
 function LoginPage() {
     return (
-        <>
-            <div className="min-h-screen">
-                <h1 className="pt-4">Dette er login pagen!</h1>
-
+        <div className="bg-grey-lighter min-h-screen p-20">
+            <h1 className="md:text-3xl pb-20">Sign in to book tools</h1>
+            <div className='flex justify-center'>
                 <Login />
             </div>
-        </>
+        </div>
     );
 }
 

@@ -5,22 +5,21 @@ export default function Nav() {
   const location = useLocation();
 
   let Links = [
-    { name: "ALL BOOKINGS", link: "/Admin/AllBookings" },
-    { name: "TOOLS OVERVIEW", link: "/Admin/ToolsOverview" },
-    { name: "USERS OVERVIEW", link: "/Admin/UsersOverview" },
+    { name: "All bookings", link: "/Admin/AllBookings" },
+    { name: "Tools overview", link: "/Admin/ToolsOverview" },
+    { name: "Users overview", link: "/Admin/UsersOverview" },
   ];
 
   return (
     <div className="w-full top-0 left-0">
-      <div className="md:flex flex flex-wrap items-center justify-between text-sm bg-blue-lighter md:px-10 h-14">
-        <ul className="md:flex md:items-center">
+      <div className="md:flex flex flex-wrap items-center justify-center text-base bg-blue-lighter md:px-10 h-14">
+        <ul className="md:flex md:items-center h-14 text-lg">
           {Links.map((link) => (
-            <li key={link.name} className="md:ml-8">
+            <li key={link.name} className={`px-5 ${
+              location.pathname === link.link ? "bg-grey-lighter flex items-center h-14" : ""
+            }`}>
               <Link
                 to={link.link}
-                className={`text-black ${
-                  location.pathname === link.link ? "bg-grey-lighter p-4" : ""
-                }`}
               >
                 {link.name}
               </Link>
