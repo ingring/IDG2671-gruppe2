@@ -2,7 +2,6 @@ import Button from "../components/Button/Button";
 import Card from "../components/Card/Card";
 import Searchbar from "../components/Searchbar/Searchbar";
 import Image from "../assets/img/3d-printer.jpeg";
-import PrinterImg from "../assets/img/budget-3d-printer.png";
 import ListTools from "../components/List/ListTools";
 
 
