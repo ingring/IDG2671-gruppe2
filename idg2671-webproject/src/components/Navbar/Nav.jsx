@@ -9,8 +9,7 @@ export default function Nav() {
     { name: "Home", link: "/" },
     { name: "Tools", link: "/Tools" },
     { name: "My account", link: "/MyAccount" },
-    { name: "Admin", link: "/Admin" },
-    { name: "Login", link: "/Login" }
+    { name: "Admin", link: "/Admin" }
   ];
 
   return (
@@ -23,7 +22,7 @@ export default function Nav() {
         />
         <ul className="md:flex md:items-center">
           {Links.map((link) => (
-            <li key={link.name} className="md:ml-8">
+            <li key={link.name} className="md:ml-9">
               <Link
                 to={link.link}
                 className={`text-white hover:font-bold ${
@@ -34,6 +33,9 @@ export default function Nav() {
               </Link>
             </li>
           ))}
+          <Link to="/Login">
+            <button className="bg-blue-lighter md:ml-8 px-3 py-1 rounded-2xl hover:bg-blue-darker border hover:text-blue-lighter hover:border-blue-lighter">Login</button>
+          </Link>
         </ul>
       </div>
     </div>
