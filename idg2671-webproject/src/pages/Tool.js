@@ -16,7 +16,7 @@ let jsonData = {
 
 function ToolPage() {
     return (
-      <div className="App">
+      <div className="bg-grey-lighter min-h-screen p-20">
         <DisplayTool 
             title={jsonData["title"]}
             status={jsonData["status"]}
