@@ -22,7 +22,7 @@ module.exports = {
       },
       white: '#F9F9F9',
       green: '#D0ECCD',
-      red: '#F0B3B3'
+      red: '#FFAFAF'
     }
   },
   fontFamily: {
