@@ -10,13 +10,15 @@ let jsonData = {
 function BookingPage() {
     return (
         <div className="bg-grey-lighter min-h-screen p-20">
-            <h1 className="pt-4">Dette er booking pagen!</h1>
-            <BookTool
-                tool={jsonData["tool"]}
-                date={jsonData["date"]}
-                time={jsonData["time"]}
-                duration={jsonData["duration"]}
-            />
+            <h1 className="text-3xl pb-20">Book tool</h1>
+            <div className="flex justify-center items-center ">
+                <BookTool
+                    tool={jsonData["tool"]}
+                    date={jsonData["date"]}
+                    time={jsonData["time"]}
+                    duration={jsonData["duration"]}
+                />
+            </div>
         </div>
     );
 }
