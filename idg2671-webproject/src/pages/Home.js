@@ -39,7 +39,7 @@ function HomePage() {
         <div className="w-3/4">
           <h1 className="pt-4 md:text-3xl w-3/4 leading-6 pb-12">Welcome to NTNU Gjøviks official booking page of tools in Verkstedet! </h1>
           <p className="pb-12 w-3/5">We have many different tools available. To find the complete list of tools as well as categories click the button below, or use the search menu to search for a tool.</p>
-          <div className="mb-12">
+          <div className="mb-14">
             <Button title="List of tools"/>
           </div>
           <div className="w-3/5">
