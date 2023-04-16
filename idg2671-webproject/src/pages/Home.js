@@ -25,7 +25,7 @@ let bookableToolsFromDB = [
     "course": "HMS"
   },
   {
-    "title": "3D Printer 2",
+    "title": "3D Printer 3",
     "imgSrc": Image,
     "imgAlt": "",
     "course": "HMS"
