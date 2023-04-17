@@ -4,11 +4,11 @@ import Button from "../Button/Button";
 export default function CreateTool(){
     return(
         <section>
-        <div className="flex items-center justify-center md:h-screen">
+        <div className="flex items-center justify-center">
             <div className="w-full sm:max-w-md">
                 <div className="p-6 md:space-y-6 sm:p-8">
                     <h1 className="md:text-2xl text-left">
-                        Modify tool
+                        Create / Modify tool
                     </h1>
                     <form className="md:space-y-6 flex justify-start flex-col pb-3" action="#">
                         <div>

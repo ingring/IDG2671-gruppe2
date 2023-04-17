@@ -9,7 +9,7 @@ export default function Nav() {
     { name: "Home", link: "/" },
     { name: "Tools", link: "/Tools" },
     { name: "My account", link: "/MyAccount" },
-    { name: "Admin", link: "/Admin" }
+    { name: "Admin", link: "/Admin/AllBookings" }
   ];
 
   return (
