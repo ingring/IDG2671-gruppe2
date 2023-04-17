@@ -4,23 +4,23 @@ import Button from "../Button/Button";
 export default function CreateTool(){
     return(
         <section>
-        <div className="flex items-center justify-center md:h-screen">
+        <div className="flex items-center justify-center">
             <div className="w-full sm:max-w-md">
                 <div className="p-6 md:space-y-6 sm:p-8">
                     <h1 className="md:text-2xl text-left">
-                        Modify tool
+                        Create / Modify tool
                     </h1>
                     <form className="md:space-y-6 flex justify-start flex-col pb-3" action="#">
                         <div>
-                            <label for="title" className="block mb-2 text-left xl:text-xl">Title</label>
+                            <label for="title" className="block mb-2 text-left lg:text-lg">Title</label>
                             <input type="text" name="title" id="title" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full p-2.5 dark:bg-grey-lighter" required=""></input>
                         </div>
                         <div>
-                            <label for="description" className="block mb-2 text-left xl:text-xl">Description</label>
+                            <label for="description" className="block mb-2 text-left lg:text-lg">Description</label>
                             <input type="text" name="description" id="description" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full h-24 p-2.5 dark:bg-grey-lighter" required=""></input>
                         </div>
                         <div>
-                            <label for="course" className="block mb-2 text-left xl:text-xl">Safety course</label>
+                            <label for="course" className="block mb-2 text-left lg:text-lg">Safety course</label>
                             <select type="text" name="course" id="course" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full p-2.5 dark:bg-grey-lighter" required="">
                                 <option value=""></option>
                                 <option value="hms">HMS</option>
@@ -28,7 +28,7 @@ export default function CreateTool(){
                             </select>
                         </div>
                         <div>
-                            <label for="status" className="block mb-2 text-left xl:text-xl">Status</label>
+                            <label for="status" className="block mb-2 text-left lg:text-lg">Status</label>
                             <select type="text" name="status" id="status" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full p-2.5 dark:bg-grey-lighter" required="">
                                 <option value=""></option>
                                 <option value="ok">OK</option>
