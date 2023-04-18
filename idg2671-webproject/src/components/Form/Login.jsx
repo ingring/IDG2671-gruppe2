@@ -9,11 +9,11 @@ export default function Login() {
                     <form className="md:space-y-6 flex justify-start flex-col pb-6" action="#">
                         <div>
                             <label for="email" className="block mb-2 text-left lg:text-lg">Email</label>
-                            <input type="email" name="email" id="email" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full p-2.5 dark:bg-grey-lighter" placeholder="name@stud.ntnu.no" required=""></input>
+                            <input type="email" name="email" id="email" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" placeholder="name@stud.ntnu.no" required=""></input>
                         </div>
-                        <div>
+                        <div className="pb-6">
                             <label for="password" className="block mb-2 text-left lg:text-lg">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full p-2.5 dark:bg-grey-lighter" required=""></input>
+                            <input type="password" name="password" id="password" placeholder="••••••••" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" required=""></input>
                         </div>
                         <InputButton value="Submit" />
                     </form>
