@@ -19,12 +19,6 @@ let bookableToolsFromDB = [
     "course": "HMS"
   },
   {
-    "title": "3D Printer 2",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
-  },
-  {
     "title": "3D Printer 3",
     "imgSrc": Image,
     "imgAlt": "",
@@ -52,9 +46,9 @@ function HomePage() {
       </section>
 
 
-      <div className="flex flex-col items-center mx-40 pb-28">
-        <h2 className="md:text-2xl mb-14">Book a tool</h2>
-        <div className="flex justify-evenly pb-28">
+      <div className="flex flex-col items-center pb-28">
+        <h2 className="md:text-2xl mb-16">Book a tool</h2>
+        <div className="flex justify-evenly pb-32">
           {bookableToolsFromDB.map((tool, index) => (
             <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
           ))}
