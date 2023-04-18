@@ -1,4 +1,5 @@
 import Login from '../components/Form/Login'
+import InputButton from '../components/Button/InputButton';
 
 function LoginPage() {
     return (

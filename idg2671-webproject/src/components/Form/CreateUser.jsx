@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
+import InputButton from '../Button/InputButton';
 
 export default function CreateUser(){
     return(
@@ -38,8 +38,8 @@ export default function CreateUser(){
                                 <option value="MIXD">MIXD</option>
                             </select>
                         </div>
+                        <InputButton value="Submit" />
                     </form>
-                    <Button title="Submit"/>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button/Button";
+import InputButton from '../Button/InputButton';
 
 export default function CreateTool(){
     return(
@@ -36,8 +36,8 @@ export default function CreateTool(){
                                 <option value="underConstruction">Under construction</option>
                             </select>
                         </div>
+                        <InputButton value="Submit" />
                     </form>
-                    <Button title="Submit"/>
                 </div>
             </div>
         </div>
