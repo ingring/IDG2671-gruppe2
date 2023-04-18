@@ -7,14 +7,13 @@ function AdminToolsOverview() {
   return (
     <div className="bg-grey-lighter min-h-screen">
       <Subnav />
-      <p>Her skal vi ha: form med add tool når man trykker + add tool knappen, list with all tools som man kan edite/slette - edite = samme form, en liste med tools som er markert broken fra db</p>
-      <h1 className="text-3xl p-20">Tools overview</h1>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center justify-center p-20">
+        <h1 className="text-3xl pb-20">Tools overview</h1>
         <div className="w-2/4">
           <div className="mb-20">
             <CreateTool />
           </div>
-          <div className="mb-24">
+          <div className="">
             <ListToolsAdmin />
           </div>
           <div className="mb-32">

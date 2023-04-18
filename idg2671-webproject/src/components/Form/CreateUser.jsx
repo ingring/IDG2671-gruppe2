@@ -27,7 +27,7 @@ export default function CreateUser(){
                             <label for="email" className="block mb-2 text-left lg:text-lg">Email</label>
                             <input type="text" name="email" id="email" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" required=""></input>
                         </div>
-                        <div>
+                        <div className="pb-6">
                             <label for="field_of_study" className="block mb-2 text-left lg:text-lg">Field of study</label>
                             <select type="text" name="field_of_study" id="field_of_study" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" required="">
                                 <option value=""></option>

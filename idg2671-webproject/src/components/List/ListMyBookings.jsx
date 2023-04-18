@@ -41,6 +41,36 @@ function ListMyBookings() {
             user: 'Kari Nordmann'
         },
         {
+            tool: 'Laserkutter',
+            date: '28.02.2023',
+            time: '14:00-19:00',
+            user: 'Kari Nordmann'
+        },
+        {
+            tool: 'Laserkutter',
+            date: '28.02.2023',
+            time: '14:00-19:00',
+            user: 'Kari Nordmann'
+        },
+        {
+            tool: 'Laserkutter',
+            date: '28.02.2023',
+            time: '14:00-19:00',
+            user: 'Kari Nordmann'
+        },
+        {
+            tool: 'Laserkutter',
+            date: '28.02.2023',
+            time: '14:00-19:00',
+            user: 'Kari Nordmann'
+        },
+        {
+            tool: 'Laserkutter',
+            date: '28.02.2023',
+            time: '14:00-19:00',
+            user: 'Kari Nordmann'
+        },
+        {
             tool: '3D printer',
             date: '16.03.2023',
             time: '16:00-19:30',
