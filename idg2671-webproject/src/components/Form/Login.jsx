@@ -1,5 +1,5 @@
 import React from "react"
-import Button from '../Button/Button';
+import InputButton from '../Button/InputButton';
 
 export default function Login() {
     return (
@@ -15,8 +15,8 @@ export default function Login() {
                             <label for="password" className="block mb-2 text-left lg:text-lg">Password</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full p-2.5 dark:bg-grey-lighter" required=""></input>
                         </div>
+                        <InputButton value="Submit" />
                     </form>
-                    <Button title="Submit"/>
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@ function DisplayTool(props) {
                 </svg>
             </div>
             <div className="">Course: {props.course}</div>
-            <div className="my-5 py-5">
+            <div className="my-5 py-5 w-3/5">
                 {props.description}
             </div>
             <Button title="Book" />

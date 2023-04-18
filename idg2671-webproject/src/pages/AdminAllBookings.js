@@ -6,10 +6,9 @@ function AdminAllBookings() {
   return (
     <div className="bg-grey-lighter min-h-screen">
       <Subnav />
-      <p>Her skal vi ha: list with all bookings</p>
-      <h1 className="text-3xl p-20">All bookings</h1>
-      <div className="flex flex-col items-center">
-        <div className="w-2/4">
+      <div className="flex flex-col items-center justify-center p-20">
+        <h1 className="text-3xl pb-32">All bookings</h1>
+        <div className="">
           <Filter />
           <ListBookedBy />
         </div>
