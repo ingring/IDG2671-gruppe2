@@ -49,7 +49,8 @@ function App() {
       <Routes>
       <Route path="/" element={<HomePage />} />
         <Route path="/tools" element={<ToolsPage />} />
-        <Route path="/tools/id" element={<ToolPage />} />
+        <Route path="/tools/:id" element={<ToolPage />}/>
+        {/* <Route path="/tools/id" element={<ToolPage />} /> */}
         <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
         <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
         <Route path="/login" element={<LoginPage />} />

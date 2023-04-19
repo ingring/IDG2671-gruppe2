@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import DisplayTool from "../components/DisplayTool/DisplayTool";
 import Image from '../assets/img/3d-printer.jpeg';
 
@@ -15,11 +18,30 @@ let jsonData = {
 }
 
 function ToolPage() {
+
+  let {id} = useParams()
+
+  const [tool, setTool] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`http://localhost:3000/api/tools/${id}`);
+        const toolData = await response.json();
+        setTool(toolData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData();
+  }, [id]);
+
     return (
       <div className="App">
         <DisplayTool 
-            title={jsonData["title"]}
-            status={jsonData["status"]}
+            title={tool.name}
+            status={tool.status}
+            // Hvis ikke course eksisterer - default prop kanskje 
             course={jsonData["course"]} 
             imgSrc={jsonData["imgSrc"]}
             imgAlt={jsonData["imgAlt"]} 
