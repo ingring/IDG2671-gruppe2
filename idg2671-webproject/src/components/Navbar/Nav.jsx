@@ -8,7 +8,7 @@ export default function Nav() {
   let Links = [
     { name: "Home", link: "/" },
     { name: "Tools", link: "/Tools" },
-    { name: "My account", link: "/MyAccount" },
+    { name: "My account", link: "/MyAccount/UserInformation" },
     { name: "Admin", link: "/Admin/AllBookings" }
   ];
 
