@@ -25,7 +25,7 @@ function ListTools() {
     useEffect(() => {
         async function fetchData() {
         try {
-            const response = await fetch('http://localhost:3000/api/tools');
+            const response = await fetch('https://webproject-api-production.up.railway.app/api/tools');
             const toolsData = await response.json();
             setTools(toolsData);
         } catch (error) {
