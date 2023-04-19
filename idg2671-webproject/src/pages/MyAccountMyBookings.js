@@ -9,7 +9,7 @@ function MyAccountMyBookings() {
         <h1 className="text-3xl pb-8">My bookings</h1>
         <p>Overview of your active and older bookings. </p>
         <div className="mt-20 w-3/5">
-          <h2 className="text-xl mb-6">My bookings</h2>
+          <h2 className="text-2xl mb-6">My bookings overview</h2>
           <ListMyBookings />
         </div>
       </div>
