@@ -15,9 +15,9 @@ router.get('/', async(req, res) => {
     res.send(tools);
 });
 
-router.get('/:id', async(req, res) => {
+router.get('/:name', async(req, res) => {
     try {
-        const tool = await Tool.findOne({name: req.params.id});
+        const tool = await Tool.findOne({name: req.params.name});
         res.send(tool);
     }
 

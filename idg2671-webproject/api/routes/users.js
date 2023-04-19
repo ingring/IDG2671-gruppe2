@@ -4,6 +4,9 @@ const {User, validate} = require('../models/user');
 //modules
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
+
 
 //router and mongoose
 const express = require('express');
@@ -64,6 +67,36 @@ router.get('/:id', async(req, res) => {
     const user = await User.findOne({username: req.params.id}).select({_id: 0, password:0});
     res.send(user);
 });
+
+//login the user
+router.post('/login', async (req, res) => {
+
+  // Check if the user exists
+  try {
+    //find the user in the database
+    const user = await User.findOne({ username: req.body.username });
+    if (!user) return res.status(400).send('Invalid username or password.');
+
+    //compare the provided password with the hashed password in the database
+    const validPassword = await bcrypt.compare(req.body.password, user.password);
+    if (!validPassword) return res.status(400).send('Invalid username or password.');
+
+    //send a JWT token to the client
+    const token = jwt.sign({ _id: user._id, username: user.username }, process.env.SECRET);
+    res.send(token);
+}
+catch (ex) {
+    console.log(ex);
+    res.status(500).send('An error occurred while logging in.');
+}
+});
+
+
+
+
+
+
+
 
 
 module.exports = router;

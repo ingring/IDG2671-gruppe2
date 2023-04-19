@@ -4,7 +4,6 @@ const Joi = require('joi');
 
 //modules
 const dotenv = require('dotenv').config();
-const Fawn = require('fawn');
 
 //express + app
 const express = require('express');
