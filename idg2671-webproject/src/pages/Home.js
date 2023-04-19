@@ -32,7 +32,8 @@ function HomePage() {
       <section className="flex bg-blue-lighter py-20 px-28 mb-24">
         <div className="w-3/4">
           <h1 className="pt-4 md:text-3xl w-3/4 leading-6 pb-12">Welcome to NTNU Gjøviks official booking page of tools in Verkstedet! </h1>
-          <p className="pb-14 w-3/5">We have many different tools available at the workshop. To find the complete list of all tools as well as categories, click the button below.</p>
+          <p className="pb-6 w-3/5">The workshop is located at the Mustad builiding at NTNU Gjøvik, for students within the Faculty of Design. On this website you get an overview of all the tools available, where you have the option to book tools you want to use.</p>
+          <p className="pb-14 w-3/5">To find the complete list of all tools as well as categories, click the button below, or scroll further down.</p>
           <div className="mb-14">
             <Button title="List of tools" />
           </div>
@@ -47,13 +48,13 @@ function HomePage() {
 
 
       <div className="flex flex-col items-center pb-28">
-        <h2 className="md:text-2xl mb-16">Book a tool</h2>
+        <h2 className="md:text-2xl mb-16">List of bookable tools</h2>
         <div className="flex justify-evenly pb-32">
           {bookableToolsFromDB.map((tool, index) => (
             <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
           ))}
         </div>
-        <h2 className="md:text-2xl mb-14">List of tools</h2>
+        <h2 className="md:text-2xl mb-14">List of all tools available</h2>
         <div className="pb-20 w-2/4">
           <Searchbar />
           <ListTools />
