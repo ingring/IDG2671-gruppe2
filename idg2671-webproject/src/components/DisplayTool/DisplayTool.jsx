@@ -3,10 +3,10 @@ import Button from '../Button/Button';
 
 function DisplayTool(props) {
     return (
-        <div className="text-left content-center max-w-prose m-auto p-5">
-            <h1 className="my-5 text-3xl">{props.title}</h1>
+        <div className="bg-grey-light p-14 rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-14">
+            <h1 className="mb-5 text-3xl">{props.title}</h1>
             {/* Kan vi få bildet like vidt som container? */}
-            <img className="my-10" src={props.imgSrc} alt={props.imgAlt} />
+            <img className="my-10 rounded-lg" src={props.imgSrc} alt={props.imgAlt} />
             <div className="flex items-center">
                 <p>Status: {props.status}</p>
                 {/* Jeg har ikke helt funnet best måte å legge til ikonet med tanke på om statusen er ok eller ødelagt,
@@ -16,7 +16,7 @@ function DisplayTool(props) {
                 </svg>
             </div>
             <div className="">Course: {props.course}</div>
-            <div className="my-5 py-5 w-3/5">
+            <div className="my-5 py-5">
                 {props.description}
             </div>
             <Button title="Book" />
