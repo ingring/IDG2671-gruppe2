@@ -1,3 +1,6 @@
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
 import DisplayTool from "../components/DisplayTool/DisplayTool";
 import Image from '../assets/img/3d-printer.jpeg';
 
@@ -15,6 +18,24 @@ let jsonData = {
 }
 
 function ToolPage() {
+
+  let {id} = useParams()
+
+  const [tool, setTool] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(`http://localhost:3000/api/tools/${id}`);
+        const toolData = await response.json();
+        setTool(toolData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData();
+  }, [id]);
+
   return (
     <div className="bg-grey-lighter min-h-screen flex flex-col items-center">
       <div className="bg-blue-lighter mb-20 flex flex-col items-center w-full">
@@ -23,14 +44,16 @@ function ToolPage() {
           <p className="w-3/5">Here you can read all information about the chosen tool. If you want to use the tool please continue to booking. To go back to the tools overview page, simply click on <i>Tools</i> in the menubar.</p>
         </div>
       </div>
+      // <div className="flex flex-col items-center bg-grey-lighter min-h-screen p-20">
       <div className="w-2/5 mb-28">
-        <DisplayTool
-          title={jsonData["title"]}
-          status={jsonData["status"]}
-          course={jsonData["course"]}
-          imgSrc={jsonData["imgSrc"]}
-          imgAlt={jsonData["imgAlt"]}
-          description={jsonData["description"]}
+        <DisplayTool 
+            title={tool.name}
+            status={tool.status}
+            // Hvis ikke course eksisterer - default prop kanskje 
+            course={jsonData["course"]} 
+            imgSrc={jsonData["imgSrc"]}
+            imgAlt={jsonData["imgAlt"]} 
+            description={jsonData["description"]}
         />
       </div>
     </div>
