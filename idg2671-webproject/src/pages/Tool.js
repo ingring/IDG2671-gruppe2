@@ -37,7 +37,7 @@ function ToolPage() {
   }, [id]);
 
     return (
-      <div className="App">
+      <div className="flex flex-col items-center bg-grey-lighter min-h-screen p-20">
         <DisplayTool 
             title={tool.name}
             status={tool.status}

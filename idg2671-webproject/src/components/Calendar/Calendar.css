@@ -8,99 +8,161 @@
   --lightblue: #DEE8F7;
 }
 
+.component {
+  width: 100vw;
+  padding: 5rem;
+}
+
+.calendar-time-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
 .calendar {
-    box-sizing: border-box;
-    padding: 2rem;
-    font-size: 1rem;
-    max-width: 30%;
-    background-color: var(--light-grey);
-    border-radius: 10px;
-  }
-  
-  .calendar .calendarHeader {
-    text-align: center;
-    align-items: center;
-    min-height: 2rem;
-    line-height: 2rem;
-    color: var(--dark-grey);
-    font-weight: 700;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 5vh;
-  }
+  box-sizing: border-box;
+  padding: 2rem;
+  font-size: 1rem;
+  width: 40%;
+  background-color: white;
+  border-radius: 10px;
+}
 
-  .calendar .day-names {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 0 auto;
-    align-items: center;
-  }
+.calendar .calendarHeader {
+  text-align: center;
+  align-items: center;
+  min-height: 2rem;
+  line-height: 2rem;
+  color: var(--dark-grey);
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5vh;
+}
 
-  .calendar .calendarHeader .previous {
+.calendar .day-names {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+}
 
-    margin-left: 1rem;
-  }
-  
-  .calendar .calendarHeader .next {
-    margin-right: 1rem;
-    transform: rotate(180deg);
-  }
+.calendar .calendarHeader .previous {
 
-  
-  .calendar .week {
-    background-color: var(--light-grey);
-    width: calc(100% / 7);
-    height: 44px;
-    line-height: 44px;
-    text-align: center;
-    color: var(--dark-grey);
-    font-weight: 400;
-  }
-  .calendar .week div {
-    width: 100%;
-  }
-  
-  .calendar .day {
-    position: relative;
-    width: calc(100% / 7);
-    height: auto;
-    display: inline-block;
-    background-color: var(--light-grey);
-    padding: 0;
-    margin: 0;
-    text-align: center;
-    box-sizing: border-box;
-    z-index: 1;
-    text-align: center;
-  }
-  
-  .calendar .day div {
-    position: relative;
-    border-radius: 2px;
-    margin: 2px;
-    color: var(--dark-grey);
-    background-color: var(--light-green);
-    z-index: 100;
-    line-height: 44px;
-  }
-  
-  .calendar .day div.before {
-    color: var(--medium-grey);
-    background-color: transparent
-  }
-  
-  .calendar .day div.selected {
-    background-color: var(--light-green);
-    /* box-shadow: inset 0px 0px 0px 3px #102442;  */
-    font-weight: bold;
-    color:var(--dark-grey);
-    background-color: var(--lightblue);
-  }
-  
-  .calendar .day div.today {
-    background-color: #61765f;
-    color:white;
-    font-weight: bold;
-  }
+  margin-left: 1rem;
+}
+
+.calendar .calendarHeader .next {
+  margin-right: 1rem;
+  transform: rotate(180deg);
+}
+
+.calendar .week {
+  background-color: white;
+  width: calc(100% / 7);
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  color: var(--dark-grey);
+  font-weight: 400;
+}
+
+.calendar .week div {
+  width: 100%;
+}
+
+.calendar .day {
+  position: relative;
+  width: calc(100% / 7);
+  height: auto;
+  display: inline-block;
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  box-sizing: border-box;
+  z-index: 1;
+  text-align: center;
+}
+
+.calendar .day div {
+  position: relative;
+  border-radius: 2px;
+  margin: 2px;
+  color: var(--dark-grey);
+  background-color: var(--light-green);
+  z-index: 100;
+  line-height: 44px;
+}
+
+.calendar .day div.before {
+  color: var(--medium-grey);
+  background-color: transparent
+}
+
+.calendar .day div.selected {
+  background-color: var(--light-green);
+  /* box-shadow: inset 0px 0px 0px 3px #102442;  */
+  font-weight: bold;
+  color: var(--dark-grey);
+  background-color: var(--lightblue);
+}
+
+.calendar .day div.today {
+  background-color: #61765f;
+  color: white;
+  font-weight: bold;
+}
+
+.timeslots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 2rem 4rem 2rem;
+  font-size: 1rem;
+  width: 40%;
+  background-color: white;
+  border-radius: 10px;
+  height: 600px;
+}
+.timeslots .choosetime {
+  font-weight: bold;
+  padding-bottom: 2rem;
+}
+
+.timeslots-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: scroll;
+  width: 120%;
+  height: 450px;
+}
+
+.timeslots button {
+  width: calc(100% / 6);
+  width: 4.5em;
+  height: 2.5em;
+  background-color: var(--light-green);
+  margin: 4px;
+  border-radius: 2px;
+}
+
+.timeslots button.selected-start,
+.timeslots button.selected-end,
+.timeslots button.selected-between {
+  background-color: var(--lightblue);
+}
+
+.timeslots button.booked {
+  background-color: #eee;
+  color: rgb(129, 129, 129);
+  cursor: not-allowed;
+}
+
+.continueBtn {
+  margin-top: 100px;
+}

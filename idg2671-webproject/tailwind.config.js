@@ -14,13 +14,15 @@ module.exports = {
         darker: '#102442'
       },
       grey: {
-        lighter: '#EFEFEF',
+        lighter: '#F8F8F8',
+        light: '#F2F2F2',
+        mediumLight: '#B7B7B7',
         medium: '#636363',
         darker: '#2B2B2B'
       },
       white: '#F9F9F9',
       green: '#D0ECCD',
-      red: '#F0B3B3'
+      red: '#FFAFAF'
     }
   },
   fontFamily: {
