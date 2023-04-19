@@ -3,18 +3,21 @@
 import Nav from "./components/Navbar/Nav";
 import { Route, Routes } from "react-router-dom";
 // Importere pages
-import Footer from "./components/Footer/Footer"
+import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/Home";
 import ToolsPage from "./pages/Tools";
 import ToolPage from "./pages/Tool";
-import BookingCalendarPage from "./pages/BookingCalendar"
+import BookingCalendarPage from "./pages/BookingCalendar";
 import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
 import AdminPage from "./pages/Admin";
-import MyAccount from "./pages/MyAccount";
 import AdminAllBookings from "./pages/AdminAllBookings";
 import AdminUsersOverview from "./pages/AdminUsersOverview";
 import AdminToolsOverview from "./pages/AdminToolsOverview";
+import MyAccount from "./pages/MyAccount";
+import MyAccountUserInformation from "./pages/MyAccountUserInformation";
+import MyAccountMyBookings from "./pages/MyAccountMyBookings";
+import MyAccountRequestTools from "./pages/MyAccountRequestTools";
 
 function App() {
   return (
@@ -47,7 +50,7 @@ function App() {
 
       {/* Routes */}
       <Routes>
-      <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/:id" element={<ToolPage />}/>
         {/* <Route path="/tools/id" element={<ToolPage />} /> */}
@@ -59,12 +62,19 @@ function App() {
         <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
         <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} />
         <Route path="/myaccount" element={<MyAccount />} />
+        <Route
+          path="/myaccount/userinformation"
+          element={<MyAccountUserInformation />}
+        />
+        <Route path="/myaccount/mybookings" element={<MyAccountMyBookings />} />
+        <Route
+          path="/myaccount/requesttools"
+          element={<MyAccountRequestTools />}
+        />
       </Routes>
 
       <Footer />
-
     </>
-    
   );
 }
 
