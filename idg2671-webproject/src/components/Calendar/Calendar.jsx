@@ -106,7 +106,7 @@ function CalendarTime({ selectedDate }) {
   }
 
   // * Fuction to check if timeslots between start-time and end-time is booked
-    //! Kanskje ta vekk denne funksjonen
+  //! Kanskje ta vekk denne funksjonen
   function isTimeRangeBooked(startTime, endTime, dbArray) {
     // Convert start and endtime to moment objects
     const start = moment(startTime);
@@ -127,34 +127,37 @@ function CalendarTime({ selectedDate }) {
 
   return (
     <div className="timeslots">
-      {times.map((time) => (
-        <button
-          key={time}
-          className={`
+      <p className="choosetime">Choose timeslots</p>
+      <div className="timeslots-scroll">
+        {times.map((time) => (
+          <button
+            key={time}
+            className={`
             ${start === time ? "selected-start" : ""} 
             ${end === time ? "selected-end" : ""} 
             ${selectedTimes.includes(time) ? "selected-between" : ""}
             ${isBookedTime(time, datesFromDatabase, selectedDate) ? "booked" : ""}
           `}
-        >
-          <span
-            onClick={() => handleTimeClick(time)}
-            disabled={isBookedTime(time, datesFromDatabase, selectedDate)}
           >
-            {time}
-          </span>
-        </button>
-      ))}
-      {start !== "" && end === "" && (<p className="mt-8">
+            <span
+              onClick={() => handleTimeClick(time)}
+              disabled={isBookedTime(time, datesFromDatabase, selectedDate)}
+            >
+              {time}
+            </span>
+          </button>
+        ))}
+      </div>
+      {start !== "" && end === "" && (<p className="start-time mt-10">
         Start time selected: {start}
       </p>
       )}
       {start !== "" && end !== "" && (
         <>
-          <p className="mt-8">
+          <p className="start-time mt-10">
             Start time selected: {start}
           </p>
-          <p className="mt-8">
+          <p className="end-time mt-2">
             End time selected: {end}
           </p>
         </>
@@ -221,8 +224,9 @@ export default function Calendar({ value, onChange }) {
         <CalendarTime selectedDate={selectedDate} />
 
       </div>
-      <Button className="continueBtn" type="submit" title="Continue" />
-
+      <div className="flex mt-16 mb-20 justify-end px-20">
+        <Button className="continueBtn" type="submit" title="Continue" />
+      </div>
     </div>
   );
 }   

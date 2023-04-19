@@ -7,7 +7,7 @@ function AdminAllBookings() {
     <div className="bg-grey-lighter min-h-screen">
       <Subnav />
       <div className="flex flex-col items-center justify-center p-20">
-        <h1 className="text-3xl pb-32">All bookings</h1>
+        <h1 className="text-3xl pb-28">All bookings</h1>
         <div className="">
           <Filter />
           <ListBookedBy />
