@@ -29,6 +29,9 @@ function ListElementTool({tool}) {
 
 function ListTools() {
     // HER KOMMER FETCHINGEN FRA API'en
+    // HVIS DU VIL LESE LITT MER OM FETCHING FØR DU BEGYNNER, SJEKK UT DENNE LINKEN:
+    // https://blog.logrocket.com/modern-api-data-fetching-methods-react/?fbclid=IwAR2G3nfrZPvUcAOryCXgJzvln0Fiorb6PSc8v9shuiFCRfQiIvdUJQjzM9w
+    
     // set a state to store the data upon return 
     const [tools, setTools] = useState(null);
     const [loading, setLoading] = useState(true); //improve user experience
