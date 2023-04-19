@@ -15,6 +15,12 @@ const users = require('./routes/users');
 const tools = require('./routes/tools');
 const bookableTool = require('./routes/bookabletools');
 
+//cors
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
+
 //read json
 app.use(express.json());
 
