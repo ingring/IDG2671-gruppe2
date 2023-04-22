@@ -3,6 +3,8 @@ import List from "./List";
 import ListElement from "./ListElement";
 import { Link } from "react-router-dom";
 
+import GetData from '../FetchData/GetData';
+
 function ListElementTool({tool}) {
     return (
         <div key={tool}>
@@ -27,50 +29,50 @@ function ListElementTool({tool}) {
     )
 }
 
-function ListTools() {
-    // HER KOMMER FETCHINGEN FRA API'en
-    // HVIS DU VIL LESE LITT MER OM FETCHING FØR DU BEGYNNER, SJEKK UT DENNE LINKEN:
-    // https://blog.logrocket.com/modern-api-data-fetching-methods-react/?fbclid=IwAR2G3nfrZPvUcAOryCXgJzvln0Fiorb6PSc8v9shuiFCRfQiIvdUJQjzM9w
+function ListTools({data}) {
+    // // HER KOMMER FETCHINGEN FRA API'en
+    // // HVIS DU VIL LESE LITT MER OM FETCHING FØR DU BEGYNNER, SJEKK UT DENNE LINKEN:
+    // // https://blog.logrocket.com/modern-api-data-fetching-methods-react/?fbclid=IwAR2G3nfrZPvUcAOryCXgJzvln0Fiorb6PSc8v9shuiFCRfQiIvdUJQjzM9w
     
-    // set a state to store the data upon return 
-    const [tools, setTools] = useState(null);
-    const [loading, setLoading] = useState(true); //improve user experience
-    const [error, setError] = useState(null); //manage error
+    // // set a state to store the data upon return 
+    // const [tools, setTools] = useState(null);
+    // const [loading, setLoading] = useState(true); //improve user experience
+    // const [error, setError] = useState(null); //manage error
 
-    // fetch data in the Hook with useEffect
-    useEffect(() => {
-        async function fetchData() {
-        try {
-            // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
-            // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
-            const response = await fetch('https://webproject-api-production.up.railway.app/api/tools', {
-                method: "GET" // GET ER DEFAULT SÅ METODE ER IKKE NØDVENDIG, MEN GREI VANE I GUESS
-            });
-            // SEND ERROR HVIS DET SKJER NOE
-            if (!response.ok) {
-                throw new Error(
-                    `This is an HTTP error: The status is ${response.status}`
-                )
-            }
-            // RESULTATET AV FETCHEN
-            const toolsData = await response.json();
-            // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
-            setTools(toolsData);
-            setError(null);
-        } catch (error) {
-            setError(error.message);
-            setTools(null)
-        } finally {
-            setLoading(false)
-        }
-        }
-        fetchData();
-    }, []);
+    // // fetch data in the Hook with useEffect
+    // useEffect(() => {
+    //     async function fetchData() {
+    //     try {
+    //         // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
+    //         // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
+    //         const response = await fetch('https://webproject-api-production.up.railway.app/api/tools', {
+    //             method: "GET" // GET ER DEFAULT SÅ METODE ER IKKE NØDVENDIG, MEN GREI VANE I GUESS
+    //         });
+    //         // SEND ERROR HVIS DET SKJER NOE
+    //         if (!response.ok) {
+    //             throw new Error(
+    //                 `This is an HTTP error: The status is ${response.status}`
+    //             )
+    //         }
+    //         // RESULTATET AV FETCHEN
+    //         const toolsData = await response.json();
+    //         // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
+    //         setTools(toolsData);
+    //         setError(null);
+    //     } catch (error) {
+    //         setError(error.message);
+    //         setTools(null)
+    //     } finally {
+    //         setLoading(false)
+    //     }
+    //     }
+    //     fetchData();
+    // }, []);
 
     return (
         <List>
             {/* HER BRUKER JEG STATE'EN TOOLS FOR Å GÅ IGJENNOM ALLE TOOLSENE OG LAGE ET LISTEELEMENT TIL LISTEN */}
-            {tools.map((tool, index) => (
+            {data.map((tool, index) => (
                 <ListElement key={index}>
                     <div className="flex flex-row justify-between items-center">
                         {/* HER HENTER JEG NAVNET PÅ TOOLEN VED Å BRUKE KEY'EN 'NAME'. 
@@ -88,4 +90,4 @@ function ListTools() {
     )
 }
 
-export default ListTools;
+export default GetData(ListTools, '/api/tools');
