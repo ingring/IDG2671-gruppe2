@@ -3,7 +3,8 @@ import List from "./List";
 import ListElement from "./ListElement";
 import { Link } from "react-router-dom";
 
-import withData from '../../helpers/useData';
+// HER IMPORTER JEG HJELPEFUNKSJONEN
+import withData from '../../helpers/withData';
 
 function ListElementTool({tool}) {
     return (
@@ -48,4 +49,6 @@ function ListTools(props) {
     )
 }
 
+// HER BRUKER JEG HJELPEFUNKSJONEN HVOR JEG SIER HVILKET COMPONENT OG RESTEN AV LINKEN
+// I WITHDATA LIGGER FØRSTE DEL AV LINKEN SOM ER 
 export default withData(ListTools, 'tools');

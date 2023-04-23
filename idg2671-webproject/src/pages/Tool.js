@@ -14,8 +14,12 @@ function ToolPage() {
   useEffect(() => {
     async function fetchData() {
       try {
+        // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
+        // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
         const response = await fetch(`https://webproject-api-production.up.railway.app/api/tools/${id}`);
         const toolData = await response.json();
+
+        // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
         setTool(toolData);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -33,6 +37,7 @@ function ToolPage() {
         </div>
       </div>
       <div className="flex flex-col items-center bg-grey-lighter min-h-screen p-20">
+        {/* HER BRUKER VI DATAEN VI HAR FETCHA, tool ER EN STATE VI LAGDE OVER. HENT UT INFO AV TOOLEN MED SAMME NAVN SOM KEY'EN I DATABASEN */}
         <DisplayTool 
             title={tool.name}
             status={tool.status}

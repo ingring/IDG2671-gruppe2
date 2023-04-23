@@ -14,8 +14,6 @@ function withData(WrappedComponent, endpoint) {
     useEffect(() => {
         async function fetchData() {
         try {
-            // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
-            // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
             const response = await fetch(url, {
                 method: "GET" // GET ER DEFAULT SÅ METODE ER IKKE NØDVENDIG, MEN GREI VANE I GUESS
             });
@@ -27,6 +25,7 @@ function withData(WrappedComponent, endpoint) {
             }
             // RESULTATET AV FETCHEN
             const result = await response.json();
+            
             // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
             setData(result);
             setError(null);
