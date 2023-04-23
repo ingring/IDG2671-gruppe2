@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+function withData(WrappedComponent, endpoint) {
+    const url = `https://webproject-api-production.up.railway.app/api/${endpoint}`
+    // const url = `https://webproject-api-production.up.railway.app/api/tools`
 
-function GetData(WrappedComponent, endpoint) {
-    const url = `https://webproject-api-production.up.railway.app/${endpoint}`
+    return function(props) {
 
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true); //improve user experience
@@ -36,11 +38,12 @@ function GetData(WrappedComponent, endpoint) {
         }
         }
         fetchData();
-    }, [url]);
+    }, []);
 
-    return function(props) {
-        return <WrappedComponent {...props} data={data} />
-    }
+    return  (
+        <WrappedComponent {...props} data={data} loading={loading} error={error} />
+    )
+}
 }
 
-export default GetData;
+export default withData;

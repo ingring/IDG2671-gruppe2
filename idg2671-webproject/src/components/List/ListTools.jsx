@@ -3,80 +3,38 @@ import List from "./List";
 import ListElement from "./ListElement";
 import { Link } from "react-router-dom";
 
-import GetData from '../FetchData/GetData';
+import withData from '../../helpers/useData';
 
 function ListElementTool({tool}) {
     return (
         <div key={tool}>
-            {/* SIDESPOR, DETTE ER MÅTEN JEG HAR LINKET TIL DEN UNIKE SIDEN MED MER INFO OM HVERT ENKELT TOOL */}
             <Link
                 to={{
                     pathname: `/tools/${tool}`,
                     state: { tools: tool } 
-                    // HER LAGRER JEG I STATE SLIK AT JEG KAN TA DET MED MEG VIDERE TIL NESTE SIDE
-                    // MERK AT JEG IKKE GJØR DET I DETTE TILFELLET, JEG HENTER HELLER FRA DB PÅ NYTT.
-                    // GRUNNEN ER AT JEG VIL AT FOLK KAN GÅ INN PÅ SAMME SIDE HVIS DE SKRIVER BLAHBLAH/TOOLS/LASERKUTTER1 I URL'EN
-                    // I ANDRE TILFELLER ØNSKER MAN IKKE DETTE, FEKS VED BOOKING. DA FORESLÅR JEG Å SENDE STATE VIDERE
-                    // EKSEMPEL: https://codesandbox.io/s/focused-wright-w8il9?file=/src/ViewUserDetails.js:117-149
                 }}
             >
                 {tool}
             </Link>
         </div>
-
-        // DETTE VAR SÅNN VI GJORDE FØR
-        // <a href={/tools/id} >{tool}</a>
     )
 }
 
-function ListTools({data}) {
-    // // HER KOMMER FETCHINGEN FRA API'en
-    // // HVIS DU VIL LESE LITT MER OM FETCHING FØR DU BEGYNNER, SJEKK UT DENNE LINKEN:
-    // // https://blog.logrocket.com/modern-api-data-fetching-methods-react/?fbclid=IwAR2G3nfrZPvUcAOryCXgJzvln0Fiorb6PSc8v9shuiFCRfQiIvdUJQjzM9w
-    
-    // // set a state to store the data upon return 
-    // const [tools, setTools] = useState(null);
-    // const [loading, setLoading] = useState(true); //improve user experience
-    // const [error, setError] = useState(null); //manage error
+function ListTools(props) {
 
-    // // fetch data in the Hook with useEffect
-    // useEffect(() => {
-    //     async function fetchData() {
-    //     try {
-    //         // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
-    //         // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
-    //         const response = await fetch('https://webproject-api-production.up.railway.app/api/tools', {
-    //             method: "GET" // GET ER DEFAULT SÅ METODE ER IKKE NØDVENDIG, MEN GREI VANE I GUESS
-    //         });
-    //         // SEND ERROR HVIS DET SKJER NOE
-    //         if (!response.ok) {
-    //             throw new Error(
-    //                 `This is an HTTP error: The status is ${response.status}`
-    //             )
-    //         }
-    //         // RESULTATET AV FETCHEN
-    //         const toolsData = await response.json();
-    //         // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
-    //         setTools(toolsData);
-    //         setError(null);
-    //     } catch (error) {
-    //         setError(error.message);
-    //         setTools(null)
-    //     } finally {
-    //         setLoading(false)
-    //     }
-    //     }
-    //     fetchData();
-    // }, []);
+    if (props.loading) {
+        return <div>Loading...</div>;
+    }
+    
+    if (props.error) {
+        return <div>Error: {props.error}</div>;
+    }
 
     return (
         <List>
-            {/* HER BRUKER JEG STATE'EN TOOLS FOR Å GÅ IGJENNOM ALLE TOOLSENE OG LAGE ET LISTEELEMENT TIL LISTEN */}
-            {data.map((tool, index) => (
+            {props.data.map((tool, index) => (
                 <ListElement key={index}>
                     <div className="flex flex-row justify-between items-center">
-                        {/* HER HENTER JEG NAVNET PÅ TOOLEN VED Å BRUKE KEY'EN 'NAME'. 
-                        HVIS DU ER USIKKER PÅ HVA KEYEN ER, SJEKK HVA DU FÅR FRA API'EN VED Å ÅPNE LINKEN TIL API'EN */}
                         <ListElementTool tool={tool.name} /> 
                         <button>
                             <svg width="20" height="20" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,4 +48,4 @@ function ListTools({data}) {
     )
 }
 
-export default GetData(ListTools, '/api/tools');
+export default withData(ListTools, 'tools');
