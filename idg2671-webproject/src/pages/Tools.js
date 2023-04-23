@@ -16,7 +16,7 @@ function ToolPage() {
     <div className="bg-grey-lighter min-h-screen flex flex-col items-center">
       <div className="bg-blue-lighter py-16 mb-20 flex flex-col items-center">
         <div className='w-3/5 flex justify-left flex-col'>
-          <h1 className="text-3xl pb-12">Tools overview</h1>
+          <h1 className="text-3xl pb-8">Tools overview</h1>
           <p className="w-3/5">There are many different tools at Verkstedet. Some tools are bookable, while the more small tools are not bookable and available at any time. Here you will find an overview of all the tools available at Verkstedet, both bookable and unbookable.</p>
         </div>
       </div>
