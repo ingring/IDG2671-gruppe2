@@ -3,6 +3,8 @@ import "flowbite";
 import List from "./List";
 import ListElement from "./ListElement";
 
+import withData from '../../helpers/withData';
+
 function ListElementBookedBy({tool, date, time, user}) {
     return (
         <a href='./tools/id' className="flex">
@@ -14,39 +16,14 @@ function ListElementBookedBy({tool, date, time, user}) {
     )
 }
 
-function ListBookedBy() {
-    // Dette skal egt komme fra backend
-    const tools = [
-        {
-            tool:'Laserkutter',
-            date:'28.02.2023',
-            time:'14:00-19:00',
-            user:'Kari Nordmann'
-        }, 
-        {
-            tool:'3D printer',
-            date:'16.03.2023',
-            time:'16:00-19:30',
-            user:'Ola Nordmann'
-        },
-        {
-            tool:'Laserkutter',
-            date:'28.02.2023',
-            time:'14:00-19:00',
-            user:'Kari Nordmann'
-        }, 
-        {
-            tool:'3D printer',
-            date:'16.03.2023',
-            time:'16:00-19:30',
-            user:'Ola Nordmann'
-        }
-    ]
+function ListBookedBy({data}) {
 
     return (         
         <List>
-            {tools.map((tool) => <ListElement> <ListElementBookedBy tool={tool.tool} date={tool.date} time={tool.time} user={tool.user} /> </ListElement>)}
+            {data.map((tool) => <ListElement> <ListElementBookedBy tool={tool.tool} date={tool.date} time={tool.time} user={tool.user} /> </ListElement>)}
         </List>   
     )
 }
-export default ListBookedBy;
+
+// missing the link, waiting for back end to tell me the link
+export default withData(ListBookedBy, 'tools');

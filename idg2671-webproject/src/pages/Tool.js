@@ -4,18 +4,6 @@ import { useParams } from "react-router-dom";
 import DisplayTool from "../components/DisplayTool/DisplayTool";
 import Image from '../assets/img/3d-printer.jpeg';
 
-// Parsing the data with JSON.parse since we get a long piece of text when receiving 
-// some JSON data from an API or from a file
-// let jsonData = JSON.parse(jsonString)
-
-let jsonData = {
-  "title": "Laserkutter",
-  "status": "OK",
-  "course": "HMS",
-  "imgSrc": Image,
-  "imgAlt": "",
-  "description": "Laserkutteren er et verkøty som kan gjøre mange ulike ting. Du kan for eksempel kutte ut ulike ting i ulike meterialer. Lorem ipsum, lorem lorem ipsum."
-}
 
 function ToolPage() {
 
@@ -26,8 +14,12 @@ function ToolPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:3000/api/tools/${id}`);
+        // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
+        // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
+        const response = await fetch(`https://webproject-api-production.up.railway.app/api/tools/${id}`);
         const toolData = await response.json();
+
+        // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
         setTool(toolData);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -45,14 +37,14 @@ function ToolPage() {
         </div>
       </div>
       <div className="w-2/5 flex flex-col items-center bg-grey-lighter min-h-screen mb-40">
+        {/* HER BRUKER VI DATAEN VI HAR FETCHA, tool ER EN STATE VI LAGDE OVER. HENT UT INFO AV TOOLEN MED SAMME NAVN SOM KEY'EN I DATABASEN */}
         <DisplayTool 
-            title={jsonData["title"]}
-            status={jsonData["status"]}
-            // Hvis ikke course eksisterer - default prop kanskje 
-            course={jsonData["course"]} 
-            imgSrc={jsonData["imgSrc"]}
-            imgAlt={jsonData["imgAlt"]} 
-            description={jsonData["description"]}
+            title={tool.name}
+            status={tool.status}
+            course={tool.course} 
+            imgSrc={Image} //Her må vi hente bilde på en ordentlig måte
+            imgAlt={tool.imgAlt} 
+            description={tool.description}
         />
       </div>
     </div>
