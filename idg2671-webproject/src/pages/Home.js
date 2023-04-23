@@ -7,19 +7,19 @@ import ListTools from "../components/List/ListTools";
 
 let bookableToolsFromDB = [
   {
-    "title": "3D Printer",
+    "name": "3D Printer",
     "imgSrc": Image,
     "imgAlt": "",
     "course": "HMS"
   },
   {
-    "title": "Laserkutter",
+    "name": "Laserkutter",
     "imgSrc": Image,
     "imgAlt": "",
     "course": "HMS"
   },
   {
-    "title": "3D Printer 3",
+    "name": "3D Printer 3",
     "imgSrc": Image,
     "imgAlt": "",
     "course": "HMS"

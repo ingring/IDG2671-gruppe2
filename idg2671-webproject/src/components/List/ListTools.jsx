@@ -3,41 +3,37 @@ import List from "./List";
 import ListElement from "./ListElement";
 import { Link } from "react-router-dom";
 
+// HER IMPORTER JEG HJELPEFUNKSJONEN
+import withData from '../../helpers/withData';
+
 function ListElementTool({tool}) {
     return (
         <div key={tool}>
             <Link
                 to={{
                     pathname: `/tools/${tool}`,
-                    state: { tools: tool }
+                    state: { tools: tool } 
                 }}
             >
                 {tool}
             </Link>
         </div>
-        // <a href={url} >{tool}</a>
     )
 }
 
-function ListTools() {
-    const [tools, setTools] = useState([]);
+function ListTools(props) {
 
-    useEffect(() => {
-        async function fetchData() {
-        try {
-            const response = await fetch('https://webproject-api-production.up.railway.app/api/tools');
-            const toolsData = await response.json();
-            setTools(toolsData);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-        }
-        fetchData();
-    }, []);
+    if (props.loading) {
+        return <div>Loading...</div>;
+    }
+    
+    if (props.error) {
+        return <div>Error: {props.error}</div>;
+    }
 
     return (
         <List>
-            {tools.map((tool, index) => (
+            {props.data.map((tool, index) => (
                 <ListElement key={index}>
                     <div className="flex flex-row justify-between items-center">
                         <ListElementTool tool={tool.name} /> 
@@ -53,4 +49,6 @@ function ListTools() {
     )
 }
 
-export default ListTools;
+// HER BRUKER JEG HJELPEFUNKSJONEN HVOR JEG SIER HVILKET COMPONENT OG RESTEN AV LINKEN
+// I WITHDATA LIGGER FØRSTE DEL AV LINKEN SOM ER 
+export default withData(ListTools, 'tools');
