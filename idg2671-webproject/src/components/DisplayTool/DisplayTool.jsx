@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 
 function DisplayTool(props) {
     return (
-        <div className="bg-grey-light p-14 rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-14">
+        <div className="bg-grey-light rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-14">
             <h1 className="mb-5 text-3xl">{props.title}</h1>
             {/* Kan vi få bildet like vidt som container? */}
             <img className="my-10 rounded-lg" src={props.imgSrc} alt={props.imgAlt} />
