@@ -44,7 +44,7 @@ function ListTools(props) {
                         </button>
                     </div>
                  </ListElement>
-                 ))}
+                ))}
         </List> 
     )
 }
