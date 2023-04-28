@@ -1,26 +1,43 @@
 import React, { useState, useEffect, useContext } from "react";
-import { getAPI } from "../../helpers/getAPI";
 import AuthContext from "../../context/AuthProvider";
+import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
 export default function MyAccount() {
-    const { user } = useContext(AuthContext);
-    const username = user.username
+    const { auth } = useContext(AuthContext);
+    const username = auth.username
 
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
+  
+    const axiosPrivate = useAxiosPrivate();
   
     useEffect(() => {
-        async function fetchData() {
-            const url = `users/${username}`;
-            const response = await getAPI(url);
-            setData(response);
+        let isMounted = true
+        const controller = new AbortController()
+        const getUser = async () => {
+            try {
+                const response = await axiosPrivate.get(`api/users/${username}`, {
+                    signal: controller.signal
+                })
+                isMounted && setData(response.data)
+            }catch(err){
+                console.log(err)
+            }
         }
-  
-        fetchData();
-    }, [username]); // run only once, on mount
-  
-    if (!data) {
-        return <p>Loading...</p>;
-    }
+
+        getUser()
+
+        if (!data) {
+            return <p>Loading...</p>;
+        }
+
+        return () => {
+            isMounted = false
+            controller.abort()
+        }
+    }, [data, username, axiosPrivate]);
+
+    console.log(data)
+
     return (
         <section className="flex items-center justify-center bg-grey-light rounded-2xl shadow-md px-14 py-16 max-w-prose">
             <dl>

@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import InputButton from '../Button/InputButton';
 
+import AuthContext from "../../context/AuthProvider";
+import useAxiosPrivate from "../../axios/useAxiosPrivate";
+
 export default function RequestTool(){
+    const { auth } = useContext(AuthContext);
+    const username = auth.username
+
+    const [data, setData] = useState([]);
+  
+    const axiosPrivate = useAxiosPrivate();
+  
+    useEffect(() => {
+        let isMounted = true
+        const controller = new AbortController()
+        const getUser = async () => {
+            try {
+                const response = await axiosPrivate.post(`api/tool`, {
+                    signal: controller.signal
+                })
+                isMounted && setData(response.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
+
+        getUser()
+
+        if (!data) {
+            return <p>Loading...</p>;
+        }
+
+        return () => {
+            isMounted = false
+            controller.abort()
+        }
+    }, [data, username, axiosPrivate]);
+
     return(
         <section>
         <div className="flex items-center justify-center ">
