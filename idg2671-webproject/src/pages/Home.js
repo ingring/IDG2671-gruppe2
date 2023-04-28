@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
 import Cards from "../components/Card/Cards";
 import Searchbar from "../components/Searchbar/Searchbar";
-import Image from "../assets/img/3d-printer.jpeg";
 import ListTools from "../components/List/ListTools";
-import { getAPI } from "../helpers/getAPI";
 
 
 function HomePage() {

@@ -1,4 +1,4 @@
-import MyAccount from "../components/Form/MyAccount";
+import MyAccount from "../components/MyAccount/MyAccount";
 import MyAccountSubnav from "../components/Navbar/MyAccountSubnav";
 
 function MyAccountUserInformation() {

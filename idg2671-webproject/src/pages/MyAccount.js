@@ -1,4 +1,4 @@
-import MyAccount from "../components/Form/MyAccount";
+import MyAccount from "../components/MyAccount/MyAccount";
 import ListMyBookings from "../components/List/ListMyBookings";
 
 function MyAccountPage() {

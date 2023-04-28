@@ -1,5 +1,4 @@
 import Cards from '../components/Card/Cards';
-import Image from '../assets/img/3d-printer.jpeg';
 
 import Searchbar from '../components/Searchbar/Searchbar';
 import ListTools from '../components/List/ListTools';
