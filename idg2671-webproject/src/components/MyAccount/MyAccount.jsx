@@ -57,7 +57,7 @@ export default function MyAccount() {
                 </div>
                 <div className="flex-col pt-3">
                     <dt className="mb-1 md:text-lg font-semibold text-left">Department</dt>
-                    <dd className="text-lg text-left">Institute for design</dd>
+                    <dd className="text-lg text-left">Department of Design</dd>
                 </div>
             </dl>
         </section>

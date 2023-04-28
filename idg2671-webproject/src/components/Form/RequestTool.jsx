@@ -37,26 +37,19 @@ export default function RequestTool(){
             controller.abort()
         }
     }, [data, username, axiosPrivate]);
-
     return(
-        <section>
-        <div className="flex items-center justify-center ">
-            <div className="w-full sm:max-w-md">
-                <div className="p-6 md:space-y-6 sm:p-8">
-                    <form className="md:space-y-6 flex justify-start flex-col pb-6" action="#">
-                        <div>
-                            <label for="toolname" className="block mb-2 text-left lg:text-lg">Name of tool</label>
-                            <input type="text" name="toolname" id="toolname" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" required=""></input>
-                        </div>
-                        <div className="pb-6">
-                            <label for="description" className="block mb-2 text-left lg:text-lg">Description</label>
-                            <input type="text" name="description" id="description" placeholder="Usage" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter h-28" required=""></input>
-                        </div>
-                        <InputButton value="Request tool" />
-                    </form>
+        <div className="flex items-center justify-center w-full">
+            <form className="flex justify-start flex-col pb-6 w-3/5 md:w-1/5 lg:w-1/6">
+                <div className="pb-6">
+                    <label for="toolname" className="block mb-2 text-left">Name of tool</label>
+                    <input type="text" name="toolname" id="toolname" className="text-left border-grey-mediumLight p-2 h-8 rounded-md w-full" required></input>
                 </div>
-            </div>
+                <div className="pb-6">
+                    <label for="description" className="block mb-2 text-left">Description</label>
+                    <input type="text" name="description" id="description" placeholder="Usage..." className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" required></input>
+                </div>
+                <InputButton value="Request tool" />
+            </form>
         </div>
-      </section>
     )
 }

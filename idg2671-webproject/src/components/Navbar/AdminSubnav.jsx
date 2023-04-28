@@ -12,8 +12,8 @@ export default function AdminSubnav() {
 
   return (
     <div className="w-full top-0 left-0">
-      <div className="flex flex flex-wrap items-center justify-center text-base bg-blue-lighter px-10 h-14">
-        <ul className="flex md:items-center h-14 text-base">
+      <div className="flex flex flex-wrap items-center text-center justify-center text-base bg-blue-lighter px-10 h-14">
+        <ul className="flex items-center h-14 text-base">
           {Links.map((link) => (
             <li key={link.name} className={`px-5 ${
               location.pathname === link.link ? "bg-grey-lighter flex items-center h-14" : ""
