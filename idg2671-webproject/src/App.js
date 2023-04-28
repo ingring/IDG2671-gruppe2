@@ -2,6 +2,7 @@
 //import "./App.css";
 import Nav from "./components/Navbar/Nav";
 import { Route, Routes } from "react-router-dom";
+import { useContext } from "react";
 // Importere pages
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/Home";
@@ -18,8 +19,15 @@ import MyAccount from "./pages/MyAccount";
 import MyAccountUserInformation from "./pages/MyAccountUserInformation";
 import MyAccountMyBookings from "./pages/MyAccountMyBookings";
 import MyAccountRequestTools from "./pages/MyAccountRequestTools";
+import useRefreshToken from "./hooks/useRefreshtoken";
+import AuthContext from "./context/AuthProvider";
 
 function App() {
+  const {auth} = useContext(AuthContext);
+  const refresh = useRefreshToken();
+  if(!auth.accesstoken) refresh();
+  
+  
   return (
     <>
       <Nav />

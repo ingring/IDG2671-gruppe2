@@ -1,6 +1,12 @@
-import React from "react";
 import List from "./List";
 import ListElement from "./ListElement";
+
+import React, { useState, useEffect, useContext } from "react";
+import useAxiosPrivate from "../../axios/useAxiosPrivate"
+import AuthContext from "../../context/AuthProvider";
+
+const userURL = 'api/users/';
+
 
 function ListElementMyBookings({ tool, date, time }) {
     return (
@@ -21,65 +27,50 @@ function ListElementMyBookings({ tool, date, time }) {
 }
 
 function ListMyBookings() {
-    const tools = [
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: '3D printer',
-            date: '16.03.2023',
-            time: '16:00-19:30',
-            user: 'Ola Nordmann'
-        },
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: 'Laserkutter',
-            date: '28.02.2023',
-            time: '14:00-19:00',
-            user: 'Kari Nordmann'
-        },
-        {
-            tool: '3D printer',
-            date: '16.03.2023',
-            time: '16:00-19:30',
-            user: 'Ola Nordmann'
+    const [bookings, setBookings] = useState([]);
+    const axiosPrivate = useAxiosPrivate();
+    const { auth } = useContext(AuthContext);
+    console.log(auth)
+    const fullURL = userURL + auth.username;
+    console.log(fullURL);
+  
+    useEffect(() => {
+        let isMounted = true
+        const controller = new AbortController()
+        const getUser = async () => {
+            try {
+                const response = await axiosPrivate.get(fullURL, {
+                    signal: controller.signal
+                })
+                console.log('res: ',response);
+                console.log('bookins: ', response.data.bookings)
+                isMounted && setBookings(response.data.bookings)
+            }catch(err){
+                console.log(err)
+            }
         }
-    ]
+
+        getUser()
+
+        return () => {
+            isMounted = false
+            controller.abort()
+        }
+    }, []);
+
+//    const retrieveMyBookings = () => {
+//         axios
+//           .get(`/`, )
+//           .then((response) => {
+//             setTools(response.data);
+//             // console.log(response.data);
+//           })
+//           .catch((err) => console.error(err));
+//       };
+
     return (
         <List>
-            {tools.map((tool) => <ListElement> <ListElementMyBookings tool={tool.tool} date={tool.date} time={tool.time} /> </ListElement>)}
+            {bookings.map((booking) => <ListElement> <ListElementMyBookings tool={booking.tool} date={booking.date} time={booking.start_time} /> </ListElement>)}
         </List>
     )
 }
