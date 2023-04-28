@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import NtnuLogoSmallWhite from "../../../src/assets/img/ntnu_uten_slagord_neg.png";
+import AuthContext from "../../context/AuthProvider";
 
 export default function Nav() {
   const location = useLocation();
+  const { auth } = useContext(AuthContext);
+
+  console.log('Nav_Auth: ', auth);
+  let loginState = 'Login';
+  let LoginRoute = '/Login';
+  let role = auth.role; 
+  let adminLink = { name: "Admin", link: "/Admin/AllBookings" };
+  let myAccountLink = { name: "My account", link: "/MyAccount/UserInformation" };
+  console.log('role: ', role)
+  
 
   let Links = [
     { name: "Home", link: "/" },
     { name: "Tools", link: "/Tools" },
-    { name: "My account", link: "/MyAccount/UserInformation" },
-    { name: "Admin", link: "/Admin/AllBookings" }
+    
   ];
 
+
+  if(auth.accesstoken) {
+    loginState = 'Logout';
+    LoginRoute = '/logout';
+    Links.push(myAccountLink)
+  }
+  
+  if(role === 'Admin') Links.push(adminLink);
+  
   return (
     <div className="shadow-md w-full top-0 left-0">
       <div className="flex flex flex-wrap items-center justify-between text-base bg-blue-darker px-10 h-16">
@@ -23,8 +42,8 @@ export default function Nav() {
                 >{link.name}</Link>
             </li>
           ))}
-          <Link to="/Login">
-            <button className="bg-blue-lighter ml-8 px-3 py-1 rounded-2xl hover:bg-blue-darker border hover:text-blue-lighter hover:border-blue-lighter">Login</button>
+          <Link to={LoginRoute}>
+            <button className="bg-blue-lighter ml-8 px-3 py-1 rounded-2xl hover:bg-blue-darker border hover:text-blue-lighter hover:border-blue-lighter">{loginState}</button>
           </Link>
         </ul>
       </div>

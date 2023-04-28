@@ -38,7 +38,9 @@ const PersistLogin = () => {
     return (
         <>
             {isLoading
-                ? <p> Loading...</p>
+                ? <div className="bg-grey-lighter min-h-screen grid place-items-center">
+                    <p className="text-3xl"> Loading...</p>
+                </div>
                 : <Outlet />
             }
         </>
