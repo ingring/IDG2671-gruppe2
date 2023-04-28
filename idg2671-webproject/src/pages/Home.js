@@ -42,17 +42,19 @@ function HomePage() {
           </div> */}
         </div>
         <div className="md:flex md:items-center">
-          <iframe className="w-full"  height="370" frameBorder="0" scrolling="no" src="https://use.mazemap.com/embed.html#v=1&zlevel=1&center=10.675398,60.789690&zoom=17.4&campusid=55&sharepoitype=poi&sharepoi=1000460078&utm_medium=iframe" style={{ borderRadius: '10px', marginRight: '100px' }}></iframe>
+          <iframe className="w-full" height="370" frameBorder="0" scrolling="no" src="https://use.mazemap.com/embed.html#v=1&zlevel=1&center=10.675398,60.789690&zoom=17.4&campusid=55&sharepoitype=poi&sharepoi=1000460078&utm_medium=iframe" style={{ borderRadius: '10px', marginRight: '100px' }}></iframe>
         </div>
       </section>
 
 
       <div className="flex flex-col items-center pb-28">
         <h2 className="md:text-2xl mb-16">List of bookable tools</h2>
-        <div className="flex justify-evenly pb-32">
-          {bookableToolsFromDB.map((tool, index) => (
-            <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
-          ))}
+        <div className="flex flex-col justify-center items-center w-3/5 items-center">
+          <div className='flex flex-col md:flex-row md:flex-wrap md:justify-between items-center mb-32'>
+            {bookableToolsFromDB.map((tool, index) => (
+              <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
+            ))}
+          </div>
         </div>
         <h2 className="md:text-2xl mb-14">List of all tools available</h2>
         <div className="pb-20 w-2/4">
