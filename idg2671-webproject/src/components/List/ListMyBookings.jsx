@@ -62,15 +62,6 @@ function ListMyBookings() {
         }
     }, [bookings, axiosPrivate, fullURL]);
 
-//    const retrieveMyBookings = () => {
-//         axios
-//           .get(`/`, )
-//           .then((response) => {
-//             setTools(response.data);
-//             // console.log(response.data);
-//           })
-//           .catch((err) => console.error(err));
-//       };
 
 return (
     <List>
