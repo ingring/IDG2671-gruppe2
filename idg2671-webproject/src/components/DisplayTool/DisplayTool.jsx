@@ -3,10 +3,11 @@ import Button from '../Button/Button';
 
 function DisplayTool(props) {
     return (
-        <div className="bg-grey-light rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-14">
-            <h1 className="mb-5 text-3xl">{props.title}</h1>
+        <div className="bg-grey-light rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-6 md:p-16">
+            {/* <h1 className="mb-5 text-3xl">{props.title}</h1> */}
+            <h1 className="text-center md:text-left md:mb-2 text-2xl md:text-3xl">Laserkutter</h1>
             {/* Kan vi få bildet like vidt som container? */}
-            <img className="my-10 rounded-lg" src={props.imgSrc} alt={props.imgAlt} />
+            <img className="my-6 md:my-10 rounded-md" src={props.imgSrc} alt={props.imgAlt} />
             <div className="flex items-center">
                 <p>Status: {props.status}</p>
                 {/* Jeg har ikke helt funnet best måte å legge til ikonet med tanke på om statusen er ok eller ødelagt,

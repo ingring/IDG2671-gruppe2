@@ -33,10 +33,10 @@ function ToolPage() {
       <div className="bg-blue-lighter mb-20 flex flex-col items-center w-full">
         <div className="w-3/5 py-16 flex justify-left flex-col">
           <h1 className="text-3xl pb-8">Tool information</h1>
-          <p className="w-3/5">Here you can read all information about the chosen tool. If you want to use the tool please continue to booking. To go back to the tools overview page, simply click on <i>Tools</i> in the menubar.</p>
+          <p className="pb-6 md:w-3/5">Here you can read all information about the chosen tool. If you want to use the tool please continue to booking. To go back to the tools overview page, simply click on <i>Tools</i> in the menubar.</p>
         </div>
       </div>
-      <div className="w-2/5 flex flex-col items-center bg-grey-lighter min-h-screen mb-40">
+      <div className="flex flex-col justify-center items-center pb-28 w-4/5">
         {/* HER BRUKER VI DATAEN VI HAR FETCHA, tool ER EN STATE VI LAGDE OVER. HENT UT INFO AV TOOLEN MED SAMME NAVN SOM KEY'EN I DATABASEN */}
         <DisplayTool 
             title={tool.name}
