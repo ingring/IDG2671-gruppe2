@@ -15,6 +15,7 @@ import ToolPage from "./pages/Tool";
 import BookingCalendarPage from "./pages/BookingCalendar";
 import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
+import Logout from "./components/Logout/logout";
 import AdminPage from "./pages/Admin";
 import AdminAllBookings from "./pages/AdminAllBookings";
 import AdminUsersOverview from "./pages/AdminUsersOverview";
@@ -55,6 +56,7 @@ function App() {
       {/* Routes */}
       <Routes>
 <Route element={<PersistLogin/>}>
+  
         <Route path="/" element={<HomePage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/:id" element={<ToolPage />}/>
@@ -62,6 +64,7 @@ function App() {
         <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
         <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<Logout/>}/>
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/allbookings" element={<AdminAllBookings />} />
         <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />

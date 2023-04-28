@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import NtnuLogoSmallWhite from "../../../src/assets/img/ntnu_uten_slagord_neg.png";
+import AuthContext from "../../context/AuthProvider";
 
 export default function Nav() {
   const location = useLocation();
+  const { setAuth, auth } = useContext(AuthContext);
+
+  console.log('Nav_Auth: ', auth);
+  let loginState = 'Login';
+  let LoginRoute = '/Login'
+  if(auth.accesstoken) {
+    loginState = 'Logout';
+    LoginRoute = '/logout';
+  }
 
   let Links = [
     { name: "Home", link: "/" },
@@ -23,8 +33,8 @@ export default function Nav() {
                 >{link.name}</Link>
             </li>
           ))}
-          <Link to="/Login">
-            <button className="bg-blue-lighter ml-8 px-3 py-1 rounded-2xl hover:bg-blue-darker border hover:text-blue-lighter hover:border-blue-lighter">Login</button>
+          <Link to={LoginRoute}>
+            <button className="bg-blue-lighter ml-8 px-3 py-1 rounded-2xl hover:bg-blue-darker border hover:text-blue-lighter hover:border-blue-lighter">{loginState}</button>
           </Link>
         </ul>
       </div>
