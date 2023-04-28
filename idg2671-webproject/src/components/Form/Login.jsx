@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react"
 import InputButton from '../Button/InputButton';
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../axios/axios";
+import { useNavigate } from 'react-router-dom';
+
 
 import useRefreshToken from "../../hooks/useRefreshtoken";
 
@@ -9,6 +11,8 @@ import useRefreshToken from "../../hooks/useRefreshtoken";
 const LOGIN_URL = 'api/users/login';
 
 function Login() {
+    const navigate = useNavigate();
+
     const refresh = useRefreshToken();
     const { setAuth, auth, user, setUser, accesstoken, setAccesstoken } = useContext(AuthContext);
   
@@ -42,6 +46,7 @@ function Login() {
         //setAccesstoken(accesstoken)
         console.log('User: ', auth.username);
         console.log('token: ', auth.accesstoken);
+        if(accesstoken) navigate('/');
       } catch (err) {
         console.log(err)
       }

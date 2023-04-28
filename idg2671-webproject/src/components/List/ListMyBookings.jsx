@@ -68,11 +68,23 @@ function ListMyBookings() {
 //           .catch((err) => console.error(err));
 //       };
 
-    return (
-        <List>
-            {bookings.map((booking) => <ListElement> <ListElementMyBookings tool={booking.tool} date={booking.date} time={booking.start_time} /> </ListElement>)}
-        </List>
-    )
+return (
+    <List>
+      {bookings ? (
+        bookings.map((booking) => (
+          <ListElement>
+            <ListElementMyBookings
+              tool={booking.tool}
+              date={booking.date}
+              time={booking.start_time}
+            />
+          </ListElement>
+        ))
+      ) : (
+        <p>No current bookings</p>
+      )}
+    </List>
+  );
 }
 
 export default ListMyBookings;

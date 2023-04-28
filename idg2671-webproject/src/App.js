@@ -26,6 +26,7 @@ import MyAccountRequestTools from "./pages/MyAccountRequestTools";
 
 //import utils
 import useRefreshToken from "./hooks/useRefreshtoken";
+import PersistLogin from "./hooks/persistLogin";
 import AuthContext from "./context/AuthProvider";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
       {isMobile ? <NavbarMobile/> : <Nav/>}
       {/* Routes */}
       <Routes>
+<Route element={<PersistLogin/>}>
         <Route path="/" element={<HomePage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/tools/:id" element={<ToolPage />}/>
@@ -71,6 +73,7 @@ function App() {
           path="/myaccount/requesttools"
           element={<MyAccountRequestTools />}
         />
+       </Route>
       </Routes>
 
       <Footer />
