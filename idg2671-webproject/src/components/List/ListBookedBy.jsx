@@ -26,4 +26,5 @@ function ListBookedBy({data}) {
 }
 
 // missing the link, waiting for back end to tell me the link
-export default withData(ListBookedBy, 'tools');
+// export default withData(ListBookedBy, 'tools');
+export default (ListBookedBy)
