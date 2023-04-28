@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import InputButton from '../Button/InputButton';
 import Image from "./Image"
@@ -82,14 +81,14 @@ export default function CreateTool(){
                         <div>
                             <label htmlFor="fileInput" className="block mb-2 text-left lg:text-lg">Upload image</label>
                             <input type="file" name="image" id="fileInput" onChange={e => handleChange(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full h-24 dark:bg-grey-lighter" required></input>
+                            <img src={image} alt="" />
+                            {/* <Image uploadedImg={uploadedImg}/>  */}
                         </div>
                         <InputButton value="Submit" />
                     </form>
                 </div>
             </div>
         </div>
-        {/* <img src={image} alt="" />
-        <Image uploadedImg={uploadedImg}/> */}
       </section>
     )
 }
