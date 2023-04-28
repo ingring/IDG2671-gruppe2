@@ -1,0 +1,30 @@
+.ul-containerMobile {
+    height: 100vh;
+    font-size: larger;
+    margin-top: 5vh;
+    display: none; 
+}
+.ul-containerMobile-expanded {
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    font-size: larger;
+    margin-top: 5vh;
+    transition: background-color 0.2s ease-in-out;
+    text-align: center;
+}
+
+.ul-containerMobile-expanded ul {
+    list-style-type: none;
+    margin-right: 40px;
+}
+.ul-containerMobile-expanded li {
+    margin-bottom: 2.5rem;
+}
+.ul-containerMobile-expanded a {
+    color: white;
+    padding-bottom: 5px;
+}
+.activeM {
+    font-weight: 700;
+}
