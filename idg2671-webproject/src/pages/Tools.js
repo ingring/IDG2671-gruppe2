@@ -1,15 +1,9 @@
-import Card from '../components/Card/Card';
+import Cards from '../components/Card/Cards';
 import Image from '../assets/img/3d-printer.jpeg';
 
 import Searchbar from '../components/Searchbar/Searchbar';
 import ListTools from '../components/List/ListTools';
 
-let jsonDataTools = {
-  "title": "3D Printer",
-  "imgSrc": Image,
-  "imgAlt": "",
-  "course": "HMS"
-}
 
 function ToolPage() {
   return (
@@ -22,24 +16,7 @@ function ToolPage() {
       </div>
       <div className="flex flex-col justify-center items-center w-3/5">
         <div className='flex flex-row justify-between mb-32'>
-          <Card
-            title={jsonDataTools["title"]}
-            imgSrc={jsonDataTools["imgSrc"]}
-            imgAlt={jsonDataTools["imgAlt"]}
-            course={jsonDataTools["course"]}
-          />
-          <Card
-            title={jsonDataTools["title"]}
-            imgSrc={jsonDataTools["imgSrc"]}
-            imgAlt={jsonDataTools["imgAlt"]}
-            course={jsonDataTools["course"]}
-          />
-          <Card
-            title={jsonDataTools["title"]}
-            imgSrc={jsonDataTools["imgSrc"]}
-            imgAlt={jsonDataTools["imgAlt"]}
-            course={jsonDataTools["course"]}
-          />
+        <Cards />
         </div>
 
         <div className='w-2/4'>
