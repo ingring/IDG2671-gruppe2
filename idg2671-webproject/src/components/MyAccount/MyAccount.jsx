@@ -36,8 +36,6 @@ export default function MyAccount() {
         }
     }, [data, username, axiosPrivate]);
 
-    console.log(data)
-
     return (
         <section className="flex items-center justify-center bg-grey-light rounded-2xl shadow-md px-14 py-16 max-w-prose">
             <dl>
