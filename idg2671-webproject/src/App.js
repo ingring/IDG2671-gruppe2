@@ -20,6 +20,7 @@ import MyAccountUserInformation from "./pages/MyAccountUserInformation";
 import MyAccountMyBookings from "./pages/MyAccountMyBookings";
 import MyAccountRequestTools from "./pages/MyAccountRequestTools";
 import useRefreshToken from "./hooks/useRefreshtoken";
+import PersistLogin from "./hooks/persistLogin";
 import AuthContext from "./context/AuthProvider";
 
 function App() {
@@ -58,27 +59,29 @@ function App() {
 
       {/* Routes */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/tools" element={<ToolsPage />} />
-        <Route path="/tools/:id" element={<ToolPage />}/>
-        {/* <Route path="/tools/id" element={<ToolPage />} /> */}
-        <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
-        <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/allbookings" element={<AdminAllBookings />} />
-        <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
-        <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} />
-        <Route path="/myaccount" element={<MyAccount />} />
-        <Route
-          path="/myaccount/userinformation"
-          element={<MyAccountUserInformation />}
-        />
-        <Route path="/myaccount/mybookings" element={<MyAccountMyBookings />} />
-        <Route
-          path="/myaccount/requesttools"
-          element={<MyAccountRequestTools />}
-        />
+        <Route element={<PersistLogin/>}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/tools/:id" element={<ToolPage />}/>
+          {/* <Route path="/tools/id" element={<ToolPage />} /> */}
+          <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
+          <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/allbookings" element={<AdminAllBookings />} />
+          <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
+          <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} />
+          <Route path="/myaccount" element={<MyAccount />} />
+          <Route
+            path="/myaccount/userinformation"
+            element={<MyAccountUserInformation />}
+          />
+          <Route path="/myaccount/mybookings" element={<MyAccountMyBookings />} />
+          <Route
+            path="/myaccount/requesttools"
+            element={<MyAccountRequestTools />}
+          />
+        </Route>
       </Routes>
 
       <Footer />
