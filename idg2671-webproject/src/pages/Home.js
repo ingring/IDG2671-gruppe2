@@ -1,32 +1,39 @@
+import React, { useState, useEffect } from "react";
 import Button from "../components/Button/Button";
 import Card from "../components/Card/Card";
 import Searchbar from "../components/Searchbar/Searchbar";
 import Image from "../assets/img/3d-printer.jpeg";
 import ListTools from "../components/List/ListTools";
+import { getAPI } from "../helpers/getAPI";
 
+function Cards() {
+  const [data, setData] = useState(null);
 
-let bookableToolsFromDB = [
-  {
-    "name": "3D Printer",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
-  },
-  {
-    "name": "Laserkutter",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
-  },
-  {
-    "name": "3D Printer 3",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
+  useEffect(() => {
+      async function fetchData() {
+          const url = 'bookable_tools';
+          const response = await getAPI(url);
+          setData(response);
+      }
+
+      fetchData();
+  }, []); // run only once, on mount
+
+  if (!data) {
+      return <p>Loading...</p>;
   }
-]
+
+  return (
+    <>
+    {data.map((tool, index) => (
+      <Card key={index} title={tool.name} imgSrc={Image} imgAlt={tool.imgAlt} course={tool.course} />
+    ))}
+    </>
+  )
+}
 
 function HomePage() {
+
   return (
     <div className="bg-grey-lighter min-h-screen">
       <section className="flex bg-blue-lighter py-20 px-28 mb-24">
@@ -50,9 +57,7 @@ function HomePage() {
       <div className="flex flex-col items-center pb-28">
         <h2 className="md:text-2xl mb-16">List of bookable tools</h2>
         <div className="flex justify-evenly pb-32">
-          {bookableToolsFromDB.map((tool, index) => (
-            <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
-          ))}
+        <Cards />
         </div>
         <h2 className="md:text-2xl mb-14">List of all tools available</h2>
         <div className="pb-20 w-2/4">

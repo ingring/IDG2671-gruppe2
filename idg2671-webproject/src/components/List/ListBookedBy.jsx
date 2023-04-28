@@ -3,8 +3,6 @@ import "flowbite";
 import List from "./List";
 import ListElement from "./ListElement";
 
-import withData from '../../helpers/withData';
-
 function ListElementBookedBy({tool, date, time, user}) {
     return (
         <a href='./tools/id' className="flex">
