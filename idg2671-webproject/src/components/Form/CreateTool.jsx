@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import InputButton from '../Button/InputButton';
-import e from "express";
+import Image from "./Image"
 
 export default function CreateTool(){
 
     const [file, setFile] = useState("");
     const [image, setImage] = useState("");
+    const [uploadedImg, setUploadedImg] =useState("");
 
     // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
     // File reader to turn it into an readable url
@@ -29,18 +30,18 @@ export default function CreateTool(){
         setFile(file);
         previewFiles(file); // Enables you to see your uploaded file
     }
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const result = await axios.post("http://localhost:3000/api/image", {
             image: image
         })
         try {
+            const uploadedImg = result.data.public_id;
+            setUploadedImg(uploadedImg)
             console.log(result.data);
         } catch(err) {
             console.log(err);
         }
-        // console.log(e.target.files);
-        // setFile(e.target.files)
     }
 
     return(
@@ -87,6 +88,7 @@ export default function CreateTool(){
             </div>
         </div>
         <img src={image} alt="" />
+        <Image uploadedImg={uploadedImg}/>
       </section>
     )
 }
