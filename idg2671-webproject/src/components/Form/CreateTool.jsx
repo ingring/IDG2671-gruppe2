@@ -6,6 +6,7 @@ import Image from "./Image"
 
 export default function CreateTool(){
 
+    // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState("");
     const [uploadedImg, setUploadedImg] =useState("");
@@ -87,8 +88,8 @@ export default function CreateTool(){
                 </div>
             </div>
         </div>
-        <img src={image} alt="" />
-        <Image uploadedImg={uploadedImg}/>
+        {/* <img src={image} alt="" />
+        <Image uploadedImg={uploadedImg}/> */}
       </section>
     )
 }
