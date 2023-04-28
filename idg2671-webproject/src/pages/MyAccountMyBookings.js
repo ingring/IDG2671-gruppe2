@@ -11,13 +11,11 @@ function MyAccountMyBookings() {
         </div>
       </div>
       <MyAccountSubnav />
-      <div className="flex flex-col items-center justify-center p-20">
-        <div className="mt-20 w-3/5">
-          <h2 className="text-2xl mb-6">My bookings overview</h2>
+      <div className="flex justify-center py-28">
+          <h2 className="text-xl md:text-2xl mb-16">Bookings overview</h2>
           <ListMyBookings />
         </div>
       </div>
-    </div>
   );
 }
 

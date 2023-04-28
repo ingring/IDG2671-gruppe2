@@ -13,7 +13,7 @@ function AdminAllBookings() {
       <AdminSubnav />
       <div className="flex flex-col items-center justify-center">
         <div className="mt-20 w-3/4">
-          <h2 className="text-2xl mb-6">Active bookings</h2>
+          <h2 className="text-xl md:text-2xl mb-6">Active bookings</h2>
           <Filter />
           <ListBookedBy />
         </div>

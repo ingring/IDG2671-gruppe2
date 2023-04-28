@@ -48,16 +48,16 @@ function HomePage() {
 
 
       <div className="flex flex-col items-center pb-28">
-        <h2 className="md:text-2xl mb-16">List of bookable tools</h2>
+        <h2 className="text-xl md:text-2xl mb-16">List of bookable tools</h2>
         <div className="flex flex-col justify-center items-center w-3/5 items-center">
-          <div className='flex flex-col md:flex-row md:flex-wrap md:justify-between items-center mb-32'>
+          <div className='flex flex-col md:flex-row md:flex-wrap md:justify-between items-center mb-20'>
             {bookableToolsFromDB.map((tool, index) => (
               <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
             ))}
           </div>
         </div>
-        <h2 className="md:text-2xl mb-14">List of all tools available</h2>
-        <div className="pb-20 w-2/4">
+        <h2 className="text-xl md:text-2xl mb-14">List of all tools available</h2>
+        <div className="flex flex-col justify-center items-center w-3/4 md:w-2/5 items-center mb-10">
           <Searchbar />
           <ListTools />
         </div>

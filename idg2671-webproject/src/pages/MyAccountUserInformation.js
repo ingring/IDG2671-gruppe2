@@ -11,10 +11,9 @@ function MyAccountUserInformation() {
         </div>
       </div>
       <MyAccountSubnav />
-      <div className="flex flex-col items-center justify-center p-20">
-        <div className="my-20 w-2/6">
+      <div className="flex flex-col justify-center items-center py-28">
+      <h2 className="text-xl md:text-2xl mb-10">Profile</h2>
           <MyAccount />
-        </div>
       </div>
     </div>
   );

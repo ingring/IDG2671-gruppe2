@@ -11,10 +11,9 @@ function MyAccountRequestTool() {
         </div>
       </div>
       <MyAccountSubnav />
-      <div className="flex flex-col items-center justify-center p-20">
-        <div className="mt-14 w-3/5">
+      <div className="py-28 flex flex-col justify-center text-center">
+      <h2 className="text-xl md:text-2xl mb-16">Request new tool</h2>
           <RequestTool />
-        </div>
       </div>
     </div>
   );

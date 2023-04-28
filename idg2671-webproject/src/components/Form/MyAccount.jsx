@@ -2,7 +2,7 @@ import React from "react"
 
 export default function MyAccount() {
     return (
-        <section className="flex items-center justify-center bg-grey-light rounded-2xl shadow-md px-14 py-16 max-w-prose">
+        <section className="md:w-2/4 lg:w-1/4 flex bg-grey-light justify-center rounded-2xl shadow-md px-14 py-16 ">
             <dl>
                 <div className="flex-col pt-3 mb-6">
                     <dt className="mb-1 md:text-lg font-semibold text-left">Name</dt>
