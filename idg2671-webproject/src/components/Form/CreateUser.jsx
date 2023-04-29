@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
 import InputButton from '../Button/InputButton';
 
-export default function CreateUser({url}) {
+export default function CreateUser() {
     const [formData, setFormData] = useState({
         firstname: "",
         lastname: "",
@@ -42,11 +42,11 @@ export default function CreateUser({url}) {
 
     return (
         <div className="flex items-center justify-center">
-            <p>Oppdatert hvis du lurte</p>
             <div className="w-full">
                 <h1 className="text-xl md:text-2xl text-left mb-10">
                     Create / Modify user
                 </h1>
+                <p>Opp opp oppdatert, hvis du lurte hehe</p>
                 <form className="md:space-y-6 flex justify-start flex-col pb-3" onSubmit={handleSubmit}>
                 <div className="mb-6 md:mb-0">
                         <label for="firstname" className="block mb-2 text-left">First name</label>
