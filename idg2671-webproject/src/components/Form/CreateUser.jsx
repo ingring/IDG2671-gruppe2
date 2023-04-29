@@ -15,6 +15,7 @@ export default function CreateUser() {
     
       const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log('inni submit: ', formData)
     
         try {
           const response = await axiosPrivate.post(`api/users`, 
@@ -47,7 +48,7 @@ export default function CreateUser() {
                 <h1 className="text-xl md:text-2xl text-left mb-10">
                     Create / Modify user
                 </h1>
-                <p>console.log'jeg er lei'</p>
+                <p>field of study length</p>
                 <form className="md:space-y-6 flex justify-start flex-col pb-3" onSubmit={handleSubmit}>
                 <div className="mb-6 md:mb-0">
                         <label for="firstname" className="block mb-2 text-left">First name</label>
@@ -78,7 +79,7 @@ export default function CreateUser() {
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
                             value={formData.field_of_study} onChange={handleChange} required>
                             <option value=""></option>
-                            <option value="BWU">BWU</option>
+                            <option value="Webutvikling">BWU</option>
                             <option value="BIXD">BIXD</option>
                             <option value="BMED">BMED</option>
                             <option value="AARSWEB">AARSWEB</option>
