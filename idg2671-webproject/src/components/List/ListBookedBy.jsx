@@ -5,13 +5,13 @@ import ListElement from "./ListElement";
 import AuthContext from "../../context/AuthProvider";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
-function ListElementBookedBy({tool, date, time, user}) {
+function ListElementBookedBy({tool, date, time, username}) {
     return (
         <a href='./tools/id' className="flex">
             <span className="w-1/4 font-semibold px-4">{tool}</span>
             <span className="w-1/4 px-4">{date}</span>
             <span className="w-1/4 px-4">{time}</span>
-            <span className="w-1/4 px-4">{user}</span>
+            <span className="w-1/4 px-4">{username}</span>
         </a>
     )
 }
@@ -55,10 +55,10 @@ function ListBookedBy() {
         data.map((booking) => (
             <ListElement>
             <ListElementBookedBy
-                username={username}
                 tool={booking.tool}
                 date={booking.date}
                 time={booking.start_time}
+                username={username}
             />
             </ListElement>
         ))
