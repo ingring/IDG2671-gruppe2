@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useState  } from "react";
 import NtnuLogoSmallWhite from "../../../src/assets/img/ntnu_uten_slagord_neg.png";
 import './NavbarMobile.css';
+import AuthContext from "../../context/AuthProvider";
+
 
 // NavbarMobile component
 export default function NavbarMobile() {
@@ -12,7 +14,18 @@ export default function NavbarMobile() {
     const [isNavExpanded, setIsNavExpanded] = useState(false)
 
     // Find the loggedIn state
-
+    const { auth } = useContext(AuthContext);
+    let loginState = 'Login';
+    let LoginRoute = '/Login';
+    let role = auth.role; 
+    let admin = false
+    let user = false
+    if(auth.accesstoken) {
+        loginState = 'Logout';
+        LoginRoute = '/logout';
+        user = true;
+    }
+    if(role === 'Admin') admin = true
 
      // Function to close the navbar when a link is clicked
     const handleLinkClick = () => {
@@ -36,10 +49,14 @@ export default function NavbarMobile() {
                 <ul>
                     <li><Link to="/" onClick={handleLinkClick} className={location.pathname === '/' ? 'activeM' : ''}>Home</Link></li>
                     <li><Link to="/tools" onClick={handleLinkClick} className={location.pathname === '/tools' ? 'activeM' : ''}>Tools</Link></li>
-                    <li><Link to="/MyAccount/UserInformation" onClick={handleLinkClick} className={location.pathname === '/MyAccount/UserInformation' ? 'activeM' : ''}>My account</Link></li>
-                    <li><Link to="/Admin/AllBookings" onClick={handleLinkClick} className={location.pathname === '/Admin/AllBookings' ? 'activeM' : ''}>Admin</Link></li>
-                    <li><Link to="/Login" onClick={handleLinkClick} className={location.pathname === '/Login' ? 'activeM' : ''}>Login</Link></li>
-                </ul>
+                    {user && (
+                        <li><Link to="/MyAccount/UserInformation" onClick={handleLinkClick} className={location.pathname === '/MyAccount/UserInformation' ? 'activeM' : ''}>My account</Link></li>
+                    )}
+                    {admin && (
+                        <li><Link to="/Admin/AllBookings" onClick={handleLinkClick} className={location.pathname === '/Admin/AllBookings' ? 'activeM' : ''}>Admin</Link></li>
+                    )}
+                    <li><Link to={LoginRoute} onClick={handleLinkClick} className={location.pathname === '/Login' ? 'activeM' : ''}>{loginState}</Link></li>
+                    </ul>
             </div>
         </div>
     )

@@ -15,6 +15,7 @@ import ToolPage from "./pages/Tool";
 import BookingCalendarPage from "./pages/BookingCalendar";
 import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
+import Logout from "./components/Logout/logout";
 import AdminPage from "./pages/Admin";
 import AdminAllBookings from "./pages/AdminAllBookings";
 import AdminUsersOverview from "./pages/AdminUsersOverview";
@@ -23,6 +24,7 @@ import MyAccount from "./pages/MyAccount";
 import MyAccountUserInformation from "./pages/MyAccountUserInformation";
 import MyAccountMyBookings from "./pages/MyAccountMyBookings";
 import MyAccountRequestTools from "./pages/MyAccountRequestTools";
+import PageNotFound from "./pages/404Page";
 
 //import utils
 import useRefreshToken from "./hooks/useRefreshtoken";
@@ -30,11 +32,11 @@ import PersistLogin from "./hooks/persistLogin";
 import AuthContext from "./context/AuthProvider";
 
 function App() {
-  const {auth} = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   const refresh = useRefreshToken();
-  if(!auth.accesstoken) refresh();
-  
-  // Set navbar desktop or mobile 
+  if (!auth.accesstoken) refresh();
+
+  // Set navbar desktop or mobile
   const activePage = window.location.pathname;
   const [isMobile, setIsMobile] = useState(false);
 
@@ -45,35 +47,42 @@ function App() {
     };
     setIsMobile(false);
     handleResize();
-    window.addEventListener('resize', handleResize, false);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize, false);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
+
   return (
     <>
-      {isMobile ? <NavbarMobile/> : <Nav/>}
+      {isMobile ? <NavbarMobile /> : <Nav />}
       {/* Routes */}
       <Routes>
-<Route element={<PersistLogin/>}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/tools" element={<ToolsPage />} />
-        <Route path="/tools/:id" element={<ToolPage />}/>
-        {/* <Route path="/tools/id" element={<ToolPage />} /> */}
-        <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
-        <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/allbookings" element={<AdminAllBookings />} />
-        <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
-        <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} />
-        <Route path="/myaccount" element={<MyAccount />} />
-        <Route path="/myaccount/userinformation" element={<MyAccountUserInformation />} />
-        <Route path="/myaccount/mybookings" element={<MyAccountMyBookings />} />
-        <Route
-          path="/myaccount/requesttools"
-          element={<MyAccountRequestTools />}
-        />
-       </Route>
+        <Route element={<PersistLogin />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/tools" element={<ToolsPage />} />
+          <Route path="/tools/:id" element={<ToolPage />} />
+          {/* <Route path="/tools/id" element={<ToolPage />} /> */}
+          <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
+          <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/admin/allbookings" element={<AdminAllBookings />} />
+          <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
+          <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} />
+          <Route path="/myaccount" element={<MyAccount />} />
+          <Route path="*" element={<PageNotFound />} />
+          <Route
+            path="/myaccount/userinformation"
+            element={<MyAccountUserInformation />}
+          />
+          <Route
+            path="/myaccount/mybookings"
+            element={<MyAccountMyBookings />}
+          />
+          <Route
+            path="/myaccount/requesttools"
+            element={<MyAccountRequestTools />}
+          />
+        </Route>
       </Routes>
 
       <Footer />

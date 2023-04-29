@@ -20,19 +20,19 @@ function Filter() {
         <div className="relative">
             <div className="bg-blue-darker text-white flex justify-between p-4 rounded-lg max-w-prose text-left">
                 <div className="w-1/4">
-                    <button id="dropdownToolBtn" data-dropdown-toggle="dropdownTool" className="text-white rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
+                    <button id="dropdownToolBtn" data-dropdown-toggle="dropdownTool" className="text-white text-sm md:text-lg rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
                         Tools
                         <DropdownArrow />
                     </button>
                 </div>
                 <div className="w-1/4">
-                    <button id="dropdownDateBtn" data-dropdown-toggle="dropdownDate" className="text-white rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
+                    <button id="dropdownDateBtn" data-dropdown-toggle="dropdownDate" className="text-white text-sm md:text-lg rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
                         Date
                         <DropdownArrow />
                     </button>
                 </div>
-                <div className="w-1/4 px-4">Time</div>
-                <div className="w-1/4 px-4">User</div>
+                <div className="w-1/4 px-4 text-sm md:text-lg text-center inline-flex items-center">Time</div>
+                <div className="w-1/4 px-4 text-sm md:text-lg text-center inline-flex items-center">User</div>
             </div>
 
             <div id="dropdownTool" className="hidden bg-blue-darker z-10 rounded-lg shadow w-44 rounded-t-none absolute top-12 text-left">
