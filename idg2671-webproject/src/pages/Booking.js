@@ -17,7 +17,8 @@ function BookingPage() {
                         <p className="pb-6 md:w-3/5">Please check that all information is correct, then you may add a description. When everything looks okay, you can book your tool.</p>
                     </div>
                 </div>
-                <div className="w-2/5 pb-20">
+                <div className="flex flex-col justify-center items-center pb-28">
+                    <h2 className="text-xl md:text-2xl mb-6">Your booking</h2>
                     <BookTool
                         tool={jsonData["tool"]}
                         date={jsonData["date"]}

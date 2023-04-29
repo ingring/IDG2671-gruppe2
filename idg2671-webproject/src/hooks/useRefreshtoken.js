@@ -12,8 +12,7 @@ const useRefreshToken = () => {
         })
         setAuth(prev =>{
             console.log('prev', JSON.stringify(prev))
-            console.log('new token:', response.data.accesstoken)
-            return { ...prev, accesstoken: response.data.accesstoken, username: response.data.username}
+            return { ...prev, accesstoken: response.data.accesstoken, username: response.data.username, role: response.data.role}
         })
 
         return response.data.accessToken

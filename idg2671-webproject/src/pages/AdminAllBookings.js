@@ -11,8 +11,9 @@ function AdminAllBookings() {
           <p className="pb-6 md:w-3/5">Here you can get an overview of all the active bookings, as well get an overview of all the tools and users in the workshop. On the different sub pages, you can also add, edit or delete tools and users.</p>        </div>
       </div>
       <AdminSubnav />
-      <div className="flex flex-col items-center justify-center">
-        <div className="mt-20 w-3/4">
+      <div className="mt-24 flex flex-col items-center justify-center w-full">
+      <h2 className="text-xl md:text-2xl mb-14">Bookings overview</h2>
+        <div className="mb-24 w-fit md:w-3/6">
           <h2 className="text-xl md:text-2xl mb-6">Active bookings</h2>
           <Filter />
           <ListBookedBy />

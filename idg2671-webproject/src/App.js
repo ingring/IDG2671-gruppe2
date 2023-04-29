@@ -15,6 +15,7 @@ import ToolPage from "./pages/Tool";
 import BookingCalendarPage from "./pages/BookingCalendar";
 import BookingPage from "./pages/Booking";
 import LoginPage from "./pages/Login";
+import Logout from "./components/Logout/logout";
 import AdminPage from "./pages/Admin";
 import AdminAllBookings from "./pages/AdminAllBookings";
 import AdminUsersOverview from "./pages/AdminUsersOverview";

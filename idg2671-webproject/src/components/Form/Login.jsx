@@ -56,24 +56,23 @@ function Login() {
 
     return (
         <>
-        <div className="flex items-center justify-center w-2/6">
-            <div className="w-full sm:max-w-md">
-                <div className="p-6 md:space-y-6 sm:p-8">
-                    <form className="md:space-y-6 flex justify-start flex-col pb-6" action="#" onSubmit={handleSubmit}>
-                        <div>
-                            <label for="username" className="block mb-2 text-left lg:text-lg">Username</label>
-                            <input type="username" name="username" id="username" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" placeholder="username" required="" onChange={handleChange}></input>
+        <div className="flex flex-col items-center justify-center">
+            <div className="w-full">
+
+                    <form className="md:space-y-6 flex justify-start flex-col pb-3" action="#" onSubmit={handleSubmit}>
+                    <div className="mb-6 md:mb-0">
+                            <label for="username" className="block mb-2 text-left">Username</label>
+                            <input type="username" name="username" id="username" className="text-left border border-grey-mediumLight p-2 h-9 rounded-md w-full" required="" onChange={handleChange}></input>
                         </div>
-                        <div className="pb-6">
-                            <label for="password" className="block mb-2 text-left lg:text-lg">Password</label>
-                            <input type="password" name="password" id="password" placeholder="••••••••" className="text-left border border-grey-mediumLight lg:text-lg rounded-lg w-full dark:bg-grey-lighter" required="" onChange={handleChange}></input>
+                        <div className="mb-6 md:mb-6">
+                            <label for="password" className="block mb-2 text-left">Password</label>
+                            <input type="password" name="password" id="password" className="text-left border border-grey-mediumLight p-2 h-9 rounded-md w-full" required="" onChange={handleChange}></input>
                         </div>
                         <InputButton value="Submit" />
                     </form>
                 </div>
                 <button onClick={() => refresh()}>refresh</button>
             </div>
-        </div>
 
         {/* <div className="flex items-center justify-center w-2/6">
             <div className="w-full sm:max-w-md">
