@@ -24,6 +24,10 @@ function AdminToolsOverview() {
             <h2 className="text-xl md:text-2xl mb-6">Tools reported broken</h2>
             <ListBrokenTools />
           </div>
+          <div className="mb-24 w-3/4 md:w-2/5">
+            <h2 className="text-xl md:text-2xl mb-6">Requested new tools</h2>
+            <ListBrokenTools />
+          </div>
         </div>
     </div>
   );

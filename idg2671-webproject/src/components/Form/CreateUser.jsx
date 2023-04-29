@@ -19,11 +19,13 @@ export default function CreateUser({url}) {
         try {
           const response = await axiosPrivate.post(`api/users`, 
           {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
+            first_name: formData.firstName,
+            last_name: formData.lastName,
             username: formData.username,
             email: formData.email,
-            role: "Student",
+            field_of_study: formData.field_of_study,
+            start_year: '2023',
+            password: 'password'
         });
           console.log(response.data);
         } catch (error) {
@@ -72,7 +74,7 @@ export default function CreateUser({url}) {
                         <label for="field_of_study" className="block mb-2 text-left">Field of study</label>
                         <select type="text" name="field_of_study" id="field_of_study" 
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                            value={formData.field_of_study} required>
+                            value={formData.field_of_study} onChange={handleChange} required>
                             <option value=""></option>
                             <option value="BWU">BWU</option>
                             <option value="BIXD">BIXD</option>
