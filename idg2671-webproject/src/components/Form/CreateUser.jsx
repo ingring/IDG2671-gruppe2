@@ -23,7 +23,7 @@ export default function CreateUser({url}) {
             lastName: formData.lastName,
             username: formData.username,
             email: formData.email,
-            fieldOfStudy: formData.fieldOfStudy
+            role: "Student",
         });
           console.log(response.data);
         } catch (error) {
@@ -72,7 +72,7 @@ export default function CreateUser({url}) {
                         <label for="field_of_study" className="block mb-2 text-left">Field of study</label>
                         <select type="text" name="field_of_study" id="field_of_study" 
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                            value={formData.field_of_study} onChange={handleChange} required>
+                            value={formData.field_of_study} required>
                             <option value=""></option>
                             <option value="BWU">BWU</option>
                             <option value="BIXD">BIXD</option>

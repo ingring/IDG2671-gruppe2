@@ -18,7 +18,7 @@ function ListElementBookedBy({tool, date, time, username}) {
 
 function ListBookedBy() {
 
-    const [username, setUsername] = useState('')
+    const [user, setUser] = useState('')
     const [data, setData] = useState([]);
   
     const axiosPrivate = useAxiosPrivate();
@@ -31,7 +31,9 @@ function ListBookedBy() {
                 const response = await axiosPrivate.get(`api/bookable_tools`, {
                     signal: controller.signal
                 })
-                isMounted && setData(response.data.bookings) && setUsername(response.data.username)
+                console.log('bookings: ', data)
+                console.log('username: ', user)
+                isMounted && setData(response.data.bookings) && setUser(response.data.username)
             }catch(err){
                 console.log(err)
             }
@@ -47,7 +49,7 @@ function ListBookedBy() {
             isMounted = false
             controller.abort()
         }
-    }, [data, username, axiosPrivate]);
+    }, [data, user, axiosPrivate]);
 
     return (         
         <List>
@@ -55,10 +57,10 @@ function ListBookedBy() {
         data.map((booking) => (
             <ListElement>
             <ListElementBookedBy
-                tool={booking.tool}
+                tool={booking.name}
                 date={booking.date}
                 time={booking.start_time}
-                username={username}
+                username={user}
             />
             </ListElement>
         ))

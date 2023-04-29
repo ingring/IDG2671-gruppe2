@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import List from "./List";
 import ListElement from "./ListElement";
+import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
 function ListElementToolsAdmin({tool, id}) {
     const url = `./admin/tools/${id}`
@@ -28,39 +29,38 @@ function ListElementToolsAdmin({tool, id}) {
 }
 
 function ListToolsAdmin() {
-    const tools = [
-        {
-            _id:'id',
-            tool:'Laserkutter',
-            date:'28.02.2023',
-            time:'14:00-19:00',
-            user:'Kari Nordmann'
-        }, 
-        {
-            _id:'id',
-            tool:'3D printer',
-            date:'16.03.2023',
-            time:'16:00-19:30',
-            user:'Ola Nordmann'
-        },
-        {
-            _id:'id',
-            tool:'Laserkutter',
-            date:'28.02.2023',
-            time:'14:00-19:00',
-            user:'Kari Nordmann'
-        }, 
-        {
-            _id:'id',
-            tool:'3D printer',
-            date:'16.03.2023',
-            time:'16:00-19:30',
-            user:'Ola Nordmann'
+    const [data, setData] = useState([]);
+  
+    const axiosPrivate = useAxiosPrivate();
+  
+    useEffect(() => {
+        let isMounted = true
+        const controller = new AbortController()
+        const getUser = async () => {
+            try {
+                const response = await axiosPrivate.get(`api/users`, {
+                    signal: controller.signal
+                })
+                isMounted && setData(response.data)
+            }catch(err){
+                console.log(err)
+            }
         }
-    ]
+
+        getUser()
+
+        if (!data) {
+            return <p>Loading...</p>;
+        }
+
+        return () => {
+            isMounted = false
+            controller.abort()
+        }
+    }, [axiosPrivate, data]);
     return (
         <List>
-            {tools.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.tool} id={tool._id} /> </ListElement>)}
+            {data.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.name} id={tool._id} /> </ListElement>)}
         </List> 
     )
 }
