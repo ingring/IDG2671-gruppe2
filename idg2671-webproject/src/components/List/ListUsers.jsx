@@ -6,6 +6,7 @@ import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
 function ListElementUsers({user, id, study, year}) {
     const url = `./admin/users/${id}`
+
     return (
         <div className="flex justify-between">
             <a href={url} className="flex w-3/4">
