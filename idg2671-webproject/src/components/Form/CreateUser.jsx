@@ -38,6 +38,7 @@ export default function CreateUser() {
           ...formData,
           [event.target.name]: event.target.value,
         });
+        console.log(formData)
       };
 
     return (
@@ -46,7 +47,7 @@ export default function CreateUser() {
                 <h1 className="text-xl md:text-2xl text-left mb-10">
                     Create / Modify user
                 </h1>
-                <p>Opp opp oppdatert, hvis du lurte hehe</p>
+                <p>console.log'jeg er lei'</p>
                 <form className="md:space-y-6 flex justify-start flex-col pb-3" onSubmit={handleSubmit}>
                 <div className="mb-6 md:mb-0">
                         <label for="firstname" className="block mb-2 text-left">First name</label>
