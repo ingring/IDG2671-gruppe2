@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import DisplayTool from "../components/DisplayTool/DisplayTool";
 import Image from '../assets/img/3d-printer.jpeg';
-
+import axios from "../axios/axios";
 
 function ToolPage() {
 
@@ -14,13 +14,8 @@ function ToolPage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        // URL'EN SAMSVARER MED ROUTESENE FRA API'EN, ER DU USIKKER SJEKK ROUTESENE DER.
-        // GJERNE TEST UT LINKEN I NETTLESEREN DIN FØRST, SLIK AT DU VET AT DET ER RIKTIG LINK
-        const response = await fetch(`https://webproject-api-production.up.railway.app/api/tools/${id}`);
-        const toolData = await response.json();
-
-        // SETT STATE SÅ DU KAN BRUKE DET SENERE I KODEN
-        setTool(toolData);
+        const response = await axios(`tools/${id}`);
+        setTool(response);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -37,8 +32,7 @@ function ToolPage() {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center pb-28 w-4/5">
-        {/* HER BRUKER VI DATAEN VI HAR FETCHA, tool ER EN STATE VI LAGDE OVER. HENT UT INFO AV TOOLEN MED SAMME NAVN SOM KEY'EN I DATABASEN */}
-        <DisplayTool 
+          <DisplayTool 
             title={tool.name}
             status={tool.status}
             course={tool.course} 
