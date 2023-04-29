@@ -64,6 +64,7 @@ function App() {
           <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
           <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/logout" element={<Logout/>}/>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/admin/allbookings" element={<AdminAllBookings />} />
           <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
