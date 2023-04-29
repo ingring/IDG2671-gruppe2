@@ -18,7 +18,7 @@ function ListElementBookedBy({tool, date, time, user}) {
 
 function ListBookedBy() {
 
-    const [username, setUsername] = useState([])
+    const [username, setUsername] = useState('')
     const [data, setData] = useState([]);
   
     const axiosPrivate = useAxiosPrivate();
@@ -39,9 +39,9 @@ function ListBookedBy() {
 
         getUser()
 
-        if (!data) {
-            return <p>Loading...</p>;
-        }
+        // if (!data) {
+        //     return <p>Loading...</p>;
+        // }
 
         return () => {
             isMounted = false
