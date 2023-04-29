@@ -8,7 +8,7 @@ export default function Cards() {
   
     useEffect(() => {
         async function fetchData() {
-            const url = 'bookable_tools';
+            const url = 'bookable_tools/toolsinfo';
             const response = await getAPI(url);
             setData(response);
         }
