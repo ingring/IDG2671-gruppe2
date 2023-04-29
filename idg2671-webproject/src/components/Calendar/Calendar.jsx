@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-
 import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
 import CalendarHeader from "./CalendarHeader";
 import Button from "../Button/Button";
-
+import { DateContext } from "../../context/CalendarContext";
 import "./Calendar.css";
+import { useContext } from "react";
+import { Link } from 'react-router-dom'
 
 // * Function to get values in booking
 export const useSelectedDate = () => {
@@ -47,6 +48,11 @@ function CalendarTime({ selectedDate }) {
   //const [selectedTime, setSelectedTime] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const {chosenTime, setChosenTime} = useContext(DateContext)
+
+  useEffect(()=> {
+    setChosenTime({start, end}) // Update chosenTime state
+  }, [start, end])
 
   // * Function to handle the select change event
   const handleTimeClick = (time) => {
@@ -133,8 +139,8 @@ function CalendarTime({ selectedDate }) {
           <button
             key={time}
             className={`
-            ${start === time ? "selected-start" : ""} 
-            ${end === time ? "selected-end" : ""} 
+            ${start === time ? "selected-start" : ""}
+            ${end === time ? "selected-end" : ""}
             ${selectedTimes.includes(time) ? "selected-between" : ""}
             ${isBookedTime(time, datesFromDatabase, selectedDate) ? "booked" : ""}
           `}
@@ -164,6 +170,7 @@ function CalendarTime({ selectedDate }) {
       )}
     </div>
   );
+
 }
 
 // Kilde: https://www.youtube.com/watch?v=5jRrVqRWqsM
@@ -172,6 +179,7 @@ export default function Calendar({ value, onChange }) {
   // State variable
   const [calendar, setCalendar] = useState([]);
   const [selectedDate, setSelectedDate] = useState(value);
+  const {chosenDate, setChosenDate} = useContext(DateContext)
 
   //Mounting the component
   useEffect(() => {
@@ -179,11 +187,11 @@ export default function Calendar({ value, onChange }) {
     setSelectedDate(value);
   }, [value]);
 
-
   function handleDateClick(day) {
     if (!beforeToday(day)) {
       setSelectedDate(day);
       onChange(day);
+      setChosenDate(day) // Update chosenDate state
     }
   }
 
@@ -225,8 +233,9 @@ export default function Calendar({ value, onChange }) {
 
       </div>
       <div className="flex mt-16 mb-20 justify-end px-20">
-        <Button className="continueBtn" type="submit" title="Continue" />
+        {/* <Button to="/tools/id/calendar/booking" role="button" className="continueBtn" title="Continue" /> */}
+        <Link to="/tools/id/calendar/booking" className="text-base flex items-center px-5 py-2 h-9 bg-blue-darker text-white hover:bg-blue-primary rounded-2xl shadow-md">Continue</Link>
       </div>
     </div>
   );
-}   
+}
