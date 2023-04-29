@@ -16,7 +16,6 @@ function ListElementBookedBy({ tool, date, time, username }) {
 }
 
 function ListBookedBy() {
-  const [user, setUser] = useState("");
   const [data, setData] = useState([]);
 
   const axiosPrivate = useAxiosPrivate();
@@ -26,11 +25,15 @@ function ListBookedBy() {
     const controller = new AbortController();
     const fetchData = async () => {
       try {
-        const response = await axiosPrivate.get(`api/users`, {
-          signal: controller.signal,
-        });
-        setData(response.data.bookings);
-        setUser(response.data.username);
+        const response = await axiosPrivate.get(`api/users`);
+        setData(response.data.reduce((bookings, user) => {
+          return bookings.concat(user.bookings.map(booking => {
+            return {
+              ...booking,
+              username: user.username
+            };
+          }));
+        }, []));
       } catch (err) {
         console.log(err);
       }
@@ -53,7 +56,7 @@ function ListBookedBy() {
               tool={booking.tool}
               date={booking.date}
               time={booking.start_time}
-              username={user}
+              username={booking.username}
             />
           </ListElement>
         ))
