@@ -1,7 +1,5 @@
 import React from "react";
 import Button from '../Button/Button';
-import { Link } from "react-router-dom";
-import withData from '../../helpers/withData';
 
 export default function Card(props) {
     return (

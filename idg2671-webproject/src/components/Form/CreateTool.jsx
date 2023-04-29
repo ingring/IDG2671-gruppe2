@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../../axios/axios"
 import InputButton from '../Button/InputButton';
 import Image from "./Image"
 
@@ -32,7 +32,7 @@ export default function CreateTool() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const result = await axios.post("http://localhost:3000/api/image", {
+        const result = await axios.post("api/image", {
             image: image
         })
         try {

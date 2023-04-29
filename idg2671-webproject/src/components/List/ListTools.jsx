@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import List from "./List";
 import ListElement from "./ListElement";
 import { Link } from "react-router-dom";
-
-// HER IMPORTER JEG HJELPEFUNKSJONEN
-import withData from '../../helpers/withData';
+import { getAPI } from "../../helpers/getAPI";
 
 function ListElementTool({tool}) {
     return (
@@ -21,19 +19,27 @@ function ListElementTool({tool}) {
     )
 }
 
-function ListTools(props) {
+function ListTools() {
 
-    if (props.loading) {
-        return <div>Loading...</div>;
-    }
-    
-    if (props.error) {
-        return <div>Error: {props.error}</div>;
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        async function fetchData() {
+            const url = 'tools';
+            const response = await getAPI(url);
+            setData(response);
+        }
+
+        fetchData();
+    }, []); // run only once, on mount
+
+    if (!data) {
+        return <p>Loading...</p>;
     }
 
     return (
         <List>
-            {props.data.map((tool, index) => (
+            {data.map((tool, index) => (
                 <ListElement key={index}>
                     <div className="flex flex-row justify-between items-center">
                         <ListElementTool tool={tool.name} /> 
@@ -49,6 +55,4 @@ function ListTools(props) {
     )
 }
 
-// HER BRUKER JEG HJELPEFUNKSJONEN HVOR JEG SIER HVILKET COMPONENT OG RESTEN AV LINKEN
-// I WITHDATA LIGGER FØRSTE DEL AV LINKEN SOM ER 
-export default withData(ListTools, 'tools');
+export default ListTools;

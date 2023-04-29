@@ -52,21 +52,16 @@ function ListMyBookings() {
 
         getUser()
 
+        if (!bookings) {
+            return <p>Loading...</p>;
+        }
+
         return () => {
             isMounted = false
             controller.abort()
         }
-    }, []);
+    }, [bookings, axiosPrivate, fullURL]);
 
-//    const retrieveMyBookings = () => {
-//         axios
-//           .get(`/`, )
-//           .then((response) => {
-//             setTools(response.data);
-//             // console.log(response.data);
-//           })
-//           .catch((err) => console.error(err));
-//       };
 
 return (
     <List>

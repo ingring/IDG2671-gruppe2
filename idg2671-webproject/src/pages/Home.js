@@ -1,32 +1,11 @@
 import Button from "../components/Button/Button";
-import Card from "../components/Card/Card";
+import Cards from "../components/Card/Cards";
 import Searchbar from "../components/Searchbar/Searchbar";
-import Image from "../assets/img/3d-printer.jpeg";
 import ListTools from "../components/List/ListTools";
 
 
-let bookableToolsFromDB = [
-  {
-    "name": "3D Printer",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
-  },
-  {
-    "name": "Laserkutter",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
-  },
-  {
-    "name": "3D Printer 3",
-    "imgSrc": Image,
-    "imgAlt": "",
-    "course": "HMS"
-  }
-]
-
 function HomePage() {
+
   return (
     <div className="bg-grey-lighter min-h-screen">
       <section className="flex flex-col md:flex-row bg-blue-lighter py-20 px-10 md:px-28 mb-24">
@@ -48,12 +27,11 @@ function HomePage() {
 
 
       <div className="flex flex-col items-center pb-28">
-        <h2 className="text-xl md:text-2xl mb-16">List of bookable tools</h2>
+
+      <h2 className="text-xl md:text-2xl mb-16">List of bookable tools</h2>
         <div className="flex flex-col justify-center items-center w-3/5 items-center">
           <div className='flex flex-col md:flex-row md:flex-wrap md:justify-between items-center mb-20'>
-            {bookableToolsFromDB.map((tool, index) => (
-              <Card key={index} title={tool.title} imgSrc={tool.imgSrc} imgAlt={tool.imgAlt} course={tool.course} />
-            ))}
+          <Cards />
           </div>
         </div>
         <h2 className="text-xl md:text-2xl mb-14">List of all tools available</h2>
