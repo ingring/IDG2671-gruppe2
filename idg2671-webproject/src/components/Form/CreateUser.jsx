@@ -4,8 +4,8 @@ import InputButton from '../Button/InputButton';
 
 export default function CreateUser({url}) {
     const [formData, setFormData] = useState({
-        firstname: "",
-        lastname: "",
+        firstName: "",
+        lastName: "",
         username: "",
         email: "",
         field_of_study: "",
