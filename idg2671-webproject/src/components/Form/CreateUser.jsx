@@ -4,8 +4,8 @@ import InputButton from '../Button/InputButton';
 
 export default function CreateUser({url}) {
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        firstname: "",
+        lastname: "",
         username: "",
         email: "",
         field_of_study: "",
@@ -19,8 +19,8 @@ export default function CreateUser({url}) {
         try {
           const response = await axiosPrivate.post(`api/users`, 
           {
-            first_name: formData.firstName,
-            last_name: formData.lastName,
+            first_name: formData.firstname,
+            last_name: formData.lastname,
             username: formData.username,
             email: formData.email,
             field_of_study: formData.field_of_study,
@@ -42,6 +42,7 @@ export default function CreateUser({url}) {
 
     return (
         <div className="flex items-center justify-center">
+            <p>Oppdatert hvis du lurte</p>
             <div className="w-full">
                 <h1 className="text-xl md:text-2xl text-left mb-10">
                     Create / Modify user
