@@ -29,27 +29,41 @@ function ListElementToolsAdmin({tool, id}) {
 }
 
 function ListToolsAdmin() {
-    const [data, setData] = useState([]);
+    const [tools, setTools] = useState([]);
+    const [bookableTools, setBookableTools] = useState([])
   
     const axiosPrivate = useAxiosPrivate();
   
     useEffect(() => {
         let isMounted = true
         const controller = new AbortController()
-        const getUser = async () => {
+        const getTools = async () => {
             try {
-                const response = await axiosPrivate.get(`api/users`, {
+                const response = await axiosPrivate.get(`api/tools`, {
                     signal: controller.signal
                 })
-                isMounted && setData(response.data)
+                isMounted && setTools(response.data)
             }catch(err){
                 console.log(err)
             }
         }
 
-        getUser()
+        const getBookableTools = async () => {
+            try {
+                const response = await axiosPrivate.get(`api/bookable_tools`, {
+                    signal: controller.signal
+                })
+                isMounted && setBookableTools(response.data)
+            }catch(err){
+                console.log(err)
+            }
+        }
 
-        if (!data) {
+        getTools()
+
+        getBookableTools()
+
+        if (!tools || !bookableTools) {
             return <p>Loading...</p>;
         }
 
@@ -57,10 +71,11 @@ function ListToolsAdmin() {
             isMounted = false
             controller.abort()
         }
-    }, [axiosPrivate, data]);
+    }, [axiosPrivate]);
     return (
         <List>
-            {data.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.name} id={tool._id} /> </ListElement>)}
+            {bookableTools.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.name} id={tool._id} /> </ListElement>)}
+            {tools.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.name} id={tool._id} /> </ListElement>)}
         </List> 
     )
 }
