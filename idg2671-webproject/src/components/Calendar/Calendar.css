@@ -166,3 +166,24 @@
 .continueBtn {
   margin-top: 100px;
 }
+
+@media only screen and (max-width: 768px) {
+  .component {
+    padding: 2rem;
+  }
+  .calendar-time-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .calendar {
+    width: 90%;
+    margin-bottom: 5vh;
+  }
+  .timeslots {
+    padding: 2rem 2rem 2rem;
+    width: 90%;
+
+  }
+}

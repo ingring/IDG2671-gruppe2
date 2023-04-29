@@ -13,7 +13,7 @@ function AdminToolsOverview() {
       </div>
       <AdminSubnav />
       <div className="mt-24 flex flex-col items-center justify-center w-full">
-          <div className="mb-24 w-3/5 md:w-1/5 lg:w-1/6">
+          <div className="mb-24 w-3/5 md:w-1/5">
             <CreateTool />
           </div>
           <div className="mb-24 w-3/4 md:w-2/5">
