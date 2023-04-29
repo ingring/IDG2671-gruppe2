@@ -28,7 +28,7 @@ function ListBookedBy() {
         const controller = new AbortController()
         const getUser = async () => {
             try {
-                const response = await axiosPrivate.get(`api/bookable_tools`, {
+                const response = await axiosPrivate.get(`/api/bookable_tools`, {
                     signal: controller.signal
                 })
                 isMounted && setData(response.data.bookings) && setUsername(response.data.username)

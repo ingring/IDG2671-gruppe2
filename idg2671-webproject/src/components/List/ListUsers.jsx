@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import List from "./List";
 import ListElement from "./ListElement";
+import AuthContext from "../../context/AuthProvider";
+import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
 function ListElementUsers({user, id, study, year}) {
     const url = `./admin/users/${id}`
@@ -30,35 +32,38 @@ function ListElementUsers({user, id, study, year}) {
 }
 
 function ListUsers() {
-    const users = [
-        {
-            _id:'id',
-            user:'Kari Nordmann',
-            study:'BWU',
-            year:'2021',
-        }, 
-        {
-            _id:'id',
-            user:'Ola Nordmann',
-            study:'BMED',
-            year:'2020',
-        },
-        {
-            _id:'id',
-            user:'Hans Hansen',
-            study:'BWU',
-            year:'2022',
-        }, 
-        {
-            _id:'id',
-            user:'Navn Navnesen',
-            study:'BIXD',
-            year:'2018',
+    const [data, setData] = useState([]);
+  
+    const axiosPrivate = useAxiosPrivate();
+  
+    useEffect(() => {
+        let isMounted = true
+        const controller = new AbortController()
+        const getUser = async () => {
+            try {
+                const response = await axiosPrivate.get(`api/users`, {
+                    signal: controller.signal
+                })
+                isMounted && setData(response.data)
+            }catch(err){
+                console.log(err)
+            }
         }
-    ]
+
+        getUser()
+
+        // if (!data) {
+        //     return <p>Loading...</p>;
+        // }
+
+        return () => {
+            isMounted = false
+            controller.abort()
+        }
+    }, [axiosPrivate]);
     return (
         <List>
-            {users.map((user) => <ListElement> <ListElementUsers user={user.user} id={user._id} study={user.study} year={user.year} /> </ListElement>)}
+            {data.map((user) => <ListElement> <ListElementUsers user={user.first_name + user.last_name} id={user._id} study='BWU' year='2021' /> </ListElement>)}
         </List> 
     )
 }
