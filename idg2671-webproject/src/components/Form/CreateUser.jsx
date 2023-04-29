@@ -9,6 +9,7 @@ export default function CreateUser() {
         username: "",
         email: "",
         field_of_study: "",
+        start_year: ""
       });
 
       const axiosPrivate = useAxiosPrivate();
@@ -25,7 +26,7 @@ export default function CreateUser() {
             username: formData.username,
             email: formData.email,
             field_of_study: formData.field_of_study,
-            start_year: '2023',
+            start_year: formData.start_year,
             password: 'password'
         });
           console.log(response.data);
@@ -48,7 +49,6 @@ export default function CreateUser() {
                 <h1 className="text-xl md:text-2xl text-left mb-10">
                     Create / Modify user
                 </h1>
-                <p>field of study length</p>
                 <form className="md:space-y-6 flex justify-start flex-col pb-3" onSubmit={handleSubmit}>
                 <div className="mb-6 md:mb-0">
                         <label for="firstname" className="block mb-2 text-left">First name</label>
@@ -79,12 +79,19 @@ export default function CreateUser() {
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
                             value={formData.field_of_study} onChange={handleChange} required>
                             <option value=""></option>
-                            <option value="Webutvikling">BWU</option>
-                            <option value="BIXD">BIXD</option>
-                            <option value="BMED">BMED</option>
-                            <option value="AARSWEB">AARSWEB</option>
-                            <option value="MIXD">MIXD</option>
+                            {/* The value is different because the field of study length is min 6ch */}
+                            <option value="Webutvikling bachelor">BWU</option>
+                            <option value="Interaksjonsdesign bachelor">BIXD</option>
+                            <option value="Grafisk design bachelor">BMED</option>
+                            <option value="webdesign bachelor">AARSWEB</option>
+                            <option value="Interaksjonsdesign master">MIXD</option>
                         </select>
+                    </div>
+                    <div className="mb-6 md:mb-0">
+                        <label for="start_year" className="block mb-2 text-left">Start year</label>
+                        <input type="text" name="start_year" id="start_year" 
+                            className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
+                            value={formData.start_year} onChange={handleChange} required></input>
                     </div>
                     <InputButton value="Submit" />
                 </form>
