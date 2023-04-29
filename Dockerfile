@@ -1,20 +1,14 @@
-# Use an official Node.js runtime as a parent image
 FROM node:14-alpine
 
-# Set the working directory to /app
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
+COPY ./idg2671-webproject/package.json ./
+COPY ./idg2671-webproject/package-lock.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application source code to the container
-COPY . .
+COPY ./idg2671-webproject ./
 
-# Build the application
 RUN npm run build
 
-# Set the command to run the application
-CMD ["npm", "start"]
+CMD [ "npm", "start" ]
