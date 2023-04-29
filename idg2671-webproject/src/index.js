@@ -5,15 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './context/AuthProvider';
+import { DateProvider } from './context/CalendarContext';
 
 // Ikke gjør noe her
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <DateProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </DateProvider>
     </AuthProvider>
   </React.StrictMode>
 );

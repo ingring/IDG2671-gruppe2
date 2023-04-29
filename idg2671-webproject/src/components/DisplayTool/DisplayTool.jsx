@@ -1,6 +1,7 @@
 import React from "react";
 import Button from '../Button/Button';
 
+//! Må hente tool-iden, la til i CalendarContext, men vekje om det er riktig
 function DisplayTool(props) {
     return (
         <div className="bg-grey-light rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-6 md:p-16">
