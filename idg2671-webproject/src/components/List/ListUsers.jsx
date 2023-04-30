@@ -64,7 +64,7 @@ function ListUsers() {
     }, [axiosPrivate]);
     return (
         <List>
-            {data.map((user) => <ListElement> <ListElementUsers user={user.first_name + ' ' + user.last_name} id={user._id} study='BWU' year='2021' /> </ListElement>)}
+            {data.map((user) => <ListElement> <ListElementUsers user={user.first_name + ' ' + user.last_name} id={user._id} study={user.field_of_study} year={user.start_year} /> </ListElement>)}
         </List> 
     )
 }
