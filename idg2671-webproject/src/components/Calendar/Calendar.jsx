@@ -4,11 +4,12 @@ import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
 import CalendarHeader from "./CalendarHeader";
 import Button from "../Button/Button";
+import AuthContext from "../../context/AuthProvider";
+import axios from "../../axios/axios";
 import { DateContext } from "../../context/CalendarContext";
 import "./Calendar.css";
 import { useContext } from "react";
 import { Link, useParams } from 'react-router-dom';
-import axios from '../../axios/axios'
 
 // * Function to get values in booking
 export const useSelectedDate = () => {
@@ -50,7 +51,8 @@ function CalendarTime({ selectedDate }) {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const {chosenTime, setChosenTime} = useContext(DateContext)
-  const [datesFromDatabase, setBookings] = useState([])
+  const [datesFromDatabase, setDatesFromDatabase] = useState([])
+  const { toolId, setToolId, toolName, setToolName } = useContext(AuthContext);
 
   let {id} = useParams()
   console.log(id)
@@ -60,14 +62,22 @@ function CalendarTime({ selectedDate }) {
     async function fetchData() {
       try {
         const response = await axios.get(`api/bookable_tools/${id}`);
-        setBookings(response.data)
-        console.log('bookings: ', response.data)
+        console.log('full tool', response.data)
+        console.log('bookings: ', response.data.bookings)
+        setDatesFromDatabase(response.data.bookings)
+        setToolId(response.data._id);
+        setToolName(response.data.name);
+        
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
     fetchData();
   }, [start, end])
+
+
+  const bookedDates= datesFromDatabase ? Object.values(datesFromDatabase).flat() : []
+  console.log('-----------dates', bookedDates)
 
   // * Function to handle the select change event
   const handleTimeClick = (time) => {
@@ -113,6 +123,8 @@ function CalendarTime({ selectedDate }) {
   //     end_time: '21:00'
   //   }
   // ]
+
+
 
   // * Functionality for timeslots between start-time and end-time
   const selectedTimes = [];
