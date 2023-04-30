@@ -10,6 +10,7 @@ export default function BookTool(props) {
     const formattedDate = chosenDate.format("D MMMM YYYY");
 
 
+
     return (
         <div className="flex bg-grey-light justify-center rounded-2xl shadow-md px-14 py-16 md:px-40">
             <form className="w-full" action="">

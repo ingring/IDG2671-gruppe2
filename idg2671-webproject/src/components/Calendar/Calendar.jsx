@@ -85,7 +85,7 @@ function CalendarTime({ selectedDate }) {
   };
 
 
-  // * Array
+  // * Old Array Data
   // const datesFromDatabase = [
   //   {
   //     date: '20-04-2023',
@@ -197,6 +197,9 @@ export default function Calendar({ value, onChange }) {
   const [selectedDate, setSelectedDate] = useState(value);
   const {chosenDate, setChosenDate} = useContext(DateContext)
 
+  let {id} = useParams()
+  console.log(id)
+
   //Mounting the component
   useEffect(() => {
     setCalendar(buildCalendar(value));
@@ -250,7 +253,7 @@ export default function Calendar({ value, onChange }) {
       </div>
       <div className="flex mt-16 mb-20 justify-end px-20">
         {/* <Button to="/tools/id/calendar/booking" role="button" className="continueBtn" title="Continue" /> */}
-        <Link to="/tools/id/calendar/booking" className="text-base flex items-center px-5 py-2 h-9 bg-blue-darker text-white hover:bg-blue-primary rounded-2xl shadow-md">Continue</Link>
+        <Link to={`/tools/${id}/calendar/booking`} className="text-base flex items-center px-5 py-2 h-9 bg-blue-darker text-white hover:bg-blue-primary rounded-2xl shadow-md">Continue</Link>
       </div>
     </div>
   );
