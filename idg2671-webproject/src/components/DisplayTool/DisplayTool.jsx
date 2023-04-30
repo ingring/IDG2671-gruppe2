@@ -1,12 +1,53 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { getAPI } from "../../helpers/getAPI";
+import useAxiosPrivate from "../../axios/useAxiosPrivate"
+import AuthContext from "../../context/AuthProvider";
 import Button from '../Button/Button';
+
+const toolURL = 'api/bookable_tools';
 
 //! Må hente tool-iden, la til i CalendarContext, men vekje om det er riktig
 function DisplayTool(props) {
+
+    // // const [bookings, setBookings] = useState([]);
+    // const axiosPrivate = useAxiosPrivate();
+    // const { auth } = useContext(AuthContext);
+    // console.log(auth)
+    // const fullURL = userURL + auth.username;
+    // console.log(fullURL);
+  
+    // useEffect(() => {
+    //     let isMounted = true
+    //     const controller = new AbortController()
+    //     const getUser = async () => {
+    //         try {
+    //             const response = await axiosPrivate.get(fullURL, {
+    //                 signal: controller.signal
+    //             })
+    //             console.log('res: ',response);
+    //             console.log('bookins: ', response.data.bookings)
+    //             isMounted && setBookings(response.data.bookings)
+    //         }catch(err){
+    //             console.log(err)
+    //         }
+    //     }
+
+    //     getUser()
+
+    //     if (!bookings) {
+    //         return <p>Loading...</p>;
+    //     }
+
+    //     return () => {
+    //         isMounted = false
+    //         controller.abort()
+    //     }
+    // }, [bookings, axiosPrivate, fullURL]);
+
     return (
         <div className="bg-grey-light rounded-2xl shadow-md flex flex-col content-center max-w-prose m-auto p-6 md:p-16">
             {/* <h1 className="mb-5 text-3xl">{props.title}</h1> */}
-            <h1 className="text-center md:text-left md:mb-2 text-2xl md:text-3xl">Laserkutter</h1>
+            <h1 className="text-center md:text-left md:mb-2 text-2xl md:text-3xl">{props.name}</h1>
             {/* Kan vi få bildet like vidt som container? */}
             <img className="my-6 md:my-10 rounded-md" src={props.imgSrc} alt={props.imgAlt} />
             <div className="flex items-center">

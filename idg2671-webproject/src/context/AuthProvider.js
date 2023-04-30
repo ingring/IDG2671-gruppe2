@@ -7,9 +7,10 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('');
     const [accesstoken, setAccesstoken] = useState('')
     const [persist, setPersist] = useState(JSON.parse(localStorage.getItem("persist")) || false);
+    const [tool, setTool] = useState('');
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth, setUser, user, accesstoken, setAccesstoken, persist, setPersist }}>
+        <AuthContext.Provider value={{ auth, setAuth, setUser, user, accesstoken, setAccesstoken, persist, setPersist, tool, setTool }}>
             {children}
         </AuthContext.Provider>
     )
