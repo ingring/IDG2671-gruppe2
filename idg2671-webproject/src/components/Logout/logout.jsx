@@ -19,6 +19,10 @@ function Logout() {
         //refreshes the window to show that the user is logged out
         window.location.reload()
       }
+
+      if (response.status === 204) {
+        
+      }
     };
     doLogout();
   }, [navigate]);
