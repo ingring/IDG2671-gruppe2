@@ -7,7 +7,7 @@ export default function Card(props) {
             <h3 className="font-bold pb-7 text-base">{props.title}</h3>
             <img className="rounded-md mb-8" src={props.imgSrc} alt={props.imgAlt} />
             <p className="pb-7 text-sm md:text-base">Course: {props.course}</p>
-            <Button to="" title="Book"/>
+            <Button to={props.to} title="Book"/>
         </div>
     )
 }

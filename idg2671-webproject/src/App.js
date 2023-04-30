@@ -61,8 +61,8 @@ function App() {
           <Route path="/tools" element={<ToolsPage />} />
           <Route path="/tools/:id" element={<ToolPage />} />
           {/* <Route path="/tools/id" element={<ToolPage />} /> */}
-          <Route path="/tools/id/calendar" element={<BookingCalendarPage />} />
-          <Route path="/tools/id/calendar/booking" element={<BookingPage />} />
+          <Route path="/tools/:id/calendar" element={<BookingCalendarPage />} />
+          <Route path="/tools/:id/calendar/booking" element={<BookingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<Logout/>}/>
           <Route path="/admin" element={<AdminPage />} />

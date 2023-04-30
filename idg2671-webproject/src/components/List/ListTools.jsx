@@ -7,12 +7,7 @@ import { getAPI } from "../../helpers/getAPI";
 function ListElementTool({tool}) {
     return (
         <div key={tool}>
-            <Link
-                to={{
-                    pathname: `/tools/${tool}`,
-                    state: { tools: tool } 
-                }}
-            >
+            <Link to={{pathname:`/tools/${tool}`, state: { tools: tool } }}>
                 {tool}
             </Link>
         </div>
