@@ -78,9 +78,8 @@ export default function CreateTool() {
                     </div>
                     <div className="pb-14 md:pb-6">
                         <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
-                        <input type="file" name="image" id="fileInput" onChange={e => handleChange(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light" required></input>
+                        <input type="file" name="image" id="fileInput" onChange={e => handleChange(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" required></input>
                         <img src={image} alt="" />
-                        {/* <Image uploadedImg={uploadedImg}/>  */}
                     </div>
                     <InputButton value="Submit" />
                 </form>

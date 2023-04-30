@@ -55,7 +55,7 @@ function ListBookedBy() {
             <ListElementBookedBy
               tool={booking.tool}
               date={booking.date}
-              time={booking.start_time}
+              time={booking.start_time + " - " + booking.end_time}
               username={booking.username}
             />
           </ListElement>

@@ -32,7 +32,7 @@ function ListElementToolsAdmin({tool, id, type}) {
     return (
         <div className="flex justify-between">
             {tool}
-            <div className="flex">
+            <div className="flexd">
 
                 {/* change the booking - PUT? */}
                 <a href={url} className="px-4">
