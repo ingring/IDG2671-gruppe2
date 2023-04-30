@@ -60,7 +60,7 @@ function ListMyBookings() {
             isMounted = false
             controller.abort()
         }
-    }, [bookings, axiosPrivate, fullURL]);
+    }, []);
 
     // const formattedDate = bookings.date.format("D MMMM YYYY");
 

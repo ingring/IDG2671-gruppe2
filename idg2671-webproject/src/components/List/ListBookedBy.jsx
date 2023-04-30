@@ -45,7 +45,7 @@ function ListBookedBy() {
       isMounted = false;
       controller.abort();
     };
-  }, [axiosPrivate]);
+  }, []);
 
   return (
     <List>
