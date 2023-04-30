@@ -5,6 +5,7 @@ import DisplayTool from "../components/DisplayTool/DisplayTool";
 import Image from '../assets/img/3d-printer.jpeg';
 import axios from "../axios/axios";
 
+// ! Slette denne siden? Er den nødvendig?
 function ToolPage() {
 
   let {id} = useParams()

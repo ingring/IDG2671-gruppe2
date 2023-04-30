@@ -19,11 +19,12 @@ export default function Cards() {
     if (!data) {
         return <p>Loading...</p>;
     }
+
   
     return (
       <>
       {data.map((tool, index) => (
-        <Card key={index} title={tool.name} imgSrc={Image} imgAlt={tool.imgAlt} course={tool.course} />
+        <Card key={index} to={`/tools/${tool.name}/calendar`} title={tool.name} imgSrc={Image} imgAlt={tool.imgAlt} course={tool.course} />
       ))}
       </>
     )
