@@ -11,10 +11,10 @@ const userURL = 'api/users/';
 function ListElementMyBookings({ tool, date, time }) {
     return (
         <div className="flex justify-between">
-            <a href='./tools/id' className="flex justify-between w-5/6">
-                <span className="w-1/4 px-4 min-w-fit">{tool}</span>
-                <span className="w-1/4 px-4 min-w-fit">{date}</span>
-                <span className="w-1/4 px-4 min-w-fit">{time}</span>
+            <a href='./tools/id' className="flex justify-between w-5/6 items-center">
+                <span className="w-1/4 md:w-2/4 px-4 ">{tool}</span>
+                <span className="w-3/4 px-4">{date}</span>
+                <span className="w-2/4 px-4">{time}</span>
             </a>
             {/* Deletes the booking */}
             <button>
@@ -62,6 +62,7 @@ function ListMyBookings() {
         }
     }, []);
 
+    // const formattedDate = bookings.date.format("D MMMM YYYY");
 
 return (
     <List>

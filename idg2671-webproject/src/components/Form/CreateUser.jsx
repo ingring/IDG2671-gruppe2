@@ -73,7 +73,7 @@ export default function CreateUser() {
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
                             value={formData.email} onChange={handleChange} required></input>
                     </div>
-                    <div className="pb-14 md:pb-6">
+                    <div className="pb-14 md:pb-0">
                         <label for="field_of_study" className="block mb-2 text-left">Field of study</label>
                         <select type="text" name="field_of_study" id="field_of_study" 
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
@@ -87,7 +87,7 @@ export default function CreateUser() {
                             <option value="Interaksjonsdesign master">MIXD</option>
                         </select>
                     </div>
-                    <div className="mb-6 md:mb-0">
+                    <div className="mb-6 md:mb-6">
                         <label for="start_year" className="block mb-2 text-left">Start year</label>
                         <input type="text" name="start_year" id="start_year" 
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 

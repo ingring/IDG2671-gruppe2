@@ -35,7 +35,7 @@ export default function RequestTool(){
       };
     return(
         <div className="flex items-center justify-center w-full">
-            <form className="flex justify-start flex-col pb-6 w-3/5 md:w-1/5" onSubmit={handleSubmit}>
+            <form className="flex justify-start flex-col pb-3 w-4/4 md:w-1/5 lg:w-1/6" onSubmit={handleSubmit}>
                 <div className="pb-6">
                     <label for="toolname" className="block mb-2 text-left">Name of tool</label>
                     <input type="text" name="toolname" id="toolname" 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "./Card";
 import Image from "../../assets/img/3d-printer.jpeg";
 import { getAPI } from "../../helpers/getAPI";
@@ -11,6 +11,7 @@ export default function Cards() {
             const url = 'bookable_tools/toolsinfo';
             const response = await getAPI(url);
             setData(response);
+            console.log('response:', response.data)
         }
   
         fetchData();
@@ -19,11 +20,12 @@ export default function Cards() {
     if (!data) {
         return <p>Loading...</p>;
     }
+
   
     return (
       <>
       {data.map((tool, index) => (
-        <Card key={index} title={tool.name} imgSrc={Image} imgAlt={tool.imgAlt} course={tool.course} />
+        <Card key={index} to={`/tools/${tool._id}/calendar`} title={tool.name} imgSrc={Image} imgAlt={tool.imgAlt} course={tool.course} />
       ))}
       </>
     )

@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import List from "./List";
 import ListElement from "./ListElement";
-import AuthContext from "../../context/AuthProvider";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
 function ListElementUsers({user, id, study, year}) {
@@ -53,15 +52,15 @@ function ListUsers() {
 
         getUser()
 
-        // if (!data) {
-        //     return <p>Loading...</p>;
-        // }
+        if (!data) {
+            return <p>Loading...</p>;
+        }
 
         return () => {
             isMounted = false
             controller.abort()
         }
-    }, [axiosPrivate]);
+    }, []);
     return (
         <List>
             {data.map((user) => <ListElement> <ListElementUsers user={user.first_name + ' ' + user.last_name} id={user._id} study={user.field_of_study} year={user.start_year} /> </ListElement>)}
