@@ -59,7 +59,7 @@ function Login() {
         <div className="flex flex-col items-center justify-center">
             <div className="w-full">
 
-                    <form className="md:space-y-6 flex justify-start flex-col pb-3" action="#" onSubmit={handleSubmit}>
+                    <form className="md:space-y-6 flex justify-start flex-col pb-3 w-4/4" action="#" onSubmit={handleSubmit}>
                     <div className="mb-6 md:mb-0">
                             <label for="username" className="block mb-2 text-left">Username</label>
                             <input type="username" name="username" id="username" className="text-left border border-grey-mediumLight p-2 h-9 rounded-md w-full" required="" onChange={handleChange}></input>
