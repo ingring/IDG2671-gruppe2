@@ -3,7 +3,7 @@ import InputButton from "../Button/InputButton";
 import { DateContext } from '../../context/CalendarContext';
 const moment = require('moment');
 
-export default function BookTool(props) {
+export default function BookTool() {
 
     const {chosenDate, chosenTime} = useContext(DateContext)
     console.log(chosenTime);
@@ -16,7 +16,7 @@ export default function BookTool(props) {
             <form className="w-full" action="">
                 <div className="pb-2">
                     <label htmlFor="tool" className="text-xl mb-4 text-left">Tool</label>
-                    <p name="tool" id="tool" className="mb-8">{props.tool}</p>
+                    <p name="tool" id="tool" className="mb-8">Her skal navnet være</p>
                 </div>
                 <div className="pb-2">
                     <label htmlFor="date" className="text-xl mb-4 text-left">Date</label>
