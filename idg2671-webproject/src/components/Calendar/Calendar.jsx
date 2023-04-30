@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import moment from "moment";
 import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
@@ -7,7 +7,8 @@ import Button from "../Button/Button";
 import { DateContext } from "../../context/CalendarContext";
 import "./Calendar.css";
 import { useContext } from "react";
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom';
+import axios from '../../axios/axios'
 
 // * Function to get values in booking
 export const useSelectedDate = () => {
@@ -49,9 +50,23 @@ function CalendarTime({ selectedDate }) {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const {chosenTime, setChosenTime} = useContext(DateContext)
+  const [datesFromDatabase, setBookings] = useState([])
+
+  let {id} = useParams()
+  console.log(id)
 
   useEffect(()=> {
     setChosenTime({start, end}) // Update chosenTime state
+    async function fetchData() {
+      try {
+        const response = await axios.get(`api/bookable_tools/${id}`);
+        setBookings(response.data)
+        console.log('bookings: ', response.data)
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    fetchData();
   }, [start, end])
 
   // * Function to handle the select change event
@@ -69,34 +84,35 @@ function CalendarTime({ selectedDate }) {
     }
   };
 
+
   // * Array
-  const datesFromDatabase = [
-    {
-      date: '20-04-2023',
-      start_time: '10:00',
-      end_time: '12:00'
-    },
-    {
-      date: '22-04-2023',
-      start_time: '09:15',
-      end_time: '13:00'
-    },
-    {
-      date: '20-04-2023',
-      start_time: '13:15',
-      end_time: '15:45'
-    },
-    {
-      date: '22-04-2023',
-      start_time: '13:30',
-      end_time: '15:00'
-    },
-    {
-      date: '25-04-2023',
-      start_time: '18:00',
-      end_time: '21:00'
-    }
-  ]
+  // const datesFromDatabase = [
+  //   {
+  //     date: '20-04-2023',
+  //     start_time: '10:00',
+  //     end_time: '12:00'
+  //   },
+  //   {
+  //     date: '22-04-2023',
+  //     start_time: '09:15',
+  //     end_time: '13:00'
+  //   },
+  //   {
+  //     date: '20-04-2023',
+  //     start_time: '13:15',
+  //     end_time: '15:45'
+  //   },
+  //   {
+  //     date: '22-04-2023',
+  //     start_time: '13:30',
+  //     end_time: '15:00'
+  //   },
+  //   {
+  //     date: '25-04-2023',
+  //     start_time: '18:00',
+  //     end_time: '21:00'
+  //   }
+  // ]
 
   // * Functionality for timeslots between start-time and end-time
   const selectedTimes = [];
