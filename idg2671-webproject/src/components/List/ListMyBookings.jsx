@@ -60,7 +60,7 @@ function ListMyBookings() {
             isMounted = false
             controller.abort()
         }
-    }, [bookings, axiosPrivate, fullURL]);
+    }, []);
 
 
 return (

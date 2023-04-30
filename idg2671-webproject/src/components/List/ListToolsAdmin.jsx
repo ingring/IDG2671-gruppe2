@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import List from "./List";
 import ListElement from "./ListElement";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
@@ -95,7 +95,7 @@ function ListToolsAdmin() {
             isMounted = false
             controller.abort()
         }
-    }, [axiosPrivate]);
+    }, []);
     return (
         <List>
             {bookableTools.map((tool) => <ListElement> <ListElementToolsAdmin tool={tool.name} id={tool._id} type='bookable' /> </ListElement>)}
