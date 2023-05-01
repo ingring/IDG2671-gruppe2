@@ -131,8 +131,11 @@ export default function ModifyTool({fullUrl}) {
 
     return (
         <div className="mb-24 w-3/5 md:w-1/5">
+        <h1 className="text-xl md:text-2xl text-left mb-1">
+            Modify tool:
+        </h1>
         <h1 className="text-xl md:text-2xl text-left mb-10">
-            Modify tool: {id}
+            {id}
         </h1>
         <div className="flex items-center justify-center">
             <div className="w-full">
@@ -187,9 +190,9 @@ export default function ModifyTool({fullUrl}) {
                     )}
                     <div className="mb-6 md:mb-0">
                         <label for="description" className="block mb-2 text-left">Description</label>
-                        <input type="text" name="description" id="description" className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
+                        <textarea name="description" id="description" className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
                         value={description} onChange={e => handleChange("description", e.target.value)}
-                        required></input>
+                        required></textarea>
                     </div>
                     <div className="pb-14 md:pb-6">
                         <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>

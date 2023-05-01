@@ -31,7 +31,7 @@ function ListElementToolsAdmin({tool, id, type}) {
     return (
         <div className="flex justify-between">
             {tool}
-            <div className="flexd">
+            <div className="flex w-14 justify-between">
 
                 {/* change the booking - PUT? */}
                 {/* <a href={url} className="px-4"> */}

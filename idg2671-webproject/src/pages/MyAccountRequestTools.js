@@ -12,7 +12,7 @@ function MyAccountRequestTool() {
       </div>
       <MyAccountSubnav />
       <div className="py-28 flex flex-col items-center justify-center w-full">
-        <div className=" w-fit w-3/4 md:w-1/5 px-6 md:px-0">
+        <div className="w-fit w-3/4 md:w-1/5 px-6 md:px-0">
           <h2 className="text-xl md:text-2xl mb-16">Request new tool</h2>
           <RequestTool />
         </div>
