@@ -34,7 +34,7 @@ export default function Nav() {
   return (
     <div className="shadow-md w-full top-0 left-0">
       <div className="flex flex flex-wrap items-center justify-between text-base bg-blue-darker px-10 h-16">
-        <img className="h-6 mr-3" src={NtnuLogoSmallWhite} alt="NTNU logo small"/>
+        <Link to="/"><img className="h-6 mr-3" src={NtnuLogoSmallWhite} alt="NTNU logo small"/></Link>
         <ul className="flex items-center">{Links.map((link) => (
             <li key={link.name} className="md:ml-9">
               <Link to={link.link} className={`text-white hover:font-bold ${

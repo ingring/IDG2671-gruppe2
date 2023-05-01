@@ -1,55 +1,92 @@
 import React, { useState, useEffect, useContext } from "react";
 import InputButton from '../Button/InputButton';
-
 import AuthContext from "../../context/AuthProvider";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
+import axios from "../../axios/axios"
 
-export default function RequestTool(){
-    const [formData, setFormData] = useState({
-        toolname: "",
-        description: "",
-      });
+export default function RequestTool() {
 
-      const axiosPrivate = useAxiosPrivate();
-    
-      const handleSubmit = async (event) => {
-        event.preventDefault();
-    
-        try {
-          const response = await axiosPrivate.post(`api/tool`, 
-          {
-            tool: formData.toolname,
-            description: formData.description
+  // Image cloudinary states
+  const [file, setFile] = useState("");
+  const [image, setImage] = useState("");
+
+  //! other states 
+  // const [url, seturl] = useState('');
+  // const [tool, setTool] = useState('');
+  // const [description, setDecsription] = useState('');
+
+  // File reader to turn it into an readable url
+  function previewFiles(file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    // Show image result on page
+    reader.onloadend = () => {
+      console.log('Reader result: ' + reader.result);
+      setImage(reader.result);
+    }
+  }
+
+  // * FormData
+  const [formData, setFormData] = useState({
+    toolname: "",
+    description: "",
+    image: ""
+  });
+
+  const axiosPrivate = useAxiosPrivate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axiosPrivate.post(`api/tool`,
+        {
+          tool: formData.toolname,
+          description: formData.description,
+          image: formData.image,
         });
-          console.log(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-    
-      const handleChange = (event) => {
-        setFormData({
-          ...formData,
-          [event.target.name]: event.target.value,
-        });
-      };
-    return(
-        <div className="flex items-center justify-center w-full">
-            <form className="flex justify-start flex-col pb-3 w-4/4 md:w-1/5 lg:w-1/6" onSubmit={handleSubmit}>
-                <div className="pb-6">
-                    <label for="toolname" className="block mb-2 text-left">Name of tool</label>
-                    <input type="text" name="toolname" id="toolname" 
-                        className="text-left border-grey-mediumLight p-2 h-8 rounded-md w-full" 
-                        value={formData.toolname} onChange={handleChange} required></input>
-                </div>
-                <div className="pb-6">
-                    <label for="description" className="block mb-2 text-left">Description</label>
-                    <input type="text" name="description" id="description" placeholder="Usage..." 
-                        className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
-                        value={formData.description} onChange={handleChange} required></input>
-                </div>
-                <InputButton value="Request tool" />
-            </form>
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const file = e.target.files[0]; // Get the 0 index of the file, which is the image
+    // console.log(e.target.files[0]);
+    setFile(file);
+    previewFiles(file); // Enables you to see your uploaded file
+    // setTool(tool)
+    // setDecsription(description)
+
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+  return (
+    <div className="flex items-center justify-center">
+      <form className="md:space-y-6 flex justify-start flex-col pb-3" onSubmit={e => handleSubmit(e)}>
+        <div className="mb-6 md:mb-0">
+          <label for="toolname" className="block mb-2 text-left">Name of tool</label>
+          <input type="text" name="toolname" id="toolname"
+            className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full"
+            value={formData.toolname} onChange={handleChange} required></input>
         </div>
-    )
+        <div className="mb-6 md:mb-0">
+          <label for="description" className="block mb-2 text-left">Description</label>
+          <input type="text" name="description" id="description" placeholder="Usage..."
+            className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20"
+            value={formData.description} onChange={handleChange} required></input>
+        </div>
+        <div className="pb-14 md:pb-6">
+          <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
+          <input type="file" name="image" id="fileInput" onChange={e => handleChange(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" required></input>
+          <img src={image} alt="" />
+        </div>
+        <InputButton value="Request tool" />
+      </form>
+    </div>
+  )
 }
