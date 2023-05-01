@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import ListToolsAdmin from "../components/List/ListToolsAdmin";
 import ListBrokenTools from "../components/List/ListBrokenTools";
+import ListRequestedTool from "../components/List/ListRequestedTool";
 import CreateTool from "../components/Form/CreateTool";
 import { Link } from "react-router-dom";
 import Button from "../components/Button/Button";
@@ -24,7 +25,7 @@ function Lists() {
           </div>
           <div className="mb-24 w-3/4 md:w-2/5">
             <h2 className="text-xl md:text-2xl mb-6">Requested new tools</h2>
-            <ListBrokenTools />
+            <ListRequestedTool />
           </div>
         </>
     )
