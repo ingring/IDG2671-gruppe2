@@ -12,17 +12,15 @@ const LOGIN_URL = 'api/users/login';
 
 function Login() {
     const navigate = useNavigate();
-
     const refresh = useRefreshToken();
     const { setAuth, auth, user, setUser, accesstoken, setAccesstoken } = useContext(AuthContext);
   
     const [state, setState] = useState({ })
+    const [errorMsg, setErrorMsg]  = useState('')
   
     const handleChange = (event) => {
-        console.log('HS')
       const { name, value } = event.target
       setState(prevState => ({ ...prevState, [name]: value}))
-      console.log(state);
     }
   
     const handleSubmit = async (event) => {
@@ -36,9 +34,6 @@ function Login() {
                     withCredentials: true
         }
         )
-        console.log('response: ', response)
-        console.log('username:', state.username);
-        console.log(response)
         const accesstoken = response?.data?.accesstoken;
         //setUser(state.username)
         setAuth({accesstoken:accesstoken})
@@ -48,7 +43,8 @@ function Login() {
         console.log('token: ', auth.accesstoken);
         if(accesstoken) navigate('/');
       } catch (err) {
-        console.log(err)
+        console.log(err.response)
+        setErrorMsg(err.response?.data || 'An error occurred. Please try again later.')
       }
 
     }
@@ -69,9 +65,9 @@ function Login() {
                             <input type="password" name="password" id="password" className="text-left border border-grey-mediumLight p-2 h-9 rounded-md w-full" required="" onChange={handleChange}></input>
                         </div>
                         <InputButton value="Submit" />
+                        {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
                     </form>
                 </div>
-                <button onClick={() => refresh()}>refresh</button>
             </div>
 
         {/* <div className="flex items-center justify-center w-2/6">
