@@ -12,9 +12,8 @@ function Lists() {
         <div className="mb-24 w-3/4 md:w-2/5">
             <div className="flex justify-between">
             <h2 className="text-xl md:text-2xl mb-6">Tools overview</h2> 
-            <Button to='/admin/toolsOverview/createTool'title='Add a tool' />  
+            <Button to='/admin/toolsOverview/createTool'title='Add tool' />  
             </div>
-            <Link to="/admin/toolsOverview/createTool">Add a tool</Link>
             <ListToolsAdmin />
           </div>
           <div className="mb-24 w-3/4 md:w-2/5">
@@ -30,6 +29,17 @@ function Lists() {
 }
 
 function CreateToolForm() {
+    return(
+        <div className="mb-24 w-3/5 md:w-1/5">
+            <h1 className="text-xl md:text-2xl text-left mb-10">
+                Create / Modify tool
+            </h1>
+            <CreateTool url='/api/users' />
+        </div>
+    )
+}
+
+function ModifyToolForm() {
     return(
         <div className="mb-24 w-3/5 md:w-1/5">
             <h1 className="text-xl md:text-2xl text-left mb-10">
