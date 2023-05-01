@@ -15,13 +15,11 @@ export default function Nav() {
   let myAccountLink = { name: "My account", link: "/MyAccount/UserInformation" };
   console.log('role: ', role)
   
-
   let Links = [
     { name: "Home", link: "/" },
     { name: "Tools", link: "/Tools" },
     
   ];
-
 
   if(auth.accesstoken) {
     loginState = 'Logout';
