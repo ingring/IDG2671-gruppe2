@@ -11,15 +11,18 @@ export default function CreateUser() {
         field_of_study: "",
         start_year: ""
       });
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
+
 
       const axiosPrivate = useAxiosPrivate();
     
       const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log('inni submit: ', formData)
-    
+        console.log('inni submit: ', formData);
         try {
-          const response = await axiosPrivate.post(`api/users`, 
+          console.log('test')
+          const response = await axiosPrivate.post('api/users', 
           {
             first_name: formData.firstname,
             last_name: formData.lastname,
@@ -30,8 +33,20 @@ export default function CreateUser() {
             password: 'password'
         });
           console.log(response.data);
-        } catch (error) {
-          console.error(error);
+          setErrorMsg('')
+          setSuccessMsg(`User created: ${formData.username}`);
+          setFormData({
+            firstname: "",
+            lastname: "",
+            username: "",
+            email: "",
+            field_of_study: "",
+            start_year: ""
+          })
+        } catch (err) {
+          console.log('failed')
+          setSuccessMsg('');
+          setErrorMsg(err.response?.data || 'An error occurred. Please try again later.')
         }
       };
     
@@ -80,11 +95,11 @@ export default function CreateUser() {
                             value={formData.field_of_study} onChange={handleChange} required>
                             <option value=""></option>
                             {/* The value is different because the field of study length is min 6ch */}
-                            <option value="Webutvikling bachelor">BWU</option>
-                            <option value="Interaksjonsdesign bachelor">BIXD</option>
-                            <option value="Grafisk design bachelor">BMED</option>
-                            <option value="webdesign bachelor">AARSWEB</option>
-                            <option value="Interaksjonsdesign master">MIXD</option>
+                            <option value="BWU">BWU</option>
+                            <option value="BIXD">BIXD</option>
+                            <option value="BMED">BMED</option>
+                            <option value="ÅRSWEB">AARSWEB</option>
+                            <option value="MIXD">MIXD</option>
                         </select>
                     </div>
                     <div className="mb-6 md:mb-6">
@@ -94,6 +109,8 @@ export default function CreateUser() {
                             value={formData.start_year} onChange={handleChange} required></input>
                     </div>
                     <InputButton value="Submit" />
+                    {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
+                    {successMsg && <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"><p className="block sm:inline">{successMsg}</p></div>}
                 </form>
             </div>
         </div>
