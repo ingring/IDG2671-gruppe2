@@ -10,6 +10,11 @@ import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 export default function ModifyTool({fullUrl}) {
     const axiosPrivate = useAxiosPrivate();
 
+    // Image cloudinary
+    const [file, setFile] = useState("");
+    const [image, setImage] = useState("");
+    const [uploadedImg, setUploadedImg] = useState("");
+
     // other states 
     const [tool, setTool] = useState('');
     const [description, setDescription] = useState('');
@@ -39,6 +44,8 @@ export default function ModifyTool({fullUrl}) {
                 } else {
                     setQuantity(response.data.quantity);
                 }
+
+                setImage(response.data.image)
                 
             } catch (error) {
                 // If an error occurs during the API request, log the error and return null
@@ -49,12 +56,6 @@ export default function ModifyTool({fullUrl}) {
         getToolData();
 
     }, []); // run only once, on mount
-
-
-    // Image cloudinary
-    const [file, setFile] = useState("");
-    const [image, setImage] = useState("");
-    const [uploadedImg, setUploadedImg] = useState("");
 
 
 
