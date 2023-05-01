@@ -51,11 +51,9 @@ function ListUsers() {
         }
 
         getUser()
-
         if (!data) {
             return <p>Loading...</p>;
         }
-
         return () => {
             isMounted = false
             controller.abort()
