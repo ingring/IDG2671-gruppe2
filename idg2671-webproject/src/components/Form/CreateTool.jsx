@@ -10,7 +10,6 @@ export default function CreateTool() {
     // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState("");
-    const [uploadedImg, setUploadedImg] = useState("");
 
     // other states 
     const [url, seturl] = useState('tools');
@@ -83,7 +82,7 @@ export default function CreateTool() {
         const request = {
             name: tool, 
             description: description,
-            image: file //det var endret til file i main - stemmer det?
+            image: image //det var endret til file i main - stemmer det? Lisa: Fikset tilbake til image
         };
     
         if (url === 'bookable_tool') {
@@ -109,14 +108,14 @@ export default function CreateTool() {
         <div className="flex items-center justify-center">
             <div className="w-full">
                 <form onSubmit={e => handleSubmit(e)} className="md:space-y-6 flex justify-start flex-col pb-3">
-                    <div className="flex justify-between">
+                    <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-0">
                         <div>
                             <input type="radio" id="tools" name="tools" value="tools" checked={!bookable} onChange={handleType} />
-                            <label htmlFor="tool" className="px-2">Regular</label>
+                            <label htmlFor="tool" className="px-2">Regular tool</label>
                         </div>
                         <div>
                             <input type="radio" id="bookable_tools" name="tools" value="bookable_tools" checked={bookable} onChange={handleType} />
-                            <label htmlFor="bookable_tools" className="px-2">Bookable</label>
+                            <label htmlFor="bookable_tools" className="px-2">Bookable tool</label>
                         </div>
                     </div>
                     <div className="mb-6 md:mb-0">
@@ -169,13 +168,13 @@ export default function CreateTool() {
                     )}
                     <div className="mb-6 md:mb-0">
                         <label for="description" className="block mb-2 text-left">Description</label>
-                        <input type="text" name="description" id="description" className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
+                        <textarea  name="description" id="description" className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
                         value={description} onChange={e => handleChange("description", e.target.value)}
-                        required></input>
+                        required></textarea>
                     </div>
                     <div className="pb-14 md:pb-6">
                         <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
-                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" required></input>
+                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2"></input>
                         <img src={image} alt="" />
                     </div>
                     <InputButton value="Submit" />

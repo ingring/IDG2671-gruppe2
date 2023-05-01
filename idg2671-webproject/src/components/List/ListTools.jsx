@@ -58,7 +58,7 @@ const togglePopup = (clickedTool) => {
             </button>
           </div>
            {tool.showPopup && (
-        <div className=" items-center">
+        <div className="items-center">
           <div className="bg-white p-4 shadow-lg">
             <p>{tool.description}</p>
           </div>

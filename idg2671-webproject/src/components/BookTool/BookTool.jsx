@@ -64,9 +64,9 @@ export default function BookTool() {
                 </div> */}
                 <div className="pb-8">
                     <label htmlFor="Comments" className="text-xl mb-4 text-left">Comments</label>
-                    <input type="text" name="comments" id="comments" 
+                    <textarea name="comments" id="comments" 
                     className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20 " 
-                    value={description} onChange={handleChange}/>
+                    value={description} onChange={handleChange}></textarea>
                 </div>
                 <InputButton value="Confirm" />
             </form>
