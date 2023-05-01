@@ -15,8 +15,6 @@ export default function BookTool() {
 
     const [description, setDescription] = useState()
 
-    console.log('Åkei Trym', chosenTime)
-    console.log('Åkei åkei', toolId)
     const URL = `api/bookable_tools/book/${toolId}`
 
     console.log('URL: ', URL);
