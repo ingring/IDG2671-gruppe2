@@ -61,9 +61,6 @@ export default function CreateUser() {
     return (
         <div className="flex items-center justify-center">
             <div className="w-full">
-                <h1 className="text-xl md:text-2xl text-left mb-10">
-                    Create / Modify user
-                </h1>
                 <form className="md:space-y-6 flex justify-start flex-col pb-3" onSubmit={handleSubmit}>
                 <div className="mb-6 md:mb-0">
                         <label for="firstname" className="block mb-2 text-left">First name</label>
