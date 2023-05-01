@@ -5,9 +5,9 @@ export default function AdminSubnav() {
   const location = useLocation();
 
   let Links = [
-    { name: "All bookings", link: "/Admin/AllBookings" },
-    { name: "Tools overview", link: "/Admin/ToolsOverview" },
-    { name: "Users overview", link: "/Admin/UsersOverview" },
+    { name: "All bookings", link: "/admin/allBookings" },
+    { name: "Tools overview", link: "/admin/toolsOverview" },
+    { name: "Users overview", link: "/admin/usersOverview" }
   ];
 
   return (
@@ -16,7 +16,7 @@ export default function AdminSubnav() {
         <ul className="flex items-center h-14 text-base">
           {Links.map((link) => (
             <li key={link.name} className={`px-5 ${
-              location.pathname === link.link ? "bg-grey-lighter flex items-center h-14" : ""
+              location.pathname.startsWith(link.link) ? "bg-grey-lighter flex items-center h-14" : ""
             }`}>
               <Link
                 to={link.link}

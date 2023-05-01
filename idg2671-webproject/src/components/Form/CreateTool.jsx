@@ -10,7 +10,6 @@ export default function CreateTool() {
     // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState("");
-    const [uploadedImg, setUploadedImg] = useState("");
 
     // other states 
     const [url, seturl] = useState('tools');
@@ -83,7 +82,7 @@ export default function CreateTool() {
         const request = {
             name: tool, 
             description: description,
-            image: file //det var endret til file i main - stemmer det?
+            image: image //det var endret til file i main - stemmer det? Lisa: Fikset tilbake til image
         };
     
         if (url === 'bookable_tool') {
@@ -112,11 +111,11 @@ export default function CreateTool() {
                     <div className="flex justify-between">
                         <div>
                             <input type="radio" id="tools" name="tools" value="tools" checked={!bookable} onChange={handleType} />
-                            <label htmlFor="tool" className="px-2">Regular</label>
+                            <label htmlFor="tool" className="px-2">Regular tool</label>
                         </div>
                         <div>
                             <input type="radio" id="bookable_tools" name="tools" value="bookable_tools" checked={bookable} onChange={handleType} />
-                            <label htmlFor="bookable_tools" className="px-2">Bookable</label>
+                            <label htmlFor="bookable_tools" className="px-2">Bookable tool</label>
                         </div>
                     </div>
                     <div className="mb-6 md:mb-0">
