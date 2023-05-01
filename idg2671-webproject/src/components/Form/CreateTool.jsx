@@ -53,7 +53,7 @@ export default function CreateTool() {
         const result = await axios.post(`api/${url}`, {
             name: tool, 
             description: description,
-            image: image,
+            image: file,
             quantity: quantity, 
             model: model,
             course: course
