@@ -8,10 +8,6 @@ export default function BookTool() {
 
     const {chosenDate, chosenTime} = useContext(DateContext)
     const {toolName, auth, toolId } = useContext(AuthContext)
-    console.log('-----------------------', toolName)
-    // console.log('Chosen time', chosenTime);
-    console.log('chosen date: ', chosenDate._d)
-    // const formattedDate = chosenDate._d.format("D MMMM YYYY");
     const date = chosenDate._d
     const formattedDate = ("0" + date.getDate()).slice(-2) + "-" + ("0" + (date.getMonth() + 1)).slice(-2) + "-" + date.getFullYear();
 
@@ -28,7 +24,6 @@ export default function BookTool() {
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-  
       try {
         const response = await axiosPrivate.post(URL, 
         {
