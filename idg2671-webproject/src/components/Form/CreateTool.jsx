@@ -79,10 +79,11 @@ export default function CreateTool() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+
         const request = {
             name: tool, 
             description: description,
-            image: image
+            image: file //det var endret til file i main - stemmer det?
         };
     
         if (url === 'bookable_tool') {
@@ -93,7 +94,6 @@ export default function CreateTool() {
         }
 
         console.log(request);
-
         try {
             
             const resp = await axiosPrivate.post(`api/${url}`, request)
