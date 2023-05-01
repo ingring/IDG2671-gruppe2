@@ -16,7 +16,7 @@ function Lists() {
                 <Button to='/admin/toolsOverview/createTool' title='Add tool' />  
             </div>
             <ListToolsAdmin />
-            <p>* Notice, bookable tools are in bold</p>
+            <p className="text-sm mt-2">* Notice, bookable tools are in bold</p>
           </div>
           <div className="mb-24 w-3/4 md:w-2/5">
             <h2 className="text-xl md:text-2xl mb-6">Tools reported broken</h2>
@@ -32,7 +32,7 @@ function Lists() {
 
 function CreateToolForm() {
     return(
-        <div className="mb-24 w-3/5 md:w-1/5">
+        <div className="mb-32 w-3/5 md:w-1/5">
             <h1 className="text-xl md:text-2xl text-left mb-10">
                 Create tool
             </h1>
