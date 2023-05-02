@@ -4,7 +4,7 @@ import InputButton from '../Button/InputButton';
 import Image from "./Image"
 import { mode } from "@cloudinary/url-gen/actions/rotate";
 import axios from "../../axios/axios";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
 export default function ModifyTool({fullUrl}) {
@@ -27,21 +27,35 @@ export default function ModifyTool({fullUrl}) {
 
     let {id} = useParams()
 
+    const location = useLocation();
+    const toolId = location.state?.toolId;
+
+    console.log('toolId state: ', location.state)
+    console.log('toolId: ', toolId)
+
     useEffect(() => {
+        let fullfullUrl;
         if (fullUrl === "api/bookable_tools") {
+            fullfullUrl = `${fullUrl}/${toolId}`
+            console.log('fullfullurl: ', fullfullUrl)
             setBookable(true);
+
         } else {
             setBookable(false);
+            fullfullUrl = `${fullUrl}/${id}`
         }
         async function getToolData() {
             try {
-                const response = await axiosPrivate.get(`${fullUrl}/${id}`)
+                const response = await axiosPrivate.get(fullfullUrl)
         
+                console.log(response.data)
+
                 setTool(response.data.name);
                 setDescription(response.data.description);
 
+                console.log(fullUrl)
+
                 if (fullUrl === "api/bookable_tools") {
-                    setModel(response.data.model)
                     setCourse(response.data.course)
                 } else {
                     setQuantity(response.data.quantity);
@@ -158,21 +172,6 @@ export default function ModifyTool({fullUrl}) {
                     </div> */}
                     {bookable && (
                     <>
-                    <div className="mb-6 md:mb-0">
-                        <label for="title" className="block mb-2 text-left">Model</label>
-                        <input type="text" name="title" id="title" 
-                        className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                        value={model} onChange={e => handleChange("model", e.target.value)}></input>
-                    </div>
-                    {/* <div className="mb-6 md:mb-0">
-                        <label for="course" className="block mb-2 text-left">Safety course</label>
-                        <select type="text" name="course" id="course" className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                        onChange={e => handleChange(e)} required>
-                            <option value=""></option>
-                            <option value="hms">HMS</option>
-                            <option value="none">None</option>
-                        </select>
-                    </div> */}
                     <div className="mb-6 md:mb-0">
                         <label for="course" className="block mb-2 text-left">Safety course</label>
                         <input type="text" name="course" id="course" 
