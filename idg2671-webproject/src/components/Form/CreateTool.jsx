@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"
 import InputButton from '../Button/InputButton';
-import Image from "./Image"
-import { mode } from "@cloudinary/url-gen/actions/rotate";
 
 export default function CreateTool() {
     const axiosPrivate = useAxiosPrivate();
