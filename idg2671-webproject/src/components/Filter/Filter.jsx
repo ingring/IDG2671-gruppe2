@@ -18,7 +18,7 @@ function Filter() {
     const tools = ['Laserkutter', '3D printer']
     return (
         <div className="relative">
-            <div className="bg-blue-darker text-white flex justify-between p-4 rounded-lg max-w-prose text-left">
+            <div className="bg-blue-darker text-white flex justify-between p-4 rounded-lg w-full text-left">
                 <div className="w-1/4">
                     <button id="dropdownToolBtn" data-dropdown-toggle="dropdownTool" className="text-white text-sm md:text-lg rounded-lg px-4 text-center inline-flex items-center hover:opacity-75" type="button">
                         Tools

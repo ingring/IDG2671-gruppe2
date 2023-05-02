@@ -25,7 +25,7 @@ function HomePage() {
 
       <div className="flex flex-col items-center pb-28">
         <h2 className="text-xl md:text-2xl mb-16">Overview of bookable tools</h2>
-        <div className="flex flex-col justify-center items-center w-3/5 items-center">
+        <div className="flex flex-col justify-center items-center md:w-3/6 items-center">
           <div className='flex flex-col md:flex-row md:flex-wrap md:justify-evenly items-center mb-20'>
             <Cards />
           </div>
