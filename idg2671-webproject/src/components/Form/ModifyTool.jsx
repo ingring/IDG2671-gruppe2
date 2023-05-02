@@ -58,6 +58,14 @@ export default function ModifyTool({fullUrl}) {
     }, []); // run only once, on mount
 
 
+    // Image cloudinary
+    const [file, setFile] = useState("");
+    const [image, setImage] = useState('');
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
+    const [uploadedImg, setUploadedImg] = useState("");
+
+
 
     // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
     // File reader to turn it into an readable url
@@ -107,10 +115,12 @@ export default function ModifyTool({fullUrl}) {
 
         const request = {
             description: description,
-            image: image,
             quantity: quantity
         };
+
+        console.log('img', image);
     
+        if(image) request.image = image;
         if (fullUrl === 'api/bookable_tool') {
             request.model = model;
             request.course = course;
@@ -124,9 +134,14 @@ export default function ModifyTool({fullUrl}) {
             const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
             // const uploadedImg = result.data.public_id;
             // setUploadedImg(result.data.uploadedImg)
+
+            setErrorMsg('')
+            setSuccessMsg(`Tool updated!`);
             console.log(resp);
         } catch (err) {
             console.log(err);
+            setSuccessMsg('');
+            setErrorMsg(err.response?.data || 'An error occurred. Please try again later.')  
         }
     }
 
@@ -197,10 +212,13 @@ export default function ModifyTool({fullUrl}) {
                     </div>
                     <div className="pb-14 md:pb-6">
                         <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
-                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" required></input>
+                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2"></input>
                         <img src={image} alt="" />
                     </div>
                     <InputButton value="Submit" />
+                    {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
+                    {successMsg && <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"><p className="block sm:inline">{successMsg}</p></div>}
+                
                 </form>
             </div>
         </div>
