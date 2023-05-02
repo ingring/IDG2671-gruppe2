@@ -4,7 +4,7 @@ import ListUsers from "../components/List/ListUsers";
 import CreateUser from "../components/Form/CreateUser";
 import { Link } from "react-router-dom";
 import Button from "../components/Button/Button";
-// import ModifyUser from "../components/Form/ModifyUser"
+import ModifyUser from "../components/Form/ModifyUser"
 
 function Lists() {
     return (
@@ -38,7 +38,7 @@ function ModifyUserForm() {
                 Modify User
             </h1>
             {/* When we have a modify user, change this to that component */}
-            <CreateUser /> 
+            <ModifyUser /> 
         </div>
     )
 }
