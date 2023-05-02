@@ -18,13 +18,17 @@ export default function ModifyTool({fullUrl}) {
     const [successMsg, setSuccessMsg]  = useState('')
     const [uploadedImg, setUploadedImg] = useState("");
 
-    // other states 
+    // tool states 
     const [tool, setTool] = useState('');
     const [description, setDescription] = useState('');
     const [quantity, setQuantity] = useState('');
     const [model, setModel] = useState('');
     const [course, setCourse] = useState('None');
     const [bookable, setBookable] = useState(false);
+
+    // Error states
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
 
     let {id} = useParams()
 
