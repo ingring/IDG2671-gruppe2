@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
 import InputButton from '../Button/InputButton';
+import { useParams } from "react-router-dom";
 
 export default function CreateUser() {
     const [formData, setFormData] = useState({
@@ -14,19 +15,42 @@ export default function CreateUser() {
     const [errorMsg, setErrorMsg]  = useState('')
     const [successMsg, setSuccessMsg]  = useState('')
 
-
       const axiosPrivate = useAxiosPrivate();
-    
+
+      let {id} = useParams() //username
+
+      useEffect(() => {
+        async function getUser() {
+            try {
+                const response = await axiosPrivate.get(`api/users/${id}`)
+                console.log(response)
+                const data = response.data
+                setFormData({
+                    firstname: data.first_name,
+                    lastname: data.last_name,
+                    username: data.username,
+                    email: data.email,
+                    field_of_study: data.field_of_study,
+                    start_year: data.start_year
+                })
+            } catch (error) {
+                // If an error occurs during the API request, log the error and return null
+                console.error(error);
+            } 
+        }
+        getUser()
+      },[]);
+
       const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('inni submit: ', formData);
         try {
           console.log('test')
-          const response = await axiosPrivate.post('api/users', 
+          const response = await axiosPrivate.put(`api/users/${formData.username}`, //usikker på routen
           {
             first_name: formData.firstname,
             last_name: formData.lastname,
-            username: formData.username,
+            username: formData.username, //mulig det ikke er mulig å endre username - idk
             email: formData.email,
             field_of_study: formData.field_of_study,
             start_year: formData.start_year,
@@ -89,9 +113,8 @@ export default function CreateUser() {
                         <label for="field_of_study" className="block mb-2 text-left">Field of study</label>
                         <select type="text" name="field_of_study" id="field_of_study" 
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                            value={formData.field_of_study} onChange={handleChange} required>
+                            defaultValue={formData.field_of_study} value={formData.field_of_study} onChange={handleChange} required>
                             <option value=""></option>
-                            {/* The value is different because the field of study length is min 6ch */}
                             <option value="BWU">BWU</option>
                             <option value="BIXD">BIXD</option>
                             <option value="BMED">BMED</option>

@@ -78,13 +78,13 @@ export default function RequestTool() {
         </div>
         <div className="mb-6 md:mb-0">
           <label htmlFor="description" className="block mb-2 text-left">Description</label>
-          <input type="text" name="description" id="description" placeholder="Usage..."
+          <textarea name="description" id="description" placeholder="Usage..."
             className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20"
-            value={formData.description} onChange={handleChange} required></input>
+            value={formData.description} onChange={handleChange} required></textarea>
         </div>
         <div className="pb-14 md:pb-6">
           <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
-          <input type="file" name="image" id="fileInput" onChange={e => handleChangeFile(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" required></input>
+          <input type="file" name="image" id="fileInput" onChange={e => handleChangeFile(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2"></input>
           <img src={image} alt="" />
         </div>
         <InputButton value="Request tool" />

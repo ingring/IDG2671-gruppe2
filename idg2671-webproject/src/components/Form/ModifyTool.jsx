@@ -1,25 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"
 import InputButton from '../Button/InputButton';
 import Image from "./Image"
 import { mode } from "@cloudinary/url-gen/actions/rotate";
+import axios from "../../axios/axios";
+import { useParams } from "react-router-dom";
+import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
-export default function CreateTool() {
+export default function ModifyTool({fullUrl}) {
     const axiosPrivate = useAxiosPrivate();
 
     // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState("");
+    const [uploadedImg, setUploadedImg] = useState("");
 
     // other states 
-    const [url, seturl] = useState('tools');
     const [tool, setTool] = useState('');
     const [description, setDescription] = useState('');
     const [quantity, setQuantity] = useState('');
     const [model, setModel] = useState('');
     const [course, setCourse] = useState('None');
     const [bookable, setBookable] = useState(false);
-    
+
+    let {id} = useParams()
+
+    useEffect(() => {
+        if (fullUrl === "api/bookable_tools") {
+            setBookable(true);
+        } else {
+            setBookable(false);
+        }
+        async function getToolData() {
+            try {
+                const response = await axiosPrivate.get(`${fullUrl}/${id}`)
+        
+                setTool(response.data.name);
+                setDescription(response.data.description);
+
+                if (fullUrl === "api/bookable_tools") {
+                    setModel(response.data.model)
+                    setCourse(response.data.course)
+                } else {
+                    setQuantity(response.data.quantity);
+                }
+
+                setImage(response.data.image)
+                
+            } catch (error) {
+                // If an error occurs during the API request, log the error and return null
+                console.error(error);
+            } 
+        }
+
+        getToolData();
+
+    }, []); // run only once, on mount
+
 
 
     // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
@@ -57,16 +94,6 @@ export default function CreateTool() {
             }
           };
 
-    const handleType = (e) => {
-        if (e.target.value === "bookable_tools") {
-            setBookable(true);
-            seturl('bookable_tools')
-        } else {
-            setBookable(false);
-            seturl('tools')
-        }
-    }
-
     // Handle that target the uploaded file
     const handleImg = (e) => {
         const file = e.target.files[0]; // Get the 0 index of the file, which is the image
@@ -78,14 +105,13 @@ export default function CreateTool() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-
         const request = {
-            name: tool, 
             description: description,
-            image: image //det var endret til file i main - stemmer det? Lisa: Fikset tilbake til image
+            image: image,
+            quantity: quantity
         };
     
-        if (url === 'bookable_tool') {
+        if (fullUrl === 'api/bookable_tool') {
             request.model = model;
             request.course = course;
         } else {
@@ -93,9 +119,9 @@ export default function CreateTool() {
         }
 
         console.log(request);
+
         try {
-            
-            const resp = await axiosPrivate.post(`api/${url}`, request)
+            const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
             // const uploadedImg = result.data.public_id;
             // setUploadedImg(result.data.uploadedImg)
             console.log(resp);
@@ -105,25 +131,22 @@ export default function CreateTool() {
     }
 
     return (
+        <div className="mb-24 w-3/5 md:w-1/5">
+        <h1 className="text-xl md:text-2xl text-left mb-1">
+            Modify tool:
+        </h1>
+        <h1 className="text-xl md:text-2xl text-left mb-10">
+            {id}
+        </h1>
         <div className="flex items-center justify-center">
             <div className="w-full">
                 <form onSubmit={e => handleSubmit(e)} className="md:space-y-6 flex justify-start flex-col pb-3">
-                    <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-0">
-                        <div>
-                            <input type="radio" id="tools" name="tools" value="tools" checked={!bookable} onChange={handleType} />
-                            <label htmlFor="tool" className="px-2">Regular tool</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="bookable_tools" name="tools" value="bookable_tools" checked={bookable} onChange={handleType} />
-                            <label htmlFor="bookable_tools" className="px-2">Bookable tool</label>
-                        </div>
-                    </div>
-                    <div className="mb-6 md:mb-0">
+                    {/* <div className="mb-6 md:mb-0">
                         <label for="title" className="block mb-2 text-left">Title</label>
                         <input type="text" name="title" id="title" 
                             className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
                             value={tool} onChange={e => handleChange("tool", e.target.value)}required></input>
-                    </div>
+                    </div> */}
                     {bookable && (
                     <>
                     <div className="mb-6 md:mb-0">
@@ -168,18 +191,19 @@ export default function CreateTool() {
                     )}
                     <div className="mb-6 md:mb-0">
                         <label for="description" className="block mb-2 text-left">Description</label>
-                        <textarea  name="description" id="description" className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
+                        <textarea name="description" id="description" className="text-left p-2 border-grey-mediumLight rounded-md w-full pb-20" 
                         value={description} onChange={e => handleChange("description", e.target.value)}
                         required></textarea>
                     </div>
                     <div className="pb-14 md:pb-6">
                         <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
-                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2"></input>
+                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" required></input>
                         <img src={image} alt="" />
                     </div>
                     <InputButton value="Submit" />
                 </form>
             </div>
+        </div>
         </div>
     )
 }
