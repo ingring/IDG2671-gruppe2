@@ -80,6 +80,7 @@ export default function CreateTool() {
         const request = {
             name: tool, 
             description: description,
+            image: image,
         };
     
         if (url === 'bookable_tools') {
@@ -102,7 +103,8 @@ export default function CreateTool() {
             setTool('');
             setQuantity('');
             setFile('');
-            setCourse('')
+            setCourse('');
+            setImage('')
             console.log(resp.data);
         } catch (err) {
             //set messages
