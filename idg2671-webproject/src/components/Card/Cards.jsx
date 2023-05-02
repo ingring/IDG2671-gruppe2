@@ -26,7 +26,7 @@ export default function Cards() {
     return (
       <>
       {data.map((tool, index) => (
-        <Card key={index} to={`/tools/${tool._id}/calendar`} title={tool.name} imgSrc={tool.image.url} imgAlt={tool.imgAlt} course={tool.course} />
+        <Card key={index} to={`/tools/${tool._id}/calendar`} title={tool.name} imgSrc={tool.image} imgAlt={tool.imgAlt} course={tool.course} />
       ))}
       </>
     )

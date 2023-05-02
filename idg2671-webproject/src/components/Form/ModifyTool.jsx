@@ -35,37 +35,26 @@ export default function ModifyTool({fullUrl}) {
     console.log('toolId: ', toolId)
 
     useEffect(() => {
-        let fullfullUrl;
         if (fullUrl === "api/bookable_tools") {
-            // fullfullUrl = `${fullUrl}/${toolId}`
-            // console.log('fullfullurl: ', fullfullUrl)
-
-            fullUrl = "api/bookable_tools/6450c90da5873a5c3ce4d2dc"
-
             setBookable(true);
-
         } else {
             setBookable(false);
-            fullfullUrl = `${fullUrl}/${id}`
+
         }
         async function getToolData() {
             try {
-
-                // const response = await axiosPrivate.get(`${fullUrl}/${id}`)
-                // const response = await axiosPrivate.get(`${fullUrl}`)
-                const response = await axiosPrivate.get(fullfullUrl)
+                const response = await axiosPrivate.get(`${fullUrl}/${id}`)
                 setTool(response.data.name);
                 setDescription(response.data.description);
-                setImage(response.data.image)
 
                 console.log(fullUrl)
 
-                // if (fullUrl === "api/bookable_tools") {
-                if (fullUrl === "api/bookable_tools/6450c90da5873a5c3ce4d2dc") {
-
+                if (fullUrl === "api/bookable_tools") {
                     setCourse(response.data.course)
+                    setImage(response.data.image)
                 } else {
                     setQuantity(response.data.quantity);
+                    setImage(response.data.image)
                 }
                 
             } catch (error) {
@@ -104,9 +93,6 @@ export default function ModifyTool({fullUrl}) {
               case "quantity":
                 setQuantity(value);
                 break;
-              case "model":
-                setModel(value);
-                break;
               case "course":
                 setCourse(value);
                 break;
@@ -128,14 +114,13 @@ export default function ModifyTool({fullUrl}) {
 
         const request = {
             description: description,
-            quantity: quantity
         };
 
-        console.log('img', image);
-    
+        console.log('image: ', image)
+
+        if(quantity) request.quantity = quantity;
         if(image) request.image = image;
-        if (fullUrl === 'api/bookable_tool/6450c90da5873a5c3ce4d2dc') {
-            request.model = model;
+        if (fullUrl === 'api/bookable_tools') {
             request.course = course;
         } else {
             request.quantity = quantity
@@ -144,10 +129,7 @@ export default function ModifyTool({fullUrl}) {
         console.log(request);
 
         try {
-            // const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
-            const resp = await axiosPrivate.put(`${fullUrl}`, request)
-            // const uploadedImg = result.data.public_id;
-            // setUploadedImg(result.data.uploadedImg)
+            const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
 
             setErrorMsg('')
             setSuccessMsg(`Tool updated!`);
@@ -165,7 +147,7 @@ export default function ModifyTool({fullUrl}) {
             Modify tool:
         </h1>
         <h1 className="text-xl md:text-2xl text-left mb-10">
-            {id}
+            {tool}
         </h1>
         <div className="flex items-center justify-center">
             <div className="w-full">
