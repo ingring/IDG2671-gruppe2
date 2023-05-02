@@ -6,6 +6,7 @@ import { mode } from "@cloudinary/url-gen/actions/rotate";
 import axios from "../../axios/axios";
 import { useParams } from "react-router-dom";
 import { name } from "@cloudinary/url-gen/actions/namedTransformation";
+import { full } from "@cloudinary/url-gen/qualifiers/fontHinting";
 
 export default function ModifyTool({fullUrl}) {
     const axiosPrivate = useAxiosPrivate();
@@ -29,18 +30,20 @@ export default function ModifyTool({fullUrl}) {
 
     useEffect(() => {
         if (fullUrl === "api/bookable_tools") {
+            fullUrl = "api/bookable_tools/6450c90da5873a5c3ce4d2dc"
             setBookable(true);
         } else {
             setBookable(false);
         }
         async function getToolData() {
             try {
-                const response = await axiosPrivate.get(`${fullUrl}/${id}`)
+                // const response = await axiosPrivate.get(`${fullUrl}/${id}`)
+                const response = await axiosPrivate.get(`${fullUrl}`)
         
                 setTool(response.data.name);
                 setDescription(response.data.description);
 
-                if (fullUrl === "api/bookable_tools") {
+                if (fullUrl === "api/bookable_tools/6450c90da5873a5c3ce4d2dc") {
                     setModel(response.data.model)
                     setCourse(response.data.course)
                 } else {
@@ -115,7 +118,7 @@ export default function ModifyTool({fullUrl}) {
         console.log('img', image);
     
         if(image) request.image = image;
-        if (fullUrl === 'api/bookable_tool') {
+        if (fullUrl === 'api/bookable_tool/6450c90da5873a5c3ce4d2dc') {
             request.model = model;
             request.course = course;
         } else {
@@ -125,7 +128,8 @@ export default function ModifyTool({fullUrl}) {
         console.log(request);
 
         try {
-            const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
+            // const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
+            const resp = await axiosPrivate.put(`${fullUrl}`, request)
             // const uploadedImg = result.data.public_id;
             // setUploadedImg(result.data.uploadedImg)
 
