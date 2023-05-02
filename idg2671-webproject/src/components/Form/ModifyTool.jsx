@@ -12,7 +12,9 @@ export default function ModifyTool({fullUrl}) {
 
     // Image cloudinary
     const [file, setFile] = useState("");
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState('');
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
     const [uploadedImg, setUploadedImg] = useState("");
 
     // other states 
@@ -56,14 +58,6 @@ export default function ModifyTool({fullUrl}) {
         getToolData();
 
     }, []); // run only once, on mount
-
-
-    // Image cloudinary
-    const [file, setFile] = useState("");
-    const [image, setImage] = useState('');
-    const [errorMsg, setErrorMsg]  = useState('')
-    const [successMsg, setSuccessMsg]  = useState('')
-    const [uploadedImg, setUploadedImg] = useState("");
 
 
 
