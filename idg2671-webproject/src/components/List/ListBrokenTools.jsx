@@ -25,7 +25,7 @@ function ListBrokenTools() {
         {
             tool: 'Laser cutter',
             date: '05-03-2023',
-            user: 'ingridgla'
+            user: 'ingring'
         }
     ]
     return (
