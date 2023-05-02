@@ -7,7 +7,7 @@ import useAxiosPrivate from "../../axios/useAxiosPrivate"
 function ListElementRequestedTool({ name, date, username }) {
     return (
         <div className="flex justify-between">
-            <span className="w-1/4 md:w-2/4 font-semibold px-4">{name}</span>
+            <span className="w-1/4 md:w-2/4 px-4">{name}</span>
             <span className="w-1/4 md:w-2/4 px-4">{date}</span>
             <span className="w-1/4 md:w-2/4 px-4">{username}</span>
             <button>
