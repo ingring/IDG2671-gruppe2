@@ -11,7 +11,8 @@ export default function Cards() {
             const url = 'bookable_tools/toolsinfo';
             const response = await getAPI(url);
             setData(response);
-            console.log('response:', response.data)
+            console.log('response:', response)
+            console.log('image: ', response.image)
         }
   
         fetchData();
@@ -25,7 +26,7 @@ export default function Cards() {
     return (
       <>
       {data.map((tool, index) => (
-        <Card key={index} to={`/tools/${tool._id}/calendar`} title={tool.name} imgSrc={Image} imgAlt={tool.imgAlt} course={tool.course} />
+        <Card key={index} to={`/tools/${tool._id}/calendar`} title={tool.name} imgSrc={tool.image} imgAlt={tool.imgAlt} course={tool.course} />
       ))}
       </>
     )

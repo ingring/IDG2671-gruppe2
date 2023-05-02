@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"
 import InputButton from '../Button/InputButton';
-import Image from "./Image"
-import { mode } from "@cloudinary/url-gen/actions/rotate";
 
 export default function CreateTool() {
     const axiosPrivate = useAxiosPrivate();
@@ -16,7 +14,6 @@ export default function CreateTool() {
     const [tool, setTool] = useState('');
     const [description, setDescription] = useState('');
     const [quantity, setQuantity] = useState('');
-    const [model, setModel] = useState('');
     const [course, setCourse] = useState('None');
     const [bookable, setBookable] = useState(false);
     const [errorMsg, setErrorMsg]  = useState('')
@@ -47,9 +44,6 @@ export default function CreateTool() {
                 break;
               case "quantity":
                 setQuantity(value);
-                break;
-              case "model":
-                setModel(value);
                 break;
               case "course":
                 setCourse(value);
@@ -84,10 +78,10 @@ export default function CreateTool() {
         const request = {
             name: tool, 
             description: description,
+            image: image,
         };
     
         if (url === 'bookable_tools') {
-            request.model = model;
             request.course = course;
         } else {
             request.quantity = quantity
@@ -103,12 +97,12 @@ export default function CreateTool() {
             setSuccessMsg(`Tool created: ${tool}`);
             
             //empty fields
-            setModel('');
             setDescription('');
             setTool('');
             setQuantity('');
             setFile('');
-            setCourse('')
+            setCourse('');
+            setImage('')
             console.log(resp.data);
         } catch (err) {
             //set messages

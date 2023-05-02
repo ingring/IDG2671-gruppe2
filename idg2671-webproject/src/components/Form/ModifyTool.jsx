@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"
 import InputButton from '../Button/InputButton';
-import Image from "./Image"
-import { mode } from "@cloudinary/url-gen/actions/rotate";
-import axios from "../../axios/axios";
 import { useParams, useLocation } from "react-router-dom";
-import { name } from "@cloudinary/url-gen/actions/namedTransformation";
 
 export default function ModifyTool({fullUrl}) {
     const axiosPrivate = useAxiosPrivate();
@@ -13,43 +9,31 @@ export default function ModifyTool({fullUrl}) {
     // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState('');
-    const [errorMsg, setErrorMsg]  = useState('')
-    const [successMsg, setSuccessMsg]  = useState('')
     const [uploadedImg, setUploadedImg] = useState("");
 
-    // other states 
+    // tool states 
     const [tool, setTool] = useState('');
     const [description, setDescription] = useState('');
     const [quantity, setQuantity] = useState('');
-    const [model, setModel] = useState('');
     const [course, setCourse] = useState('None');
     const [bookable, setBookable] = useState(false);
 
+    // Error states
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
+
     let {id} = useParams()
 
-    const location = useLocation();
-    const toolId = location.state?.toolId;
-
-    console.log('toolId state: ', location.state)
-    console.log('toolId: ', toolId)
-
     useEffect(() => {
-        let fullfullUrl;
         if (fullUrl === "api/bookable_tools") {
-            fullfullUrl = `${fullUrl}/${toolId}`
-            console.log('fullfullurl: ', fullfullUrl)
             setBookable(true);
-
         } else {
             setBookable(false);
-            fullfullUrl = `${fullUrl}/${id}`
+
         }
         async function getToolData() {
             try {
-                const response = await axiosPrivate.get(fullfullUrl)
-        
-                console.log(response.data)
-
+                const response = await axiosPrivate.get(`${fullUrl}/${id}`)
                 setTool(response.data.name);
                 setDescription(response.data.description);
 
@@ -57,11 +41,11 @@ export default function ModifyTool({fullUrl}) {
 
                 if (fullUrl === "api/bookable_tools") {
                     setCourse(response.data.course)
+                    setImage(response.data.image)
                 } else {
                     setQuantity(response.data.quantity);
+                    setImage(response.data.image)
                 }
-
-                setImage(response.data.image)
                 
             } catch (error) {
                 // If an error occurs during the API request, log the error and return null
@@ -99,9 +83,6 @@ export default function ModifyTool({fullUrl}) {
               case "quantity":
                 setQuantity(value);
                 break;
-              case "model":
-                setModel(value);
-                break;
               case "course":
                 setCourse(value);
                 break;
@@ -123,14 +104,13 @@ export default function ModifyTool({fullUrl}) {
 
         const request = {
             description: description,
-            quantity: quantity
         };
 
-        console.log('img', image);
-    
+        console.log('image: ', image)
+
+        if(quantity) request.quantity = quantity;
         if(image) request.image = image;
-        if (fullUrl === 'api/bookable_tool') {
-            request.model = model;
+        if (fullUrl === 'api/bookable_tools') {
             request.course = course;
         } else {
             request.quantity = quantity
@@ -140,8 +120,6 @@ export default function ModifyTool({fullUrl}) {
 
         try {
             const resp = await axiosPrivate.put(`${fullUrl}/${id}`, request)
-            // const uploadedImg = result.data.public_id;
-            // setUploadedImg(result.data.uploadedImg)
 
             setErrorMsg('')
             setSuccessMsg(`Tool updated!`);
@@ -159,17 +137,11 @@ export default function ModifyTool({fullUrl}) {
             Modify tool:
         </h1>
         <h1 className="text-xl md:text-2xl text-left mb-10">
-            {id}
+            {tool}
         </h1>
         <div className="flex items-center justify-center">
             <div className="w-full">
                 <form onSubmit={e => handleSubmit(e)} className="md:space-y-6 flex justify-start flex-col pb-3">
-                    {/* <div className="mb-6 md:mb-0">
-                        <label for="title" className="block mb-2 text-left">Title</label>
-                        <input type="text" name="title" id="title" 
-                            className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                            value={tool} onChange={e => handleChange("tool", e.target.value)}required></input>
-                    </div> */}
                     {bookable && (
                     <>
                     <div className="mb-6 md:mb-0">
