@@ -84,9 +84,10 @@ export default function CreateTool() {
             description: description,
             image: image //det var endret til file i main - stemmer det? Lisa: Fikset tilbake til image
         };
+
+        console.log(url)
     
-        if (url === 'bookable_tool') {
-            request.model = model;
+        if (url === 'bookable_tools') {
             request.course = course;
         } else {
             request.quantity = quantity
@@ -110,7 +111,7 @@ export default function CreateTool() {
                 <form onSubmit={e => handleSubmit(e)} className="md:space-y-6 flex justify-start flex-col pb-3">
                     <div className="flex flex-col md:flex-row justify-between mb-6 md:mb-0">
                         <div>
-                            <input type="radio" id="tools" name="tools" value="tools" checked={!bookable} onChange={handleType} />
+                            <input type="radio" id="tools" name="tools" value="tools" checked={!bookable} onChange={handleType} className="accent-blue-darker"/>
                             <label htmlFor="tool" className="px-2">Regular tool</label>
                         </div>
                         <div>
@@ -126,21 +127,6 @@ export default function CreateTool() {
                     </div>
                     {bookable && (
                     <>
-                    <div className="mb-6 md:mb-0">
-                        <label for="title" className="block mb-2 text-left">Model</label>
-                        <input type="text" name="title" id="title" 
-                        className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                        value={model} onChange={e => handleChange("model", e.target.value)}></input>
-                    </div>
-                    {/* <div className="mb-6 md:mb-0">
-                        <label for="course" className="block mb-2 text-left">Safety course</label>
-                        <select type="text" name="course" id="course" className="text-left border-grey-mediumLight p-2 h-9 rounded-md w-full" 
-                        onChange={e => handleChange(e)} required>
-                            <option value=""></option>
-                            <option value="hms">HMS</option>
-                            <option value="none">None</option>
-                        </select>
-                    </div> */}
                     <div className="mb-6 md:mb-0">
                         <label for="course" className="block mb-2 text-left">Safety course</label>
                         <input type="text" name="course" id="course" 
