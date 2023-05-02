@@ -20,9 +20,9 @@ function ListElementToolsAdmin({tool, id, type}) {
             }
         }
 
-        if (type === 'regular') {
+        if (type === 'modifyTool') {
             return deleteTool(`tools/${tool}`)
-        } else if (type === 'bookable') {
+        } else if (type === 'modifyBookableTool') {
             return deleteTool(`bookable_tools/${tool}`)
         }
 
@@ -30,8 +30,10 @@ function ListElementToolsAdmin({tool, id, type}) {
 
     return (
         <div className="flex justify-between">
-            {tool}
-            <div className="flexd">
+            <div className={type === 'modifyBookableTool' ? 'font-bold' : ''}>
+                {tool}
+            </div>
+            <div className="flex w-14 justify-between">
 
                 {/* change the booking - PUT? */}
                 {/* <a href={url} className="px-4"> */}

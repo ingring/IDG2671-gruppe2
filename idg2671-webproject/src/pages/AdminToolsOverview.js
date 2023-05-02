@@ -7,7 +7,6 @@ import Button from "../components/Button/Button";
 function AdminToolsOverview() {
   return (
       <div className="mt-24 flex flex-col items-center justify-center w-full">
-        {/* <Button to='/admin/toolsOverview/createTool'title='Add a tool' /> */}
         <Outlet />
       </div>
   );

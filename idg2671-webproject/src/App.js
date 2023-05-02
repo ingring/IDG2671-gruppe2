@@ -26,6 +26,7 @@ import MyAccountMyBookings from "./pages/MyAccountMyBookings";
 import MyAccountRequestTools from "./pages/MyAccountRequestTools";
 import PageNotFound from "./pages/404Page";
 import AdminToolsOverviewSub from "./pages/AdminToolsOverviewSub";
+import AdminUsersSub from "./pages/AdminUsersSub";
 
 //import utils
 import useRefreshToken from "./hooks/useRefreshtoken";
@@ -68,7 +69,10 @@ function App() {
           <Route path="/logout" element={<Logout/>}/>
           <Route path="/admin" element={<AdminPage />} >
             <Route path="/admin/allbookings" element={<AdminAllBookings />} />
-            <Route path="/admin/usersoverview" element={<AdminUsersOverview />} />
+            <Route path="/admin/usersoverview" element={<AdminUsersOverview />} >
+              <Route path="/admin/usersoverview" element={<AdminUsersSub />} />
+              <Route path="/admin/usersoverview/*" element={<AdminUsersSub />} />
+            </Route>
             <Route path="/admin/toolsoverview" element={<AdminToolsOverview />} >
               <Route path="/admin/toolsoverview" element={<AdminToolsOverviewSub />} />
               <Route path="/admin/toolsoverview/*" element={<AdminToolsOverviewSub />} />
