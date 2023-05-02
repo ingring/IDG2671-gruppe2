@@ -33,14 +33,14 @@ function ListTools() {
     return <p>Loading...</p>;
   }
 
-const togglePopup = (clickedTool) => {
+  const togglePopup = (clickedTool) => {
     setData(prevData =>
       prevData.map(tool =>
         tool === clickedTool ? { ...tool, showPopup: !tool.showPopup } : tool
       )
     );
   };
-  
+
 
   return (
     <List>
@@ -57,13 +57,13 @@ const togglePopup = (clickedTool) => {
               </svg>
             </button>
           </div>
-           {tool.showPopup && (
-        <div className="items-center">
-          <div className="bg-white p-4 shadow-lg">
-            <p>{tool.description}</p>
-          </div>
-        </div>
-      )}
+          {tool.showPopup && (
+            <div className="items-center">
+              <div className="bg-white p-4 shadow-lg">
+                <p>{tool.description}</p>
+              </div>
+            </div>
+          )}
         </ListElement>
       ))}
     </List>
