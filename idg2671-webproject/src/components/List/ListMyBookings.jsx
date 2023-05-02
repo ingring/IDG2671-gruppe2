@@ -11,11 +11,11 @@ const userURL = 'api/users/';
 function ListElementMyBookings({ tool, date, time }) {
     return (
         <div className="flex justify-between">
-            <a href='./tools/id' className="flex justify-between w-5/6 items-center">
+            <div className="flex justify-between w-5/6 items-center">
                 <span className="w-1/4 md:w-2/4 px-4 ">{tool}</span>
                 <span className="w-3/4 px-4">{date}</span>
                 <span className="w-2/4 px-4">{time}</span>
-            </a>
+            </div>
             {/* Deletes the booking */}
             <button>
                 <svg width="22" height="22" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">

@@ -6,12 +6,12 @@ import useAxiosPrivate from "../../axios/useAxiosPrivate";
 
 function ListElementBookedBy({ tool, date, time, username }) {
   return (
-    <a href={`./tools/${tool}`} className="flex">
+    <div className="flex">
       <span className="w-1/4 md:w-2/4 font-semibold px-4">{tool}</span>
       <span className="w-1/4 md:w-2/4 px-4">{date}</span>
       <span className="w-1/4 md:w-2/4 px-4">{time}</span>
       <span className="w-1/4 md:w-2/4 px-4">{username}</span>
-    </a>
+    </div>
   );
 }
 

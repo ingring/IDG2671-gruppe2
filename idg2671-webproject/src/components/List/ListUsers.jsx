@@ -21,10 +21,10 @@ function ListElementUsers({user, username, id, study, year}) {
 
     return (
         <div className="flex justify-between">
-            <a href={url} className="flex w-3/4">
+            <div href={url} className="flex w-3/4">
                 <span className="w-2/4 min-w-fit">{user}</span>
                 <span className="w-1/4 min-w-fit">{study} {year}</span>
-            </a>
+            </div>
             <div className="flex">
                 {/* change the booking - PUT? */}
                 <Link to={{pathname:`./modifyUser/${username}` }}>
