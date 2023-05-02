@@ -11,6 +11,10 @@ export default function RequestTool() {
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
 
+  //set error ans successMsg
+  const [errorMsg, setErrorMsg]  = useState('')
+  const [successMsg, setSuccessMsg]  = useState('')
+
 
   // File reader to turn it into an readable url
   function previewFiles(file) {
@@ -59,10 +63,18 @@ export default function RequestTool() {
           username: auth.username,
           name: formData.toolname,
           description: formData.description,
-          image: image,
         });
+        setErrorMsg('')
+        setSuccessMsg('Request sent');
+        setFormData({
+          toolname: "",
+          description: "",
+          image: ""
+          });
       console.log(response.data);
     } catch (error) {
+      setSuccessMsg('');
+      setErrorMsg(error.response?.data || 'An error occurred. Please try again later.')
       console.error(error);
     }
   };
@@ -88,6 +100,8 @@ export default function RequestTool() {
           <img src={image} alt="" />
         </div>
         <InputButton value="Request tool" />
+        {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
+        {successMsg && <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"><p className="block sm:inline">{successMsg}</p></div>}
       </form>
     </div>
   )

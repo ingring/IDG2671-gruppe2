@@ -3,8 +3,16 @@ import InputButton from "../Button/InputButton";
 import { DateContext } from '../../context/CalendarContext';
 import  AuthContext  from "../../context/AuthProvider";
 import useAxiosPrivate from "../../axios/useAxiosPrivate";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function BookTool() {
+    //navigate to my bookings
+    const navigate = useNavigate();
+
+    //Declare error and succestmessages (user in UI)
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
 
     const {chosenDate, chosenTime} = useContext(DateContext)
     const {toolName, auth, toolId } = useContext(AuthContext)
@@ -32,8 +40,10 @@ export default function BookTool() {
             description: description
       });
         console.log(response.data);
+        navigate('/MyAccount/MyBookings');
       } catch (error) {
-        console.error(error);
+        setErrorMsg(error.response.data);
+        console.log(error.response.data);
       }
     };
   
@@ -69,6 +79,8 @@ export default function BookTool() {
                     value={description} onChange={handleChange}></textarea>
                 </div>
                 <InputButton value="Confirm" />
+                {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
+                {successMsg && <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"><p className="block sm:inline">{successMsg}</p></div>}
             </form>
         </div>
     )
