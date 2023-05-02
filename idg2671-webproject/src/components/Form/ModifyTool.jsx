@@ -14,8 +14,6 @@ export default function ModifyTool({fullUrl}) {
     // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState('');
-    const [errorMsg, setErrorMsg]  = useState('')
-    const [successMsg, setSuccessMsg]  = useState('')
     const [uploadedImg, setUploadedImg] = useState("");
 
     // tool states 
