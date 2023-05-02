@@ -19,6 +19,8 @@ export default function CreateTool() {
     const [model, setModel] = useState('');
     const [course, setCourse] = useState('None');
     const [bookable, setBookable] = useState(false);
+    const [errorMsg, setErrorMsg]  = useState('')
+    const [successMsg, setSuccessMsg]  = useState('')
     
 
 
@@ -82,12 +84,10 @@ export default function CreateTool() {
         const request = {
             name: tool, 
             description: description,
-            image: image //det var endret til file i main - stemmer det? Lisa: Fikset tilbake til image
         };
-
-        console.log(url)
     
         if (url === 'bookable_tools') {
+            request.model = model;
             request.course = course;
         } else {
             request.quantity = quantity
@@ -96,12 +96,25 @@ export default function CreateTool() {
         console.log(request);
         try {
             
-            const resp = await axiosPrivate.post(`api/${url}`, request)
-            // const uploadedImg = result.data.public_id;
-            // setUploadedImg(result.data.uploadedImg)
-            console.log(resp);
+            const resp = await axiosPrivate.post(`api/${url}`, request);
+            
+            //set messages
+            setErrorMsg('')
+            setSuccessMsg(`Tool created: ${tool}`);
+            
+            //empty fields
+            setModel('');
+            setDescription('');
+            setTool('');
+            setQuantity('');
+            setFile('');
+            setCourse('')
+            console.log(resp.data);
         } catch (err) {
-            console.log(err);
+            //set messages
+            setSuccessMsg('');
+            setErrorMsg(err.response?.data || 'An error occurred. Please try again later.')
+            console.log(err.response?.data);
         }
     }
 
@@ -160,10 +173,13 @@ export default function CreateTool() {
                     </div>
                     <div className="pb-14 md:pb-6">
                         <label htmlFor="fileInput" className="block mb-4 text-left">Upload image</label>
-                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2"></input>
+                        <input type="file" name="image" id="fileInput" onChange={e => handleImg(e)} accept="image/png, image/jpeg, image/jpg, image/svg" className="w-full rounded-md text-base bg-grey-light mb-2" ></input>
+
                         <img src={image} alt="" />
                     </div>
                     <InputButton value="Submit" />
+                    {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
+                    {successMsg && <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"><p className="block sm:inline">{successMsg}</p></div>}
                 </form>
             </div>
         </div>
