@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"
 import InputButton from '../Button/InputButton';
-import Image from "./Image"
-import { mode } from "@cloudinary/url-gen/actions/rotate";
-import axios from "../../axios/axios";
 import { useParams, useLocation } from "react-router-dom";
-import { name } from "@cloudinary/url-gen/actions/namedTransformation";
-import { full } from "@cloudinary/url-gen/qualifiers/fontHinting";
 
 export default function ModifyTool({fullUrl}) {
     const axiosPrivate = useAxiosPrivate();
@@ -20,7 +15,6 @@ export default function ModifyTool({fullUrl}) {
     const [tool, setTool] = useState('');
     const [description, setDescription] = useState('');
     const [quantity, setQuantity] = useState('');
-    const [model, setModel] = useState('');
     const [course, setCourse] = useState('None');
     const [bookable, setBookable] = useState(false);
 
@@ -29,12 +23,6 @@ export default function ModifyTool({fullUrl}) {
     const [successMsg, setSuccessMsg]  = useState('')
 
     let {id} = useParams()
-
-    const location = useLocation();
-    const toolId = location.state?.toolId;
-
-    console.log('toolId state: ', location.state)
-    console.log('toolId: ', toolId)
 
     useEffect(() => {
         if (fullUrl === "api/bookable_tools") {
