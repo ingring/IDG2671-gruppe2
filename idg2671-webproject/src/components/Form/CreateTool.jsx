@@ -78,7 +78,6 @@ export default function CreateTool() {
         const request = {
             name: tool, 
             description: description,
-            image: image,
         };
     
         if (url === 'bookable_tools') {
