@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import Image from "../../assets/img/3d-printer.jpeg";
 import { getAPI } from "../../helpers/getAPI";
 
 export default function Cards() {
@@ -22,12 +21,18 @@ export default function Cards() {
         return <p>Loading...</p>;
     }
 
-  
     return (
       <>
       {data.map((tool, index) => (
-        <Card key={index} to={`/tools/${tool._id}/calendar`} title={tool.name} imgSrc={tool.image} imgAlt={tool.imgAlt} course={tool.course} />
+        <Card 
+          key={index} 
+          to={`/tools/${tool._id}/calendar`} 
+          title={tool.name} 
+          imgSrc={tool.image} 
+          imgAlt={tool.imgAlt} 
+          course={tool.course} />
       ))}
       </>
     )
   }
+

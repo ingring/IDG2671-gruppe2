@@ -1,3 +1,7 @@
+// Inspired youtube video by Dave Gray 
+    // video: https://www.youtube.com/watch?v=oUZjO00NkhY&t=562s
+    // video: https://www.youtube.com/watch?v=27KeYk-5vJw
+// and Full Stack exam group 3 (Trym and Ingrid)
 import { createContext, useState } from "react";
 
 const AuthContext = createContext({});
