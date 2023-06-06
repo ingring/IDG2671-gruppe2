@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"
 import InputButton from '../Button/InputButton';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function ModifyTool({fullUrl}) {
     const axiosPrivate = useAxiosPrivate();
@@ -9,7 +9,6 @@ export default function ModifyTool({fullUrl}) {
     // Image cloudinary
     const [file, setFile] = useState("");
     const [image, setImage] = useState('');
-    const [uploadedImg, setUploadedImg] = useState("");
 
     // tool states 
     const [tool, setTool] = useState('');

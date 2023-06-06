@@ -39,7 +39,6 @@ function App() {
   if (!auth.accesstoken) refresh();
 
   // Set navbar desktop or mobile
-  const activePage = window.location.pathname;
   const [isMobile, setIsMobile] = useState(false);
 
   // UseEffect to the navbars, switch based on screen size.
