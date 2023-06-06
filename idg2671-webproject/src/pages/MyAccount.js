@@ -9,9 +9,6 @@ function MyAccountPage() {
         <div className="">
           <MyAccount />
         </div>
-        {/* Her er liste komponentet med dummy data som skal innunder my account, 
-                dette må struktureres og styles mtp layoutet vi ønsker => subheader med to 
-                'sider': personal information og my bookings */}
         <div className="w-2/4">
           <ListMyBookings />
         </div>
