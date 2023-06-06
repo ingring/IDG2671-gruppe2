@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "flowbite";
 import List from "./List";
 import ListElement from "./ListElement";
 import useAxiosPrivate from "../../axios/useAxiosPrivate"

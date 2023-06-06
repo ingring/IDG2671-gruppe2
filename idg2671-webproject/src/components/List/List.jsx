@@ -1,5 +1,4 @@
 import React from "react";
-import "flowbite";
 
 function List({children}) {
     return (

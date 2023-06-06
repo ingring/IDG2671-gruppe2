@@ -2,8 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/flowbite/**/*.js"
+    "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     // To use for example the lighter blue as backgroun-color, you type: "className=”bg-blue-lighter"
@@ -29,7 +28,6 @@ module.exports = {
     'inter': ['Inter', 'sans-serif']
   },
   plugins: [
-    require('flowbite/plugin'),
     require('tailwind-scrollbar')({ nocompatible: true }),
   ]
 }

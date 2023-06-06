@@ -1,5 +1,4 @@
 import React from "react";
-import "flowbite";
 
 function ListElement(props) {
     return <li><button className="text-left block px-8 py-5 w-44 text-white hover:text-blue-darker hover:bg-blue-lighter ">{props.tool}</button></li>
