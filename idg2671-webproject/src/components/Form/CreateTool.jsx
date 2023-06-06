@@ -18,10 +18,9 @@ export default function CreateTool() {
     const [bookable, setBookable] = useState(false);
     const [errorMsg, setErrorMsg]  = useState('')
     const [successMsg, setSuccessMsg]  = useState('')
-    
 
 
-    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+    // Source https://developer.mozilla.org/en-US/docs/Web/API/FileReader
     // File reader to turn it into an readable url
     function previewFiles(file) {
         const reader = new FileReader();

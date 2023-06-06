@@ -17,7 +17,7 @@ const LOGIN_URL = 'api/users/login';
 function Login() {
     const navigate = useNavigate();
     const refresh = useRefreshToken();
-    const { setAuth, auth, user, setUser, accesstoken, setAccesstoken } = useContext(AuthContext);
+    const { setAuth, auth } = useContext(AuthContext);
   
     const [state, setState] = useState({ })
     const [errorMsg, setErrorMsg]  = useState('')
