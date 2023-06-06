@@ -1,3 +1,5 @@
+// inspired by youtube video of Dave Grey, https://www.youtube.com/watch?v=27KeYk-5vJw
+// and Full Stack exam group 3 (Trym and Ingrid)
 import axios from '../axios/axios'
 import useAuth from './useAuth'
 const refreshURL = '/api/refresh'
