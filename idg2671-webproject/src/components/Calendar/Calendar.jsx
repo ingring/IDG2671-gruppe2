@@ -3,7 +3,6 @@ import moment from "moment";
 import buildCalendar from "./BuildCalendar";
 import dayStyles, { beforeToday } from "./CalendarStyles";
 import CalendarHeader from "./CalendarHeader";
-import Button from "../Button/Button";
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../axios/axios";
 import { DateContext } from "../../context/CalendarContext";

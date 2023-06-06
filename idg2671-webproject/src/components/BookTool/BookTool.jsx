@@ -10,9 +10,8 @@ export default function BookTool() {
     //navigate to my bookings
     const navigate = useNavigate();
 
-    //Declare error and succestmessages (user in UI)
+    //Declare error (user in UI)
     const [errorMsg, setErrorMsg]  = useState('')
-    const [successMsg, setSuccessMsg]  = useState('')
 
     const {chosenDate, chosenTime} = useContext(DateContext)
     const {toolName, auth, toolId } = useContext(AuthContext)
@@ -67,11 +66,6 @@ export default function BookTool() {
                     <label htmlFor="time" className="text-xl mb-4 text-left">Time</label>
                     <p name="tool" id="time" className="mb-8">{chosenTime?.start} - {chosenTime?.end}</p>
                 </div>
-                {/* Kan ikkje rekne på duration fordi klokkesletta er string og ikkje numbers
-                <div className="pb-2">
-                    <label htmlFor="duration" className="text-xl mb-4 text-left">Duration</label>
-                    <p name="duration" id="duration" className="mb-8"></p>
-                </div> */}
                 <div className="pb-8">
                     <label htmlFor="Comments" className="text-xl mb-4 text-left">Comments</label>
                     <textarea name="comments" id="comments" 
@@ -80,7 +74,7 @@ export default function BookTool() {
                 </div>
                 <InputButton value="Confirm" />
                 {errorMsg && <div class="bg-red-100 border mt-5 border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert"><p className="block sm:inline">{errorMsg}</p></div>}
-                {successMsg && <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"><p className="block sm:inline">{successMsg}</p></div>}
+                <div class="bg-green-100 border mt-5 border-green-400 text-green-700 px-4 py-3 rounded relative"></div>
             </form>
         </div>
     )

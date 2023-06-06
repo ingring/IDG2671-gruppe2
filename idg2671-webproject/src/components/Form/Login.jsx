@@ -7,16 +7,14 @@ import InputButton from '../Button/InputButton';
 import AuthContext from "../../context/AuthProvider";
 import axios from "../../axios/axios";
 import { useNavigate } from 'react-router-dom';
-
-
-import useRefreshToken from "../../hooks/useRefreshtoken";
+// import useRefreshToken from "../../hooks/useRefreshtoken";
 
 
 const LOGIN_URL = 'api/users/login';
 
 function Login() {
     const navigate = useNavigate();
-    const refresh = useRefreshToken();
+    // const refresh = useRefreshToken();
     const { setAuth, auth } = useContext(AuthContext);
   
     const [state, setState] = useState({ })
@@ -61,11 +59,11 @@ function Login() {
 
                     <form className="md:space-y-6 flex justify-start flex-col pb-3 w-4/4" action="#" onSubmit={handleSubmit}>
                     <div className="mb-6 md:mb-0">
-                            <label for="username" className="block mb-2 text-left">Username</label>
+                            <label htmlFor="username" className="block mb-2 text-left">Username</label>
                             <input type="username" name="username" id="username" className="text-left border border-grey-mediumLight p-2 h-9 rounded-md w-full" required="" onChange={handleChange}></input>
                         </div>
                         <div className="mb-6 md:mb-6">
-                            <label for="password" className="block mb-2 text-left">Password</label>
+                            <label htmlFor="password" className="block mb-2 text-left">Password</label>
                             <input type="password" name="password" id="password" className="text-left border border-grey-mediumLight p-2 h-9 rounded-md w-full" required="" onChange={handleChange}></input>
                         </div>
                         <InputButton value="Submit" />
